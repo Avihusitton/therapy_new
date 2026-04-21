@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -16,10 +17,26 @@ export default function ContactForm() {
         setFormData(prev => ({ ...prev, [field]: value }));
     };
 
+    const isValidPhone = (phone) => {
+        const digitsOnly = phone.replace(/\D/g, '');
+        if (digitsOnly.startsWith('972')) {
+            return digitsOnly.length === 12;
+        }
+        if (digitsOnly.startsWith('0')) {
+            return digitsOnly.length === 9 || digitsOnly.length === 10;
+        }
+        return false;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.full_name.trim() || !formData.phone.trim()) {
             alert('אנא מלא את השם ומספר הטלפון');
+            return;
+        }
+        
+        if (!isValidPhone(formData.phone)) {
+            alert('אנא הזן מספר טלפון תקין (למשל: 054-1234567)');
             return;
         }
 
