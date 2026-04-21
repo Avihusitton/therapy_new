@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Send, MessageCircle } from 'lucide-react';
+import { Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function ContactForm() {
@@ -9,36 +9,82 @@ export default function ContactForm() {
         full_name: '',
         phone: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const handleInputChange = (field, value) => {
         setFormData(prev => ({ ...prev, [field]: value }));
     };
 
-    const sendToWhatsApp = () => {
-        const phoneNumber = '972532853235';
-        const message = `היי אביהו, אני ${formData.full_name || '[שם]'}.
-הטלפון שלי: ${formData.phone || '[טלפון]'}
-הגעתי דרך האתר ואשמח לשוחח על טיפול רגשי ולקבוע שיחת היכרות.`;
-        
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.full_name.trim() || !formData.phone.trim()) {
             alert('אנא מלא את השם ומספר הטלפון');
             return;
         }
-        sendToWhatsApp();
+
+        setIsSubmitting(true);
+        
+        try {
+            const webhookUrl = 'https://hook.eu1.make.com/xac8wtpa12wjh2c3glfktolfowdvrbbw';
+            
+            // יצירת קישור קסם לווטסאפ
+            let formattedPhone = formData.phone.trim();
+            if (formattedPhone.startsWith('0')) {
+                formattedPhone = '972' + formattedPhone.substring(1);
+            }
+            // מסיר תווים לא חוקיים כמו מקפים או רווחים
+            formattedPhone = formattedPhone.replace(/\D/g, '');
+            
+            const messageText = `היי ${formData.full_name}, ראיתי שהשארת פרטים באתר, אשמח לעזור! מתי נוח לך שנדבר?`;
+            const whatsappLink = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(messageText)}`;
+            
+            await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    date: new Date().toLocaleDateString('he-IL'),
+                    time: new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
+                    whatsapp_link: whatsappLink
+                }),
+            });
+
+            setIsSuccess(true);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('אירעה שגיאה בשליחת הטופס, אנא נסה שוב או צור קשר טלפוני.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
+
+    if (isSuccess) {
+        return (
+            <div className="max-w-4xl mx-auto">
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-10 text-center"
+                >
+                    <CheckCircle2 className="w-16 h-16 text-[#25D366] mx-auto mb-4" />
+                    <h3 className="text-2xl text-[#4C4A49] mb-2">תודה רבה, {formData.full_name}!</h3>
+                    <p className="text-[#6B6867]">
+                        הפרטים שלך התקבלו בהצלחה. <br/>אצור איתך קשר בהקדם.
+                    </p>
+                </motion.div>
+            </div>
+        );
+    }
 
     return (
         <div className="max-w-4xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-10">
                 <div className="text-center mb-8">
                     <h3 className="text-2xl text-[#4C4A49] mb-4">צור קשר</h3>
-                    <p className="text-[#6B6867]">מלא את הפרטים ותועבר ישירות לווטסאפ עם הודעה מוכנה</p>
+                    <p className="text-[#6B6867]">השאר פרטים ונחזור אליך בהקדם לשיחת היכרות</p>
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-8">
@@ -49,7 +95,8 @@ export default function ContactForm() {
                                 onChange={(e) => handleInputChange('full_name', e.target.value)}
                                 placeholder="השם שלך"
                                 required
-                                className="text-right bg-transparent border-0 border-b border-[#D3C1B1] rounded-none focus:border-[#A2673E] px-0"
+                                disabled={isSubmitting}
+                                className="text-right bg-transparent border-0 border-b border-[#D3C1B1] rounded-none focus:border-[#A2673E] px-0 disabled:opacity-50"
                             />
                         </div>
                         <div>
@@ -59,7 +106,8 @@ export default function ContactForm() {
                                 onChange={(e) => handleInputChange('phone', e.target.value)}
                                 placeholder="מספר הטלפון שלך"
                                 required
-                                className="text-right bg-transparent border-0 border-b border-[#D3C1B1] rounded-none focus:border-[#A2673E] px-0"
+                                disabled={isSubmitting}
+                                className="text-right bg-transparent border-0 border-b border-[#D3C1B1] rounded-none focus:border-[#A2673E] px-0 disabled:opacity-50"
                             />
                         </div>
                     </div>
@@ -67,26 +115,36 @@ export default function ContactForm() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button
                             type="submit"
-                            className="bg-[#25D366] hover:bg-[#20c05a] text-white px-8 py-4 rounded-lg text-lg transition-all duration-300 flex items-center justify-center gap-3"
+                            disabled={isSubmitting}
+                            className="bg-[#8B9F6B] hover:bg-[#7a8c5e] text-white px-8 py-4 rounded-lg text-lg transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto min-w-[200px]"
                         >
-                            <MessageCircle className="w-5 h-5" />
-                            שלח הודעה בווטסאפ
+                            {isSubmitting ? (
+                                <>
+                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                    שולח...
+                                </>
+                            ) : (
+                                <>
+                                    <Send className="w-5 h-5" />
+                                    שליחת פרטים
+                                </>
+                            )}
                         </Button>
                         
                         <Button
                             type="button"
                             variant="outline"
                             onClick={() => window.open('tel:0532853235', '_self')}
-                            className="border border-[#A2673E] text-[#A2673E] hover:bg-[#A2673E] hover:text-white px-8 py-4 rounded-lg text-lg transition-all duration-300 flex items-center justify-center gap-3"
+                            disabled={isSubmitting}
+                            className="border border-[#A2673E] text-[#A2673E] hover:bg-[#A2673E] hover:text-white px-8 py-4 rounded-lg text-lg transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto"
                         >
-                            <Send className="w-5 h-5" />
                             התקשר ישירות
                         </Button>
                     </div>
                 </form>
                 
                 <div className="text-center mt-6 text-sm text-[#8B9F6B]">
-                    לחיצה על הכפתור תפתח את ווטסאפ עם הודעה מוכנה הכוללת את הפרטים שלך
+                    הפרטים שלך נשמרים בדיסקרטיות מלאה
                 </div>
             </div>
         </div>
