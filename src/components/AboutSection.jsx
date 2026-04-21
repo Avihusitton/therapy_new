@@ -20,7 +20,7 @@ export default function AboutSection() {
                         <div className="relative">
                             <div className="w-64 h-80 rounded-2xl overflow-hidden shadow-2xl mx-auto lg:mx-0">
                                 <img 
-                                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/cca0919fd_20250210_134823.jpg"
+                                    src="/images/about-profile.jpg"
                                     alt="אביהו סיטון"
                                     className="w-full h-full object-cover"
                                 />

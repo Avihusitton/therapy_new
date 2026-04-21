@@ -42,7 +42,7 @@ export default function HeroSection() {
             <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
-                    backgroundImage: `linear-gradient(rgba(253, 248, 240, 0.7), rgba(253, 248, 240, 0.7)), url('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/67994d28e_20250328_064731.jpg')`
+                    backgroundImage: `linear-gradient(rgba(253, 248, 240, 0.7), rgba(253, 248, 240, 0.7)), url('/images/hero-bg.jpg')`
                 }}
             />
             
@@ -56,7 +56,7 @@ export default function HeroSection() {
                         <div className="mb-12 flex flex-col items-center">
                             <div className="mb-6">
                                 <img 
-                                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/602f7caa4_therapyLOGO.png" 
+                                    src="/images/therapy-logo.png" 
                                     alt="לוגו טיפול רגשי"
                                     className="w-24 h-24"
                                 />

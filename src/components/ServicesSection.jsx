@@ -9,7 +9,7 @@ export default function ServicesSection() {
             {/* תמונת רקע של הקליניקה */}
             <div className="absolute inset-0 opacity-5">
                 <img 
-                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/b5048f127_20250326_202208.jpg"
+                    src="/images/services-bg.jpg"
                     alt=""
                     className="w-full h-full object-cover"
                 />
@@ -75,7 +75,7 @@ export default function ServicesSection() {
                     <div className="max-w-4xl mx-auto">
                         <div className="rounded-2xl overflow-hidden shadow-2xl">
                             <img 
-                                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/b5048f127_20250326_202208.jpg"
+                                src="/images/services-bg.jpg"
                                 alt="הקליניקה ברתמים"
                                 className="w-full h-60 md:h-96 object-cover"
                             />
