@@ -80,11 +80,11 @@ export default function ContactForm() {
 
     if (isSuccess) {
         return (
-            <div className="max-w-4xl mx-auto">
+            <div className="w-full max-w-4xl mx-auto">
                 <motion.div 
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-10 text-center"
+                    className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-5 sm:p-10 text-center"
                 >
                     <CheckCircle2 className="w-16 h-16 text-[#25D366] mx-auto mb-4" />
                     <h3 className="text-2xl text-[#4C4A49] mb-2">תודה רבה, {formData.full_name}!</h3>
@@ -97,15 +97,15 @@ export default function ContactForm() {
     }
 
     return (
-        <div className="max-w-4xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-10">
+        <div className="w-full max-w-4xl mx-auto">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-5 sm:p-10">
                 <div className="text-center mb-8">
                     <h3 className="text-2xl text-[#4C4A49] mb-4">צור קשר</h3>
                     <p className="text-[#6B6867]">השאר פרטים ונחזור אליך בהקדם לשיחת היכרות</p>
                 </div>
                 
-                <form onSubmit={handleSubmit} className="space-y-8">
-                    <div className="grid md:grid-cols-2 gap-8">
+                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                    <div className="grid sm:grid-cols-2 gap-5 sm:gap-8">
                         <div>
                             <Input
                                 value={formData.full_name}
