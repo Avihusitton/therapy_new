@@ -1,6 +1,0 @@
-# robots.txt — avihusitton.com
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://avihusitton.com/sitemap.xml
