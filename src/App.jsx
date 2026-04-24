@@ -6,6 +6,7 @@ import { pagesConfig } from './pages.config'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { motion } from 'framer-motion';
+import ScrollToTop from './components/ScrollToTop';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -55,6 +56,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClientInstance}>
       <Router>
+        <ScrollToTop />
         <MainApp />
       </Router>
       <Toaster />
@@ -73,6 +75,7 @@ function App() {
       >
         <button
           onClick={openWhatsApp}
+          aria-label="שלח הודעה בוואטסאפ"
           style={{
             width: '100%',
             backgroundColor: '#25D366',
@@ -101,10 +104,11 @@ function App() {
       <button
         onClick={openWhatsApp}
         className="hidden sm:flex"
+        aria-label="שלח הודעה בוואטסאפ"
         style={{
           position: 'fixed',
           bottom: '24px',
-          right: '24px',
+          left: '24px',
           zIndex: 99999,
           backgroundColor: '#25D366',
           border: 'none',

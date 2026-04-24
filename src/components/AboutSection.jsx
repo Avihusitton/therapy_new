@@ -22,6 +22,9 @@ export default function AboutSection() {
                                 <img 
                                     src="/images/about-profile.jpg"
                                     alt="אביהו סיטון"
+                                    width="256"
+                                    height="320"
+                                    loading="lazy"
                                     className="w-full h-full object-cover"
                                 />
                             </div>
@@ -43,7 +46,7 @@ export default function AboutSection() {
                             <div className="w-24 h-px bg-[#D3C1B1]"></div>
                         </div>
                         
-                        <div className="text-base sm:text-lg text-[#6B6867] leading-relaxed space-y-4 sm:space-y-6">
+                        <div className="text-base sm:text-lg text-[#4C4A49] leading-relaxed space-y-4 sm:space-y-6">
                             <p>
                                 אני מאמין שכל אדם יכול להיות המטפל הטוב ביותר של עצמו, הרי מי חווה אותנו באופן כל כך אינטנסיבי כמונו? לשם כך עלינו להכיר את מבנה הנפש הייחודי שלנו, את תנועת הפעימה הקיימת במציאות, ואת סל הכלים מתוכו נשלוף את הכלי המתאים.
                             </p>

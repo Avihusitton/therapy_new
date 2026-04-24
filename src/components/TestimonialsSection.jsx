@@ -90,6 +90,13 @@ export default function TestimonialsSection() {
         }
     };
 
+    const formatReviewerName = (fullName) => {
+        if (!fullName || fullName === "מטופל/ת" || fullName === "מטופל/ת בקליניקה") return "א.פ";
+        const parts = fullName.trim().split(" ");
+        if (parts.length === 1) return parts[0][0] + ".";
+        return parts.map(part => part[0] + ".").join("");
+    };
+
     return (
         <section className="py-20 sm:py-28 bg-[#FDF8F0] relative overflow-hidden w-full">
             <div className="w-full max-w-7xl mx-auto px-4">
@@ -103,8 +110,8 @@ export default function TestimonialsSection() {
 
                     <div className="flex items-center justify-center gap-3 mb-8 text-[#1a73e8] bg-white w-fit mx-auto px-5 py-2 rounded-full shadow-sm border border-[#e0e0e0]">
                         <GoogleLogo />
-                        <span className="text-xs font-bold tracking-wider uppercase">Verified Reviews</span>
-                        <CheckCircle2 className="w-4 h-4 fill-current" />
+                        <span className="text-xs font-bold tracking-wider uppercase" aria-label="ביקורות מאומתות מגוגל">Verified Reviews</span>
+                        <CheckCircle2 className="w-4 h-4 fill-current" aria-hidden="true" />
                     </div>
 
                     <div className="w-24 h-px bg-[#D3C1B1] mx-auto mb-6"></div>
@@ -112,7 +119,7 @@ export default function TestimonialsSection() {
 
                 {loading ? (
                     <div className="flex justify-center py-20">
-                        <Loader2 className="w-8 h-8 text-[#A2673E] animate-spin" />
+                        <Loader2 className="w-8 h-8 text-[#A2673E] animate-spin" aria-label="טוען ביקורות..." />
                     </div>
                 ) : (
                     <div className="relative">
@@ -136,12 +143,15 @@ export default function TestimonialsSection() {
                                             opacity: (index >= currentIndex && index < currentIndex + 3) || (index >= currentIndex - 1 && index <= currentIndex + 1) ? 1 : 0.3,
                                         }}
                                         className="w-[85%] sm:w-[calc(40%-16px)] bg-white p-6 sm:p-10 rounded-3xl shadow-sm border border-[#EDE4D8]/50 flex flex-col h-full relative shrink-0"
+                                        role="group"
+                                        aria-roledescription="ביקורת"
+                                        aria-label={`ביקורת ${index + 1} מתוך ${reviews.length}`}
                                     >
-                                        <Quote className="absolute top-6 left-6 w-10 h-10 text-[#D3C1B1] opacity-10" />
+                                        <Quote className="absolute top-6 left-6 w-10 h-10 text-[#D3C1B1] opacity-10" aria-hidden="true" />
                                         
-                                        <div className="flex gap-1 mb-5 text-[#FFD700]">
+                                        <div className="flex gap-1 mb-5 text-[#FFD700]" aria-label={`דירוג: ${review.rating} מתוך 5 כוכבים`}>
                                             {[...Array(review.rating)].map((_, i) => (
-                                                <Star key={i} className="w-4 h-4 fill-current" />
+                                                <Star key={i} className="w-4 h-4 fill-current" aria-hidden="true" />
                                             ))}
                                         </div>
 
@@ -151,11 +161,13 @@ export default function TestimonialsSection() {
                                         
                                         <div className="flex items-center gap-4 pt-6 border-t border-[#FDF8F0]">
                                             <div className="w-10 h-10 rounded-full bg-[#FDF8F0] flex items-center justify-center border border-[#D3C1B1]/30">
-                                                <User className="w-5 h-5 text-[#D3C1B1]" />
+                                                <User className="w-5 h-5 text-[#D3C1B1]" aria-hidden="true" />
                                             </div>
                                             <div className="text-right">
-                                                <h4 className="text-[#4C4A49] font-semibold text-base">{review.author}</h4>
-                                                <p className="text-xs text-[#A2673E] opacity-80">{review.date}</p>
+                                                <h4 className="text-[#4C4A49] font-semibold text-base">
+                                                    {formatReviewerName(review.author)}
+                                                </h4>
+                                                <p className="text-xs text-[#8d5a36] font-medium">{review.date}</p>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -169,17 +181,17 @@ export default function TestimonialsSection() {
                                 onClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}
                                 className={`p-4 rounded-full bg-white shadow-md text-[#4C4A49] hover:text-[#A2673E] transition-all ${currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:scale-110'}`}
                                 disabled={currentIndex === 0}
-                                title="הקודם"
+                                aria-label="ביקורת קודמת"
                             >
-                                <ChevronRight className="w-6 h-6" />
+                                <ChevronRight className="w-6 h-6" aria-hidden="true" />
                             </button>
                             <button 
                                 onClick={() => setCurrentIndex(prev => Math.min(reviews.length - 1, prev + 1))}
                                 className={`p-4 rounded-full bg-white shadow-md text-[#4C4A49] hover:text-[#A2673E] transition-all ${currentIndex === reviews.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:scale-110'}`}
                                 disabled={currentIndex === reviews.length - 1}
-                                title="הבא"
+                                aria-label="ביקורת הבאה"
                             >
-                                <ChevronLeft className="w-6 h-6" />
+                                <ChevronLeft className="w-6 h-6" aria-hidden="true" />
                             </button>
                         </div>
 

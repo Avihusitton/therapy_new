@@ -43,6 +43,10 @@ export default function HeroSection() {
                                 <img
                                     src="/images/therapy-logo.png"
                                     alt="לוגו טיפול רגשי"
+                                    width="96"
+                                    height="96"
+                                    fetchpriority="high"
+                                    decoding="async"
                                     className="w-20 h-20 sm:w-24 sm:h-24"
                                 />
                             </div>
@@ -55,7 +59,7 @@ export default function HeroSection() {
                             </h1>
 
                             <p
-                                className="text-base sm:text-lg text-[#A2673E] font-medium mb-4 tracking-wide"
+                                className="text-base sm:text-lg text-[#8d5a36] font-medium mb-4 tracking-wide"
                                 itemProp="jobTitle"
                             >
                                 מנחה קבוצות, סדנאות ופסיכותרפיסט בשיטת "דרך"
@@ -65,7 +69,7 @@ export default function HeroSection() {
                                 מרחב לחזור לעצמך — אחרי מילואים, בתוך הזוגיות, או בצומת דרכים
                             </h2>
 
-                            <p className="text-sm sm:text-base text-[#6B6867] font-light leading-relaxed max-w-xl mx-auto">
+                            <p className="text-sm sm:text-base text-[#555251] font-light leading-relaxed max-w-xl mx-auto">
                                 סדנאות וקבוצות למילואימניקים בחזרה לשגרה, מסעות זוגיים וטיפול אישי —
                                 מתוך אמונה שכל אחד יכול להיות המטפל הטוב ביותר של עצמו.
                             </p>
@@ -80,20 +84,23 @@ export default function HeroSection() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
                             className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 px-2"
+                            role="list"
+                            aria-label="קהלי יעד"
                         >
                             {audiences.map((a) => (
                                 <div
                                     key={a.label}
                                     className="flex items-center gap-2 bg-white/70 backdrop-blur-sm border border-[#D3C1B1]/60 px-3 sm:px-4 py-2 rounded-full"
+                                    role="listitem"
                                 >
-                                    <a.icon className="w-4 h-4 text-[#A2673E]" />
+                                    <a.icon className="w-4 h-4 text-[#A2673E]" aria-hidden="true" />
                                     <span className="text-xs sm:text-sm text-[#4C4A49] font-light">{a.label}</span>
                                 </div>
                             ))}
                         </motion.div>
 
                         <div className="bg-white/80 backdrop-blur-sm border border-[#D3C1B1]/30 p-5 sm:p-8 w-full mx-auto mb-8 sm:mb-10 rounded-lg max-w-2xl">
-                            <p className="text-base sm:text-lg text-[#6B6867] leading-relaxed italic">
+                            <p className="text-base sm:text-lg text-[#555251] leading-relaxed italic">
                                 "הטיפול הוא ממש כמו סיפור מרתק שהולך ומעמיק...
                                 <br />
                                 העיקר שהוא חי ונושם — והגיבור סקרן לדעת מה ההמשך"

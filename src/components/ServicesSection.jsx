@@ -53,6 +53,9 @@ export default function ServicesSection() {
                 <img
                     src="/images/services-bg.jpg"
                     alt=""
+                    width="1920"
+                    height="1080"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                 />
             </div>
@@ -97,7 +100,7 @@ export default function ServicesSection() {
                                 <h3 className="text-xl sm:text-2xl text-[#4C4A49] font-normal">{s.title}</h3>
                             </div>
                             <div className="w-16 h-px bg-[#D3C1B1] mb-4"></div>
-                            <p className="text-sm sm:text-base text-[#6B6867] leading-relaxed mb-6 text-right flex-1">
+                            <p className="text-sm sm:text-base text-[#4C4A49] leading-relaxed mb-6 text-right flex-1">
                                 {s.description}
                             </p>
                             <button
@@ -126,6 +129,9 @@ export default function ServicesSection() {
                             <img
                                 src="/images/services-bg.jpg"
                                 alt="הקליניקה ברתמים"
+                                width="800"
+                                height="450"
+                                loading="lazy"
                                 className="w-full h-48 sm:h-96 object-cover"
                             />
                         </div>

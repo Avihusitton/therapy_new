@@ -125,28 +125,56 @@ export default function ContactForm() {
                 <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                     <div className="grid sm:grid-cols-2 gap-5 sm:gap-8">
                         <div>
+                            <label htmlFor="full_name" className="sr-only">שם מלא</label>
                             <Input
+                                id="full_name"
                                 value={formData.full_name}
                                 onChange={(e) => handleInputChange('full_name', e.target.value)}
                                 placeholder="השם שלך"
                                 required
+                                autoComplete="name"
                                 disabled={isSubmitting}
                                 className="text-right bg-transparent border-0 border-b border-[#D3C1B1] rounded-none focus:border-[#A2673E] px-0 disabled:opacity-50"
                             />
                         </div>
                         <div>
+                            <label htmlFor="phone" className="sr-only">מספר טלפון</label>
                             <Input
+                                id="phone"
                                 type="tel"
                                 value={formData.phone}
                                 onChange={(e) => handleInputChange('phone', e.target.value)}
                                 placeholder="מספר הטלפון שלך"
                                 required
+                                autoComplete="tel"
                                 disabled={isSubmitting}
                                 className="text-right bg-transparent border-0 border-b border-[#D3C1B1] rounded-none focus:border-[#A2673E] px-0 disabled:opacity-50"
                             />
                         </div>
                     </div>
                     
+                    <div className="space-y-4">
+                        <p style={{ fontSize: "0.8rem", color: "#888", marginBottom: "8px" }}>
+                            לתשומת לבך — טופס זה מיועד ליצירת קשר ראשוני בלבד.
+                            אין לשלוח מידע קליני או רגיש דרך טופס זה.
+                        </p>
+
+                        <div className="flex items-start gap-3 text-right">
+                            <input
+                                type="checkbox"
+                                id="marketing-consent"
+                                name="marketingConsent"
+                                defaultChecked={false}
+                                required={false}
+                                className="mt-1 h-4 w-4 rounded border-gray-300 text-[#8B9F6B] focus:ring-[#8B9F6B]"
+                            />
+                            <label htmlFor="marketing-consent" className="text-sm text-[#6B6867] leading-tight select-none cursor-pointer">
+                                אני מאשר/ת קבלת עדכונים על סדנאות וקבוצות טיפוליות עתידיות
+                                למייל ולנייד
+                            </label>
+                        </div>
+                    </div>
+
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button
                             type="submit"
