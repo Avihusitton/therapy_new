@@ -50,41 +50,48 @@ export default function TherapyPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">טיפול רגשי אישי</h1>
+                        <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">לחזור להיות הגיבור של הסיפור שלך</h1>
                         <div className="w-32 h-px bg-[#D3C1B1] mx-auto mb-12"></div>
                         
-                        <div className="text-lg text-[#6B6867] leading-relaxed space-y-8 mb-16">
-                            <p className="text-xl text-[#4C4A49] font-normal border-right-4 border-[#A2673E] pr-6 py-2 bg-[#FDF8F0]/30 rounded-lg">
-                                מחפשים טיפול רגשי ברמת נגב? אביהו סיטון מציע פסיכותרפיה אישית בשיטת "דרך" למבוגרים ונוער, המתמקדת בזיהוי דפוסי נפש ובניית חוסן רגשי להתמודדות עם אתגרי החיים.
+                        <div className="text-lg text-[#4C4A49] leading-relaxed space-y-8 mb-16 font-light">
+                            <p className="text-xl font-normal border-r-4 border-[#A2673E] pr-6 py-2 bg-[#FDF8F0]/50 rounded-lg">
+                                לפעמים זה מרגיש שהחיים פשוט "קורים" לנו. אנחנו מגיבים לאירועים, מתמודדים עם לחצים, ומוצאים את עצמנו בלופ של תגובות אוטומטיות שמשאירות אותנו עייפים ובתחושת תקיעות.
                             </p>
                             <p>
-                                הטיפול הרגשי הוא מרחב בטוח ומכיל שבו ניתן להניח את כל מה שיושב על הלב. בשיטת "דרך", אנחנו חוקרים את הדינמיקה הפנימית שלנו, מזהים את ה"פעימה" האישית שלנו ולומדים איך לפעול מתוך בחירה חופשית ולא מתוך תגובתיות אוטומטית. 
+                                אם אתם מרגישים שהקול הפנימי שלכם קצת הלך לאיבוד בתוך הרעש של היום-יום, או שיש דפוסים שחוזרים על עצמם ושואבים מכם אנרגיה - אתם לא לבד. הטיפול בשיטת "דרך" הוא לא רק "לדבר על הבעיות". זהו מרחב שבו נלמד יחד לזהות את מבנה הנפש הייחודי שלכם.
                             </p>
                             <p>
-                                הטיפול משלב עבודה רגשית עמוקה יחד עם כלים פרקטיים להתמודדות עם מצבי לחץ, חרדה ותחושת חוסר משמעות. הוא מתקיים באווירה של כבוד הדדי, הקשבה עמוקה ואמונה בלתי מתפשרת ביכולת של כל אדם להירפא ולצמוח בקליניקה ברמת נגב או במפגשים מקוונים.
+                                נבין איפה אתם מאבדים את הבחירה החופשית ואיך להחזיר אותה לידיים שלכם. המטרה שלי היא לא שתהיו תלויים במטפל, אלא שתלמדו להכיר את ה"פעימה" הפנימית שלכם ולהפוך למטפלים הטובים ביותר של עצמכם.
                             </p>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-12 mb-20">
                             <div className="bg-[#FDF8F0] p-8 rounded-xl shadow-sm">
-                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">למי זה מתאים?</h2>
-                                <ul className="space-y-4 text-[#6B6867] list-disc list-inside">
-                                    <li>אנשים החווים תקופות של משבר או שינוי משמעותי</li>
-                                    <li>המתמודדים עם חרדה, מתח או תחושת חוסר שקט</li>
-                                    <li>מי שמרגיש "תקוע" במערכות יחסים או בקריירה</li>
-                                    <li>כאלו המחפשים משמעות וחיבור עמוק יותר לעצמם</li>
-                                    <li>נוער ומבוגרים בתהליכי גיבוש זהות</li>
+                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">מה נשיג בתהליך?</h2>
+                                <ul className="space-y-4 text-[#555251] font-light">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        זיהוי הדפוסים שגורמים לכם להגיב ב"אוטומט" ושינוי שלהם
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        הפיכת משברים והתמודדויות להזדמנויות לצמיחה וריפוי
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        פיתוח חוסן רגשי פנימי שאינו תלוי בנסיבות חיצוניות
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        יצירת שקט נפשי ובניית בסיס משמעותי לשינוי בחיים
+                                    </li>
                                 </ul>
                             </div>
                             <div className="bg-[#FDF8F0] p-8 rounded-xl shadow-sm">
-                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">איך נראה התהליך?</h2>
-                                <ol className="space-y-4 text-[#6B6867] list-decimal list-inside">
-                                    <li>שיחת היכרות ראשונית לתיאום ציפיות</li>
-                                    <li>זיהוי האתגרים המרכזיים והגדרת מטרות</li>
-                                    <li>מפגשים שבועיים בני 50 דקות</li>
-                                    <li>עבודה על פי שיטת "דרך" לבניית עצמאות רגשית</li>
-                                    <li>שילוב כלים פרקטיים ליישום במציאות היום-יומית</li>
-                                </ol>
+                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">איך זה עובד?</h2>
+                                <p className="text-[#555251] font-light leading-relaxed">
+                                    הטיפול משלב עבודה רגשית עמוקה יחד עם כלים פרקטיים שניתן ליישם כבר מחר בבוקר. המפגשים מתקיימים בקליניקה שקטה ברמת נגב או בשיחת וידאו, באווירה של הקשבה נקייה ואמונה מלאה ביכולת שלכם להוביל את עצמכם קדימה.
+                                </p>
                             </div>
                         </div>
 
@@ -108,10 +115,10 @@ export default function TherapyPage() {
 
                         <div className="mt-24 p-10 bg-[#4C4A49] text-white rounded-2xl text-center">
                             <h3 className="text-2xl mb-6 font-light">מרגישים שזה הזמן הנכון להתחיל?</h3>
-                            <p className="mb-8 text-[#D3C1B1] font-light">אני מזמין אתכם לשיחת היכרות קצרה ללא התחייבות.</p>
+                            <p className="mb-8 text-[#D3C1B1] font-light">אני מזמין אתכם לשיחה קצרה שבה נבדוק יחד אם המרחב הזה נכון לכם עכשיו.</p>
                             <div className="flex flex-wrap justify-center gap-4">
                                 <a href="/contact" className="bg-[#A2673E] hover:bg-[#8d5a36] px-8 py-3 rounded-lg transition-all shadow-md">
-                                    צרו קשר לתיאום
+                                    בואו נדבר
                                 </a>
                                 <a href="/couples" className="border border-white/30 hover:bg-white/10 px-8 py-3 rounded-lg transition-all">
                                     לפרטים על ליווי זוגי

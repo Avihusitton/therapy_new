@@ -20,12 +20,12 @@ export default function TherapyMethodSection() {
                     transition={{ duration: 0.8 }}
                     className="text-center"
                 >
-                    <h2 className="text-3xl sm:text-4xl text-[#4C4A49] mb-4 sm:mb-6">אופן הטיפול</h2>
+                    <h2 className="text-3xl sm:text-4xl text-[#4C4A49] mb-4 sm:mb-6">איך זה נראה בפועל?</h2>
                     <div className="w-24 h-px bg-[#D3C1B1] mx-auto mb-6 sm:mb-8"></div>
                     
                     <div className="bg-white/80 backdrop-blur-sm p-5 sm:p-8 rounded-xl shadow-lg w-full max-w-4xl mx-auto">
-                        <p className="text-base sm:text-lg text-[#6B6867] leading-relaxed mb-6 sm:mb-8">
-                            הטיפול קורה דרך שיח ומשלב כלים שונים מהעולם הרגשי כולל:
+                        <p className="text-base sm:text-lg text-[#4C4A49] leading-relaxed mb-6 sm:mb-8 font-light">
+                            הבסיס לכל מפגש הוא שיח ישיר וקשוב. בתוך המרחב הזה, אנחנו משלבים כלים שמאפשרים לנפש להתבטא בדרכים נוספות:
                         </p>
                         
                         <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-4 sm:mb-6">

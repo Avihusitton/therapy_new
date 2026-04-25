@@ -50,41 +50,48 @@ export default function CouplesPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">ליווי זוגי וקבוצות</h1>
+                        <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">להיות "ביחד" בלי לאבד את ה"עצמי"</h1>
                         <div className="w-32 h-px bg-[#D3C1B1] mx-auto mb-12"></div>
                         
-                        <div className="text-lg text-[#6B6867] leading-relaxed space-y-8 mb-16">
-                            <p className="text-xl text-[#4C4A49] font-normal border-right-4 border-[#A2673E] pr-6 py-2 bg-[#FDF8F0]/30 rounded-lg">
-                                זקוקים לייעוץ או ליווי זוגי בדרום? אביהו סיטון מציע תהליכי ליווי וקבוצות זוגיות בשיטת "דרך", המתמקדים בבניית עצמאות רגשית, שיפור התקשורת ויצירת מרחב לצמיחה משותפת.
+                        <div className="text-lg text-[#4C4A49] leading-relaxed space-y-8 mb-16 font-light">
+                            <p className="text-xl font-normal border-r-4 border-[#A2673E] pr-6 py-2 bg-[#FDF8F0]/50 rounded-lg">
+                                איך זה יכול להיות שהאדם הכי קרוב אלינו הופך לפעמים להיות זה שהכי קשה לנו לדבר איתו? 
                             </p>
                             <p>
-                                זוגיות היא מרחב מופלא של גדילה, אך היא גם המקום שבו הפצעים והדפוסים העמוקים ביותר שלנו נוטים לצוף. בליווי הזוגי אנחנו לומדים להפוך את הזוגיות משדה קרב או ממקום של הישרדות, למרחב של צמיחה משותפת המבוססת על עצמאות רגשית.
+                                אם אתם מרגישים שהקונפליקטים שלכם חוזרים על עצמם בלופ, שהמרחק ביניכם גדל למרות שאתם באותו בית, או שפשוט איבדתם את הסקרנות והתשוקה - זה הרגע לעצור. זוגיות היא המקום שבו הפצעים הכי עמוקים שלנו צפים, אבל היא גם המרחב הכי חזק לצמיחה.
                             </p>
                             <p>
-                                אנחנו לא רק מדברים על בעיות, אלא לומדים איך לנהל דיאלוג ישיר ואמיץ. המטרה היא שכל אחד מבני הזוג ילמד להכיר את הצרכים שלו וייקח אחריות על הרגשות שלו, מתוך הבנה שככל שנהיה שלמים יותר עם עצמנו, כך נוכל להעניק ולהתחבר באמת לצד השני. הליווי מתקיים בקליניקה ברמת נגב או במפגשים מקוונים.
+                                בליווי הזוגי בשיטת "דרך", אנחנו לא רק "פותרים בעיות". אנחנו לומדים להפוך את הזוגיות משדה קרב של הישרדות למרחב של גילוי. נבין יחד את ה"ריקוד" הזוגי שלכם ואיך כל אחד מכם יכול לקחת אחריות על החלק שלו בתוכו. המטרה היא לבנות זוגיות שמבוססת על עצמאות רגשית - כי ככל שנהיה שלמים יותר עם עצמנו, כך נוכל להתחבר באמת לצד השני.
                             </p>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-12 mb-20">
                             <div className="bg-[#FDF8F0] p-8 rounded-xl shadow-sm">
-                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">למי זה מתאים?</h2>
-                                <ul className="space-y-4 text-[#6B6867] list-disc list-inside">
-                                    <li>זוגות החווים משבר או תחושת ריחוק</li>
-                                    <li>זוגות המעוניינים לשפר את התקשורת והשיח</li>
-                                    <li>מי שמרגיש שהקונפליקטים חוזרים על עצמם ללא מוצא</li>
-                                    <li>זוגות לקראת שינויים משמעותיים (לידה, מעבר מגורים וכו')</li>
-                                    <li>זוגות שרוצים להעמיק את האינטימיות והחברות</li>
+                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">מה נשיג בתהליך?</h2>
+                                <ul className="space-y-4 text-[#555251] font-light">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        זיהוי ה"ריקוד" הזוגי והדפוסים שחוסמים אתכם
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        בניית שיח ישיר, אמיץ ומכבד שיוצר אינטימיות חדשה
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        לימוד כלים לניהול קונפליקטים מתוך צמיחה ולא מתוך פגיעה
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        החזרת הסקרנות והחברות למרכז המערכת הזוגית
+                                    </li>
                                 </ul>
                             </div>
                             <div className="bg-[#FDF8F0] p-8 rounded-xl shadow-sm">
-                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">איך נראה התהליך?</h2>
-                                <ol className="space-y-4 text-[#6B6867] list-decimal list-inside">
-                                    <li>שיחה משותפת ראשונית להבנת הצרכים</li>
-                                    <li>זיהוי ה"ריקוד" הזוגי והדפוסים המעכבים</li>
-                                    <li>מפגשים מובנים המשלבים שיח ותרגול</li>
-                                    <li>עבודה על עצמאות רגשית בתוך הביחד</li>
-                                    <li>קבוצות חווייתיות (במידה ובוחרים במסלול קבוצתי)</li>
-                                </ol>
+                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">איך זה עובד?</h2>
+                                <p className="text-[#555251] font-light leading-relaxed">
+                                    אנחנו נפגשים בקליניקה או בזום לתהליך מובנה שבו כל אחד מכם מקבל מקום. נלמד איך להחליף את ההאשמות ההדדיות בלקיחת אחריות אישית, ונבין איך לבנות "ביחד" חזק שלא מבטל את הייחודיות של כל אחד מכם.
+                                </p>
                             </div>
                         </div>
 
@@ -108,10 +115,10 @@ export default function CouplesPage() {
 
                         <div className="mt-24 p-10 bg-[#4C4A49] text-white rounded-2xl text-center">
                             <h3 className="text-2xl mb-6 font-light">מוכנים להחזיר את הזרימה לזוגיות?</h3>
-                            <p className="mb-8 text-[#D3C1B1] font-light">צרו קשר לתיאום פגישת היכרות זוגית.</p>
+                            <p className="mb-8 text-[#D3C1B1] font-light">אני מזמין אתכם לשיחה משותפת, שבה נניח את הבסיס למסע הזוגי החדש שלכם.</p>
                             <div className="flex flex-wrap justify-center gap-4">
                                 <a href="/contact" className="bg-[#A2673E] hover:bg-[#8d5a36] px-8 py-3 rounded-lg transition-all shadow-md">
-                                    צרו קשר לתיאום
+                                    בואו נדבר
                                 </a>
                                 <a href="/reservists-workshops" className="border border-white/30 hover:bg-white/10 px-8 py-3 rounded-lg transition-all">
                                     סדנאות למילואימניקים

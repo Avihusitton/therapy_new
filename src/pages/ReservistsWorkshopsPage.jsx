@@ -51,12 +51,12 @@ export default function ReservistsWorkshopsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">סדנאות למילואימניקים</h1>
+                        <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">להוריד את המדים - גם בתוך הנפש</h1>
                         <div className="w-32 h-px bg-[#D3C1B1] mx-auto mb-12"></div>
                         
-                        <div className="text-lg text-[#6B6867] leading-relaxed space-y-8 mb-16">
-                            <p className="text-xl text-[#4C4A49] font-normal border-right-4 border-[#A2673E] pr-6 py-2 bg-[#FDF8F0]/30 rounded-lg">
-                                מחפשים סדנה למילואימניקים חזרה לשגרה? אביהו סיטון, בשיתוף ארגון ויצו, מקיים סדנאות לעיבוד חוויות שירות ומתן כלים פרקטיים למעבר בריא מהמילואים לחיים האזרחיים והמשפחתיים.
+                        <div className="text-lg text-[#4C4A49] leading-relaxed space-y-8 mb-16 font-light">
+                            <p className="text-xl font-normal border-r-4 border-[#A2673E] pr-6 py-2 bg-[#FDF8F0]/50 rounded-lg">
+                                לחזור הביתה ממילואים ארוכים זה הרבה יותר מאשר רק לפתוח את הדלת. 
                             </p>
 
                             <div className="my-12">
@@ -81,33 +81,40 @@ export default function ReservistsWorkshopsPage() {
                                 subtitle="אביהו סיטון בשיחה על תהליך החזרה הביתה וליווי מילואימניקים (גלי צה״ל)"
                             />
                             <p>
-                                החזרה ממילואים ארוכים היא לא רק חזרה פיזית הביתה, אלא תהליך פסיכולוגי מורכב. המעבר החד מהאינטנסיביות של השירות לשגרה האזרחית והמשפחתית דורש זמן, הבנה ועיבוד. הסדנאות שלנו נועדו להעניק בדיוק את המרחב הזה עבור משרתי מילואים בדרום ובכל הארץ.
+                                המעבר החד מהדריכות של השטח לשקט של הסלון, מהפיקוד והמשימה - לחיתולים, לעבודה ולזוגיות, הוא תהליך מורכב. אם אתם מרגישים שחזרתם פיזית אבל הלב שלכם עדיין קצת "שם", או שהשגרה נראית פתאום זרה ומתישה - אתם לא לבד. זהו שלב שדורש מרחב וזמן לעיבוד.
                             </p>
                             <p>
-                                בשיתוף פעולה עם ארגון ויצו, אנחנו מציעים סדנאות קבוצתיות שבהן מילואימניקים נפגשים עם אנשים שעברו חוויות דומות. אנחנו לומדים איך לגשר על הפער שנוצר בין הבית לשטח, איך להתמודד עם רגשות שעולים רק כשמורידים את המדים, ואיך לחזור לתפקידי הבעל, האב והעובד מתוך עוצמה ובחירה בשיטת "דרך".
+                                בסדנאות שלנו, בשיתוף עם ארגון ויצו, אנחנו יוצרים את המרחב הזה בדיוק. זהו מקום שבו אפשר להוריד את המדים רגשית, לדבר עם אנשים שעברו את אותן חוויות, ולמצוא את הדרך חזרה לעצמכם. נלמד להכיר את דפוסי התגובה שאימצנו בשירות ואיך לגשר על הפער שנוצר מול הבית והמשפחה.
                             </p>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-12 mb-20">
                             <div className="bg-[#FDF8F0] p-8 rounded-xl shadow-sm">
-                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">למי זה מתאים?</h2>
-                                <ul className="space-y-4 text-[#6B6867] list-disc list-inside">
-                                    <li>משרתי מילואים שחזרו משירות ממושך</li>
-                                    <li>מי שחווה קושי להסתגל לשגרת הבית והעבודה</li>
-                                    <li>אנשים המרגישים פער רגשי מול הסביבה הקרובה</li>
-                                    <li>מי שמחפש כלים פרקטיים להתמודדות עם מתח</li>
-                                    <li>אלו שרוצים לעבד את חוויות השירות במרחב תומך</li>
+                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">מה נשיג בתהליך?</h2>
+                                <ul className="space-y-4 text-[#555251] font-light">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        עיבוד חוויות השירות במרחב בטוח ונטול שיפוטיות
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        כלים פרקטיים לגישור על הפער בין ה"שטח" ל"בית"
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        התמודדות עם מתח, דריכות יתר ושינויים רגשיים
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-[#A2673E] mt-1">•</span>
+                                        מציאת הקצב האישי מחדש בתוך השגרה האזרחית
+                                    </li>
                                 </ul>
                             </div>
                             <div className="bg-[#FDF8F0] p-8 rounded-xl shadow-sm">
-                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">איך נראה התהליך?</h2>
-                                <ol className="space-y-4 text-[#6B6867] list-decimal list-inside">
-                                    <li>פנייה ראשונית לבירור התאמה לסדנה</li>
-                                    <li>סדרה של 5-10 מפגשים קבוצתיים</li>
-                                    <li>עיבוד חוויות וזיהוי דפוסי תגובה</li>
-                                    <li>למידת כלים בשיטת "דרך" לחזרה לשגרה</li>
-                                    <li>יצירת קהילה תומכת של שותפים לדרך</li>
-                                </ol>
+                                <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">איך זה עובד?</h2>
+                                <p className="text-[#555251] font-light leading-relaxed">
+                                    הסדנאות מתקיימות בקבוצות קטנות ואינטימיות, שבהן לכל לוחם יש מקום להביא את עצמו. התהליך משלב שיח פתוח יחד עם לימוד של שיטת "דרך", כדי לתת לכם כלים אמיתיים לחזרה מלאה ובריאה למשפחה ולחיים.
+                                </p>
                             </div>
                         </div>
 
