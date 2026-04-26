@@ -16,7 +16,17 @@ export default function TestimonialsSection() {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(0);
     const dragX = useMotionValue(0);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setWindowWidth(window.innerWidth);
+            const handleResize = () => setWindowWidth(window.innerWidth);
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
+    }, []);
 
     const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRuKXRoldf0arwdSvlNVUPwndJDlvzsUQTmHR1fjplSrjOoz2Wya-8UwNQAPjlamjopk8iXyACCJVa0/pub?output=csv";
 
@@ -129,7 +139,7 @@ export default function TestimonialsSection() {
                                 dragConstraints={{ left: 0, right: 0 }}
                                 style={{ x: dragX }}
                                 animate={{
-                                    translateX: `calc(-${currentIndex * (100 / (window.innerWidth < 640 ? 1 : 2.5))}% - ${currentIndex * 24}px)`
+                                    translateX: `calc(-${currentIndex * (100 / (windowWidth < 640 ? 1 : 2.5))}% - ${currentIndex * 24}px)`
                                 }}
                                 onDragEnd={onDragEnd}
                                 transition={{ type: "spring", stiffness: 300, damping: 30 }}

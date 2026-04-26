@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Menu, X } from 'lucide-react';
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const location = useLocation();
+    const router = useRouter();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,7 +34,7 @@ export default function Header() {
             }`}
         >
             <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-                <Link to="/" className="text-xl font-light text-[#4C4A49] hover:opacity-80 transition-opacity">
+                <Link href="/" className="text-xl font-light text-[#4C4A49] hover:opacity-80 transition-opacity">
                     אביהו סיטון
                 </Link>
 
@@ -42,9 +43,9 @@ export default function Header() {
                     {navLinks.map((link) => (
                         <Link
                             key={link.path}
-                            to={link.path}
+                            href={link.path}
                             className={`text-sm font-light transition-colors hover:text-[#A2673E] ${
-                                location.pathname === link.path ? 'text-[#A2673E] font-normal' : 'text-[#4C4A49]'
+                                router.pathname === link.path ? 'text-[#A2673E] font-normal' : 'text-[#4C4A49]'
                             }`}
                         >
                             {link.name}
@@ -69,10 +70,10 @@ export default function Header() {
                     {navLinks.map((link) => (
                         <Link
                             key={link.path}
-                            to={link.path}
+                            href={link.path}
                             onClick={closeMenu}
                             className={`text-base font-light transition-colors ${
-                                location.pathname === link.path ? 'text-[#A2673E] font-normal' : 'text-[#4C4A49]'
+                                router.pathname === link.path ? 'text-[#A2673E] font-normal' : 'text-[#4C4A49]'
                             }`}
                         >
                             {link.name}

@@ -1,23 +1,21 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import Head from 'next/head';
 
 export default function SEO({ title, description, canonical, schema, noindex }) {
-    const fullTitle = `${title} | אביהו סיטון - פסיכותרפיסט`;
     const siteUrl = "https://avihusitton.com";
     
     return (
-        <Helmet>
-            <title>{fullTitle}</title>
+        <Head>
+            <title>{title}</title>
             <meta name="description" content={description} />
             <link rel="canonical" href={`${siteUrl}${canonical}`} />
             
             {noindex && <meta name="robots" content="noindex, follow" />}
             
-            <meta property="og:title" content={fullTitle} />
+            <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:url" content={`${siteUrl}${canonical}`} />
             
-            <meta name="twitter:title" content={fullTitle} />
+            <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
 
             {schema && (
@@ -25,6 +23,6 @@ export default function SEO({ title, description, canonical, schema, noindex }) 
                     {JSON.stringify(schema)}
                 </script>
             )}
-        </Helmet>
+        </Head>
     );
 }

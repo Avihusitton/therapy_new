@@ -1,9 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: ["class"],
-    content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
+    content: [
+      "./pages/**/*.{js,jsx,ts,tsx}",
+      "./src/**/*.{js,jsx,ts,tsx}",
+    ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ['Assistant', 'sans-serif'],
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
