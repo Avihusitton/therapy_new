@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && opennextjs-cloudflare build --skipNextBuild",
+    "build": "echo 'DEBUG: EXECUTING UPDATED BUILD SCRIPT' && next build && opennextjs-cloudflare build --skipNextBuild",
     "build:cf": "opennextjs-cloudflare build",
     "start": "next start",
     "lint": "next lint",
