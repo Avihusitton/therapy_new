@@ -6,6 +6,7 @@ const config = {
       proxyExternalRequest: "fetch",
     },
   },
+  edgeExternals: ["node:crypto"],
   middleware: {
     external: true,
     override: {
