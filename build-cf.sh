@@ -10,4 +10,10 @@ npx next build
 echo "DEBUG: Running 'opennextjs-cloudflare build --skipNextBuild'..."
 npx @opennextjs/cloudflare build --skipNextBuild
 
+# 3. Ensure Cloudflare Pages can find the worker by naming it _worker.js
+if [ -f ".open-next/worker.js" ]; then
+  echo "DEBUG: Renaming worker.js to _worker.js for Cloudflare Pages compatibility..."
+  cp .open-next/worker.js .open-next/_worker.js
+fi
+
 echo "DEBUG: Build script finished successfully!"
