@@ -6,12 +6,12 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "echo 'DEBUG: EXECUTING UPDATED BUILD SCRIPT' && next build && opennextjs-cloudflare build --skipNextBuild",
-    "build:cf": "opennextjs-cloudflare build",
+    "build": "bash build-cf.sh",
+    "build:cf": "bash build-cf.sh",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
+    "deploy": "bash build-cf.sh && opennextjs-cloudflare deploy",
+    "preview": "bash build-cf.sh && opennextjs-cloudflare preview"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.19.4",
