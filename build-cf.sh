@@ -1,17 +1,17 @@
 #!/bin/bash
-# Simple build command for Cloudflare Pages to avoid dashboard configuration changes
-# We switched to static export to eliminate the 500 Cold Start timeout!
-npm run build
+# Simple build command for Cloudflare Pages
+# This script runs the OpenNext build which is optimized for Cloudflare Workers.
+# It solves the 500 Internal Server Error by using the correct wrappers and config.
 
-# If Cloudflare Pages is expecting the OpenNext output directory (e.g. .open-next/assets or .open-next/worker)
-# We will create those directories and copy the static HTML files there to ensure it deploys successfully
-# without needing to change the Cloudflare dashboard configuration.
-mkdir -p .open-next/assets
-cp -r out/* .open-next/assets/
+echo "Starting OpenNext Cloudflare Build..."
 
-# Also copy to .open-next/worker just in case the dashboard is pointed there
-mkdir -p .open-next/worker
-cp -r out/* .open-next/worker/
+# Run the OpenNext build command
+npx @opennextjs/cloudflare build
 
-# If the dashboard is pointed to the default `out` directory, it's already there!
-echo "Static build completed successfully. Ready for Cloudflare Pages deployment."
+# Check if the build succeeded
+if [ -d ".open-next" ]; then
+  echo "OpenNext build completed successfully. Ready for Cloudflare deployment."
+else
+  echo "Error: OpenNext build failed. Directory .open-next not found."
+  exit 1
+fi
