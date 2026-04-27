@@ -9,10 +9,17 @@ const config = {
       queue: "dummy",
     },
   },
-  // Ensure middleware runs in the edge runtime and is bundled within the main worker
-  // to avoid 500 errors caused by external middleware dispatching issues in Cloudflare.
+  edgeExternals: ["node:crypto"],
   middleware: {
-    external: false,
+    external: true,
+    override: {
+      wrapper: "cloudflare-edge",
+      converter: "edge",
+      proxyExternalRequest: "fetch",
+      incrementalCache: "dummy",
+      tagCache: "dummy",
+      queue: "dummy",
+    },
   },
 };
 
