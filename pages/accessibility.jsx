@@ -35,7 +35,15 @@ export default function Accessibility() {
                             <section className="bg-orange-50/50 p-6 rounded-xl border border-orange-100">
                                 <h2 className="text-xl font-medium text-[#4C4A49] mb-4">נגישות הקליניקה הפיזית</h2>
                                 <p>
-                                    הקליניקה ברתמים 17, רמת נגב אינה נגישה לכיסאות גלגלים 
+                                    הקליניקה ב
+                                    <a 
+                                        href="https://www.google.com/maps/search/?api=1&query=31.05365127751188,34.69029811783664" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="underline hover:text-[#A2673E]"
+                                    >
+                                        רתמים 17, רמת נגב
+                                    </a> אינה נגישה לכיסאות גלגלים 
                                     ולבעלי מוגבלות פיזית בשלב זה.
                                 </p>
                             </section>

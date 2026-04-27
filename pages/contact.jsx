@@ -74,7 +74,18 @@ export default function Contact() {
                             <h2 className="text-xl text-[#4C4A49] mb-4 font-light">זמינות</h2>
                             <div className="text-[#6B6867] font-light space-y-2">
                                 <p>ימים א׳-ה׳ | 09:00-20:00</p>
-                                <p>מפגשים פיזיים: רמת נגב | מפגשים בזום: בכל מקום בארץ</p>
+                                <p>
+                                    מפגשים פיזיים: 
+                                    <a 
+                                        href="https://www.google.com/maps/search/?api=1&query=31.05365127751188,34.69029811783664" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="hover:text-[#A2673E] transition-colors underline underline-offset-4"
+                                    >
+                                        רמת נגב
+                                    </a> 
+                                    | מפגשים בזום: בכל מקום בארץ
+                                </p>
                             </div>
                         </div>
                     </motion.div>

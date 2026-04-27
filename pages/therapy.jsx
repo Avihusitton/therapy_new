@@ -94,7 +94,15 @@ export default function Therapy() {
                             <div className="bg-[#FDF8F0] p-8 rounded-xl shadow-sm">
                                 <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">איך זה עובד?</h2>
                                 <p className="text-[#555251] font-light leading-relaxed">
-                                    הטיפול משלב עבודה רגשית עמוקה יחד עם כלים פרקטיים שניתן ליישם כבר מחר בבוקר. המפגשים מתקיימים בקליניקה שקטה ברמת נגב או בשיחת וידאו, באווירה של הקשבה נקייה ואמונה מלאה ביכולת שלכם להוביל את עצמכם קדימה.
+                                    הטיפול משלב עבודה רגשית עמוקה יחד עם כלים פרקטיים שניתן ליישם כבר מחר בבוקר. המפגשים מתקיימים ב
+                                    <a 
+                                        href="https://www.google.com/maps/search/?api=1&query=31.05365127751188,34.69029811783664" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="text-[#A2673E] hover:underline"
+                                    >
+                                        קליניקה שקטה ברמת נגב
+                                    </a> או בשיחת וידאו, באווירה של הקשבה נקייה ואמונה מלאה ביכולת שלכם להוביל את עצמכם קדימה.
                                 </p>
                             </div>
                         </div>
@@ -115,7 +123,15 @@ export default function Therapy() {
                                     <div className="w-12 h-12 bg-[#A2673E] text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl">2</div>
                                     <h3 className="text-xl text-[#4C4A49] mb-4">פגישה ראשונה</h3>
                                     <p className="text-[#6B6867] font-light leading-relaxed">
-                                        ניפגש (פיזית ברמת נגב או בזום) ונתחיל להכיר את המבנה הייחודי של הנפש שלך.
+                                        ניפגש (פיזית ב
+                                        <a 
+                                            href="https://www.google.com/maps/search/?api=1&query=31.05365127751188,34.69029811783664" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="text-[#A2673E] hover:underline"
+                                        >
+                                            רמת נגב
+                                        </a> או בזום) ונתחיל להכיר את המבנה הייחודי של הנפש שלך.
                                     </p>
                                 </div>
                                 <div className="text-center">

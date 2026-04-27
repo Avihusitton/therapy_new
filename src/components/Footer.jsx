@@ -28,10 +28,15 @@ export default function Footer() {
                             <span aria-hidden>✉️</span>
                             <span className="ltr-text">Avihu.sitton@gmail.com</span>
                         </a>
-                        <div className="flex items-center gap-3">
+                        <a 
+                            href="https://www.google.com/maps/search/?api=1&query=31.05365127751188,34.69029811783664" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="flex items-center gap-3 hover:text-white transition-colors"
+                        >
                             <span aria-hidden>📍</span>
                             <span>קליניקה ברתמים | מפגשים בזום</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
 

@@ -68,11 +68,16 @@ export default function Home() {
                             <span className="block text-[#A2673E] text-sm font-medium">שיתוף פעולה עם ויצו</span>
                             <span className="block text-[#6B6867] text-[11px] font-light mt-1">סדנאות מוכרות</span>
                         </div>
-                        <div className="flex flex-col items-center">
+                        <a 
+                            href="https://www.google.com/maps/search/?api=1&query=31.05365127751188,34.69029811783664" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex flex-col items-center hover:scale-105 transition-transform"
+                        >
                             <Monitor className="w-6 h-6 text-[#A2673E] mb-2" />
                             <span className="block text-[#A2673E] text-sm font-medium">פיזי וזום</span>
                             <span className="block text-[#6B6867] text-[11px] font-light mt-1">רמת נגב וכל הארץ</span>
-                        </div>
+                        </a>
                         <a 
                             href="tel:0532853235"
                             className="group flex flex-col items-center hover:scale-105 transition-transform cursor-pointer col-span-2 md:col-span-1"
