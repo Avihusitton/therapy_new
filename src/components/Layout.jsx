@@ -1,8 +1,13 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import WhatsAppButton from './WhatsAppButton';
+import FloatingAudioPlayer from './FloatingAudioPlayer';
+import { useAudio } from '@/contexts/AudioContext';
 
 export default function Layout({ children }) {
+    const { showPlayer, setShowPlayer } = useAudio();
+
     return (
         <div className="min-h-screen bg-[#FDF8F0] text-[#4C4A49] flex flex-col" dir="rtl" lang="he">
             <Header />
@@ -10,6 +15,11 @@ export default function Layout({ children }) {
                 {children}
             </main>
             <Footer />
+            <WhatsAppButton />
+            <FloatingAudioPlayer
+                isOpen={showPlayer}
+                onClose={() => setShowPlayer(false)}
+            />
         </div>
     );
 }

@@ -4,15 +4,36 @@ import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import AboutSection from '@/components/AboutSection';
 import TherapyMethodSection from '@/components/TherapyMethodSection';
-import AudioPlayer from '@/components/AudioPlayer';
+import { Play } from 'lucide-react';
+import { useAudio } from '@/contexts/AudioContext';
 
 export default function About() {
+    const { setShowPlayer } = useAudio();
+    const aboutSchema = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "אביהו סיטון",
+        "jobTitle": "פסיכותרפיסט",
+        "description": "מנחה קבוצות, סדנאות ופסיכותרפיסט בשיטת דרך",
+        "url": "https://avihusitton.com",
+        "telephone": "+972-53-2853235",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "רמת נגב",
+            "addressCountry": "IL"
+        },
+        "sameAs": [
+            "https://g.page/r/CXrRjxeYVWw_EAI"
+        ]
+    };
+
     return (
         <Layout>
             <SEO 
                 title="אודות | אביהו סיטון" 
                 description="הכירו את אביהו סיטון, פסיכותרפיסט בשיטת דרך ומנחה קבוצות. ליווי רגשי, זוגי וסדנאות למילואימניקים ברמת נגב ובזום."
                 canonical="/about"
+                schema={aboutSchema}
             />
             
             <div className="pt-10 pb-20">
@@ -50,11 +71,29 @@ export default function About() {
 
                         <div className="mt-10 border-t border-[#D3C1B1]/20 pt-10">
                             <h3 className="text-xl font-light text-[#4C4A49] mb-6 text-center">האזינו לראיון ברדיו</h3>
-                            <AudioPlayer 
-                                src="/audio/glz-interview.mp3"
-                                title="קולה של אמא (גלי צה״ל)"
-                                subtitle="שיחה על המעבר מהשטח לבית והמעטפת הרגשית למילואימניקים"
-                            />
+                            <div className="flex justify-center">
+                                <button
+                                    onClick={() => setShowPlayer(true)}
+                                    style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        backgroundColor: 'transparent',
+                                        border: '1px solid rgba(162, 103, 62, 0.4)',
+                                        borderRadius: '24px',
+                                        padding: '10px 24px',
+                                        cursor: 'pointer',
+                                        color: '#A2673E',
+                                        fontSize: '15px',
+                                        fontWeight: '500',
+                                        transition: 'all 0.2s',
+                                    }}
+                                    className="hover:bg-[#A2673E]/5 hover:border-[#A2673E] transition-all"
+                                >
+                                    <Play size={14} fill="#A2673E" />
+                                    האזן לראיון המלא (גלי צה״ל)
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

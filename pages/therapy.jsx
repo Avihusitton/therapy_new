@@ -31,6 +31,10 @@ export default function Therapy() {
         {
             q: "איך נראה טיפול בשיטת 'דרך'?",
             a: "שיטת 'דרך' מתמקדת בזיהוי דפוסי הנפש הייחודיים שלך ובבניית עצמאות רגשית. אנחנו עובדים עם המציאות כפי שהיא, לומדים לקחת אחריות על החלקים הלא מעובדים שלנו ולהפוך אתגרי חיים להזדמנויות לצמיחה."
+        },
+        {
+            q: "מה קורה בפגישה הראשונה?",
+            a: "הפגישה הראשונה היא שיחת היכרות — אתה מספר מה מביא אותך, ואני מספר קצת על הדרך שנעבור יחד. אין שאלות נכונות או לא נכונות. המטרה היא לבדוק יחד אם המרחב הזה מתאים לך עכשיו."
         }
     ];
 
@@ -97,6 +101,33 @@ export default function Therapy() {
 
                         <FloralDivider />
 
+                        <div className="py-20">
+                            <h2 className="text-3xl text-[#4C4A49] mb-12 font-light text-center">איך נתחיל?</h2>
+                            <div className="grid md:grid-cols-3 gap-8">
+                                <div className="text-center">
+                                    <div className="w-12 h-12 bg-[#A2673E] text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl">1</div>
+                                    <h3 className="text-xl text-[#4C4A49] mb-4">שיחת היכרות חינם</h3>
+                                    <p className="text-[#6B6867] font-light leading-relaxed">
+                                        נדבר 20 דקות — אתה תספר מה מביא אותך ואני אסביר איך אני עובד. ללא התחייבות.
+                                    </p>
+                                </div>
+                                <div className="text-center">
+                                    <div className="w-12 h-12 bg-[#A2673E] text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl">2</div>
+                                    <h3 className="text-xl text-[#4C4A49] mb-4">פגישה ראשונה</h3>
+                                    <p className="text-[#6B6867] font-light leading-relaxed">
+                                        ניפגש (פיזית ברמת נגב או בזום) ונתחיל להכיר את המבנה הייחודי של הנפש שלך.
+                                    </p>
+                                </div>
+                                <div className="text-center">
+                                    <div className="w-12 h-12 bg-[#A2673E] text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl">3</div>
+                                    <h3 className="text-xl text-[#4C4A49] mb-4">תהליך בקצב שלך</h3>
+                                    <p className="text-[#6B6867] font-light leading-relaxed">
+                                        בונים יחד את המסע — בקצב שנכון לך, עם כלים שאתה לוקח איתך לחיים.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                         <div className="mt-20">
                             <h2 className="text-3xl text-[#4C4A49] mb-10 font-light text-center">שאלות נפוצות</h2>
                             <Accordion type="single" collapsible className="w-full">
@@ -117,7 +148,12 @@ export default function Therapy() {
                             <h3 className="text-2xl mb-6 font-light">מרגישים שזה הזמן הנכון להתחיל?</h3>
                             <p className="mb-8 text-[#D3C1B1] font-light">אני מזמין אתכם לשיחה קצרה שבה נבדוק יחד אם המרחב הזה נכון לכם עכשיו.</p>
                             <div className="flex flex-wrap justify-center gap-4">
-                                <a href="/contact" className="bg-[#A2673E] hover:bg-[#8d5a36] px-8 py-3 rounded-lg transition-all shadow-md">
+                                <a 
+                                    href="https://wa.me/972532853235?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%91%D7%99%D7%94%D7%95%20%F0%9F%8C%BF%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%98%D7%99%D7%A4%D7%95%D7%9C%20%D7%90%D7%99%D7%A9%D7%99" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="bg-[#A2673E] hover:bg-[#8d5a36] px-8 py-3 rounded-lg transition-all shadow-md"
+                                >
                                     בואו נדבר
                                 </a>
                                 <a href="/couples" className="border border-white/30 hover:bg-white/10 px-8 py-3 rounded-lg transition-all">
