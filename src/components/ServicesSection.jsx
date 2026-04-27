@@ -1,4 +1,4 @@
-import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { User, Users, Shield } from 'lucide-react';
 import FloralDivider from './FloralDivider';
@@ -12,7 +12,6 @@ export default function ServicesSection() {
             description:
                 'סדנאות בקבוצה קטנה המאפשרות תהליך מעמיק לצד מראה בריאה של חברים בדרך. מותאם למילואימניקים שחוזרים לשגרה ולזוגות שמבקשים להעמיק את הקשר.',
             cta: 'פרטים על הסדנה הקרובה',
-            href: '#workshops',
         },
         {
             icon: Shield,
@@ -20,7 +19,7 @@ export default function ServicesSection() {
             description:
                 'תהליך אישי או קבוצתי לחזרה לשגרה אחרי שירות ממושך — עיבוד החוויה, חזרה לזוגיות ולמשפחה, ומציאת הקצב האישי מחדש.',
             cta: 'לשיחת היכרות',
-            href: '#contact',
+            href: '/reservists-workshops',
         },
         {
             icon: Users,
@@ -28,26 +27,20 @@ export default function ServicesSection() {
             description:
                 'לעבור "דרך" ביחד — להניח בסיס לזוגיות בריאה המשלבת אחדות ועצמאות, להחזיר את התשוקה, הסקרנות והצמיחה המשותפת למרחב הזוגי.',
             cta: 'לתיאום פגישה',
-            href: '#contact',
+            href: '/couples',
         },
         {
             icon: User,
             title: 'טיפול אישי',
             description:
-                'מסע אישי של גילוי, ריפוי וצמיחה. נלמד יחד להכיר את מבנה הנפש הייחודי שלך, לעבוד עם אתגרים כהזדמנויות, ולקחת אחריות מתוך בחירה ועוצמה.',
+                'מסע אישי של גילוי, ריפוי וצמיחה. נלמד יחד להכיר את מבנה הנפש הייחודי שלך, לעבוד עם אתגרים כהזדנויות, ולקחת אחריות מתוך בחירה ועוצמה.',
             cta: 'לשיחת היכרות',
-            href: '#contact',
+            href: '/therapy',
         },
     ];
 
-    const scrollTo = (href) => {
-        const id = href.replace('#', '');
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-    };
-
     return (
-        <section className="py-16 sm:py-24 bg-[#FDF8F0] relative overflow-x-hidden w-full">
+        <section id="workshops" className="py-16 sm:py-24 bg-[#FDF8F0] relative overflow-x-hidden w-full">
             {/* רקע עדין */}
             <div className="absolute inset-0 opacity-5">
                 <img
@@ -93,23 +86,38 @@ export default function ServicesSection() {
                                     הפעילות המרכזית
                                 </span>
                             )}
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="w-12 h-12 rounded-full bg-[#A2673E]/10 flex items-center justify-center flex-shrink-0">
-                                    <s.icon className="w-6 h-6 text-[#A2673E]" />
+                            {s.href ? (
+                                <Link href={s.href} className="flex items-center gap-3 mb-4 group/header">
+                                    <div className="w-12 h-12 rounded-full bg-[#A2673E]/10 flex items-center justify-center flex-shrink-0 group-hover/header:bg-[#A2673E]/20 transition-colors">
+                                        <s.icon className="w-6 h-6 text-[#A2673E]" />
+                                    </div>
+                                    <h3 className="text-xl sm:text-2xl text-[#4C4A49] font-normal group-hover/header:text-[#A2673E] transition-colors">{s.title}</h3>
+                                </Link>
+                            ) : (
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-12 h-12 rounded-full bg-[#A2673E]/10 flex items-center justify-center flex-shrink-0">
+                                        <s.icon className="w-6 h-6 text-[#A2673E]" />
+                                    </div>
+                                    <h3 className="text-xl sm:text-2xl text-[#4C4A49] font-normal">{s.title}</h3>
                                 </div>
-                                <h3 className="text-xl sm:text-2xl text-[#4C4A49] font-normal">{s.title}</h3>
-                            </div>
+                            )}
                             <div className="w-16 h-px bg-[#D3C1B1] mb-4"></div>
                             <p className="text-sm sm:text-base text-[#4C4A49] leading-relaxed mb-6 text-right flex-1">
                                 {s.description}
                             </p>
-                            <button
-                                onClick={() => scrollTo(s.href)}
-                                className="self-start text-sm sm:text-base text-[#A2673E] hover:text-[#8d5a36] font-medium flex items-center gap-2 transition-colors"
-                            >
-                                {s.cta}
-                                <span aria-hidden>←</span>
-                            </button>
+                            {s.href ? (
+                                <Link
+                                    href={s.href}
+                                    className="self-start text-sm sm:text-base text-[#A2673E] hover:text-[#8d5a36] font-medium flex items-center gap-2 transition-colors group/cta"
+                                >
+                                    {s.cta}
+                                    <span className="group-hover/cta:translate-x-[-4px] transition-transform" aria-hidden>←</span>
+                                </Link>
+                            ) : (
+                                <div className="text-sm sm:text-base text-[#B5A89D] font-light flex items-center gap-2">
+                                    {s.cta}
+                                </div>
+                            )}
                         </motion.div>
                     ))}
                 </div>

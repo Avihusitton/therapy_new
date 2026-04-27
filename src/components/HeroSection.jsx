@@ -1,4 +1,4 @@
-import React from 'react';
+import Link from 'next/link';
 import { ArrowDown, Phone, Users, Shield, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -12,8 +12,8 @@ export default function HeroSection() {
     };
 
     const audiences = [
-        { icon: Shield, label: 'מילואימניקים בחזרה לשגרה' },
-        { icon: Heart, label: 'זוגות בצומת' },
+        { icon: Shield, label: 'מילואימניקים בחזרה לשגרה', href: '/reservists-workshops' },
+        { icon: Heart, label: 'זוגות בצומת', href: '/couples' },
         { icon: Users, label: 'קבוצות וסדנאות' },
     ];
 
@@ -78,7 +78,6 @@ export default function HeroSection() {
                             <meta itemProp="telephone" content="+972-53-2853235" />
                         </div>
 
-                        {/* Audience pills */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -87,16 +86,37 @@ export default function HeroSection() {
                             role="list"
                             aria-label="קהלי יעד"
                         >
-                            {audiences.map((a) => (
-                                <div
-                                    key={a.label}
-                                    className="flex items-center gap-2 bg-white/70 dark:bg-brand-secondary/40 backdrop-blur-sm border border-brand-border/60 px-3 sm:px-4 py-2 rounded-full"
-                                    role="listitem"
-                                >
-                                    <a.icon className="w-4 h-4 text-brand-primary" aria-hidden="true" />
-                                    <span className="text-xs sm:text-sm text-brand-text font-light">{a.label}</span>
-                                </div>
-                            ))}
+                            {audiences.map((a) => {
+                                const content = (
+                                    <>
+                                        <a.icon className={`w-4 h-4 text-brand-primary ${a.href ? 'group-hover:scale-110' : ''} transition-transform`} aria-hidden="true" />
+                                        <span className={`text-xs sm:text-sm text-brand-text font-light ${a.href ? 'group-hover:text-brand-primary' : ''} transition-colors`}>{a.label}</span>
+                                    </>
+                                );
+
+                                if (a.href) {
+                                    return (
+                                        <Link
+                                            key={a.label}
+                                            href={a.href}
+                                            className="flex items-center gap-2 bg-white/70 dark:bg-brand-secondary/40 backdrop-blur-sm border border-brand-border/60 px-3 sm:px-4 py-2 rounded-full hover:bg-white hover:border-brand-primary/40 transition-all group"
+                                            role="listitem"
+                                        >
+                                            {content}
+                                        </Link>
+                                    );
+                                }
+
+                                return (
+                                    <div
+                                        key={a.label}
+                                        className="flex items-center gap-2 bg-white/70 dark:bg-brand-secondary/40 backdrop-blur-sm border border-brand-border/60 px-3 sm:px-4 py-2 rounded-full"
+                                        role="listitem"
+                                    >
+                                        {content}
+                                    </div>
+                                );
+                            })}
                         </motion.div>
 
                         <div className="bg-white/80 dark:bg-brand-secondary/50 backdrop-blur-sm border border-brand-border/30 p-5 sm:p-8 w-full mx-auto mb-8 sm:mb-10 rounded-lg max-w-2xl">
