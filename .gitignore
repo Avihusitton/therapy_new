@@ -19,4 +19,10 @@ build/
 .env.production.local
 
 # vercel
-.vercel
+.vercel
+
+# open-next
+.open-next/
+
+# backups
+*.bak

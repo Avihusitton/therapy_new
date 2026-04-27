@@ -10,7 +10,7 @@ import { AudioProvider } from '@/contexts/AudioContext';
 function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClientInstance}>
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
         <AudioProvider>
           <Component {...pageProps} />
           <Toaster />

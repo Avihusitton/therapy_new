@@ -65,6 +65,13 @@ module.exports = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
+  			},
+  			brand: {
+  				primary: 'hsl(var(--brand-primary))',
+  				secondary: 'hsl(var(--brand-secondary))',
+  				text: 'hsl(var(--brand-text))',
+  				border: 'hsl(var(--brand-border))',
+  				accent: 'hsl(var(--brand-accent))',
   			}
   		},
   		keyframes: {

@@ -108,28 +108,28 @@ export default function TestimonialsSection() {
     };
 
     return (
-        <section className="py-20 sm:py-28 bg-[#FDF8F0] relative overflow-hidden w-full">
+        <section className="py-20 sm:py-28 bg-brand-secondary relative overflow-hidden w-full transition-colors duration-300">
             <div className="w-full max-w-7xl mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl sm:text-5xl text-[#4C4A49] mb-4">מה אומרים בגוגל</h2>
+                    <h2 className="text-3xl sm:text-5xl text-brand-text mb-4">מה אומרים בגוגל</h2>
                     
                     {/* 5 Stars Rating */}
                     <div className="flex items-center justify-center gap-1 mb-4 text-[#FFD700]">
                         {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
                     </div>
 
-                    <div className="flex items-center justify-center gap-3 mb-8 text-[#1a73e8] bg-white w-fit mx-auto px-5 py-2 rounded-full shadow-sm border border-[#e0e0e0]">
+                    <div className="flex items-center justify-center gap-3 mb-8 text-[#1a73e8] bg-white dark:bg-brand-secondary w-fit mx-auto px-5 py-2 rounded-full shadow-sm border border-brand-border/30">
                         <GoogleLogo />
                         <span className="text-xs font-bold tracking-wider uppercase" aria-label="ביקורות מאומתות מגוגל">Verified Reviews</span>
                         <CheckCircle2 className="w-4 h-4 fill-current" aria-hidden="true" />
                     </div>
 
-                    <div className="w-24 h-px bg-[#D3C1B1] mx-auto mb-6"></div>
+                    <div className="w-24 h-px bg-brand-border mx-auto mb-6"></div>
                 </div>
 
                 {loading ? (
                     <div className="flex justify-center py-20">
-                        <Loader2 className="w-8 h-8 text-[#A2673E] animate-spin" aria-label="טוען ביקורות..." />
+                        <Loader2 className="w-8 h-8 text-brand-primary animate-spin" aria-label="טוען ביקורות..." />
                     </div>
                 ) : (
                     <div className="relative">
@@ -139,11 +139,13 @@ export default function TestimonialsSection() {
                                 dragConstraints={{ left: 0, right: 0 }}
                                 style={{ x: dragX }}
                                 animate={{
-                                    translateX: `calc(-${currentIndex * (100 / (windowWidth < 640 ? 1 : 2.5))}% - ${currentIndex * 24}px)`
+                                    translateX: reviews.length <= 2 && windowWidth >= 640 
+                                        ? 0 
+                                        : `calc(-${currentIndex * (100 / (windowWidth < 640 ? 1 : 2.5))}% - ${currentIndex * 24}px)`
                                 }}
                                 onDragEnd={onDragEnd}
                                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                className="flex gap-6 cursor-grab active:cursor-grabbing w-full"
+                                className={`flex gap-6 cursor-grab active:cursor-grabbing w-full ${reviews.length <= 2 && windowWidth >= 640 ? 'justify-center' : ''}`}
                             >
                                 {reviews.map((review, index) => (
                                     <motion.div
@@ -152,12 +154,12 @@ export default function TestimonialsSection() {
                                             scale: currentIndex === index ? 1 : 0.95,
                                             opacity: (index >= currentIndex && index < currentIndex + 3) || (index >= currentIndex - 1 && index <= currentIndex + 1) ? 1 : 0.3,
                                         }}
-                                        className="w-[85%] sm:w-[calc(40%-16px)] bg-white p-6 sm:p-10 rounded-3xl shadow-sm border border-[#EDE4D8]/50 flex flex-col h-full relative shrink-0"
+                                        className="w-[85%] sm:w-[calc(40%-16px)] bg-white dark:bg-card p-6 sm:p-10 rounded-3xl shadow-sm border border-brand-border/20 flex flex-col h-full relative shrink-0"
                                         role="group"
                                         aria-roledescription="ביקורת"
                                         aria-label={`ביקורת ${index + 1} מתוך ${reviews.length}`}
                                     >
-                                        <Quote className="absolute top-6 left-6 w-10 h-10 text-[#D3C1B1] opacity-10" aria-hidden="true" />
+                                        <Quote className="absolute top-6 left-6 w-10 h-10 text-brand-border opacity-20" aria-hidden="true" />
                                         
                                         <div className="flex gap-1 mb-5 text-[#FFD700]" aria-label={`דירוג: ${review.rating} מתוך 5 כוכבים`}>
                                             {[...Array(review.rating)].map((_, i) => (
@@ -165,19 +167,19 @@ export default function TestimonialsSection() {
                                             ))}
                                         </div>
 
-                                        <p className="text-[#4C4A49] text-base sm:text-lg leading-relaxed mb-8 text-right italic whitespace-pre-line flex-grow">
+                                        <p className="text-brand-text text-base sm:text-lg leading-relaxed mb-8 text-right italic whitespace-pre-line flex-grow">
                                             "{review.content}"
                                         </p>
                                         
-                                        <div className="flex items-center gap-4 pt-6 border-t border-[#FDF8F0]">
-                                            <div className="w-10 h-10 rounded-full bg-[#FDF8F0] flex items-center justify-center border border-[#D3C1B1]/30">
-                                                <User className="w-5 h-5 text-[#D3C1B1]" aria-hidden="true" />
+                                        <div className="flex items-center gap-4 pt-6 border-t border-brand-secondary">
+                                            <div className="w-10 h-10 rounded-full bg-brand-secondary flex items-center justify-center border border-brand-border/30">
+                                                <User className="w-5 h-5 text-brand-border" aria-hidden="true" />
                                             </div>
                                             <div className="text-right">
-                                                <h4 className="text-[#4C4A49] font-semibold text-base">
+                                                <h4 className="text-brand-text font-semibold text-base">
                                                     {formatReviewerName(review.author)}
                                                 </h4>
-                                                <p className="text-xs text-[#8d5a36] font-medium">{review.date}</p>
+                                                <p className="text-xs text-brand-primary font-medium">{review.date}</p>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -189,7 +191,7 @@ export default function TestimonialsSection() {
                         <div className="flex justify-center gap-4 mt-12">
                             <button 
                                 onClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}
-                                className={`p-4 rounded-full bg-white shadow-md text-[#4C4A49] hover:text-[#A2673E] transition-all ${currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:scale-110'}`}
+                                className={`p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all ${currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:scale-110'}`}
                                 disabled={currentIndex === 0}
                                 aria-label="ביקורת קודמת"
                             >
@@ -197,7 +199,7 @@ export default function TestimonialsSection() {
                             </button>
                             <button 
                                 onClick={() => setCurrentIndex(prev => Math.min(reviews.length - 1, prev + 1))}
-                                className={`p-4 rounded-full bg-white shadow-md text-[#4C4A49] hover:text-[#A2673E] transition-all ${currentIndex === reviews.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:scale-110'}`}
+                                className={`p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all ${currentIndex === reviews.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:scale-110'}`}
                                 disabled={currentIndex === reviews.length - 1}
                                 aria-label="ביקורת הבאה"
                             >
@@ -211,7 +213,7 @@ export default function TestimonialsSection() {
                                 <button
                                     key={i}
                                     onClick={() => setCurrentIndex(i)}
-                                    className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-[#A2673E] w-6' : 'bg-[#D3C1B1] w-1.5'}`}
+                                    className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-brand-primary w-6' : 'bg-brand-border w-1.5'}`}
                                 />
                             ))}
                         </div>
@@ -223,7 +225,7 @@ export default function TestimonialsSection() {
                         href="https://g.page/r/CXrRjxeYVWw_EAI/review"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-[#A2673E] hover:text-[#8d5a36] transition-colors font-medium border-b border-[#A2673E]/30 pb-1"
+                        className="inline-flex items-center gap-2 text-brand-primary hover:text-brand-accent transition-colors font-medium border-b border-brand-primary/30 pb-1"
                     >
                         צפו בכל הביקורות והוסיפו משלכם בגוגל
                     </a>
