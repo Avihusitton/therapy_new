@@ -36,6 +36,22 @@ jobs:
             exit 1
           fi
 
+      - name: Check ARCHITECTURE.md is current
+        run: |
+          ARCH_DATE=$(git log -1 --format="%at" -- ARCHITECTURE.md)
+          CORE_DATE=$(git log -1 --format="%at" -- \
+            pages/_app.jsx src/lib/query-client.js \
+            src/contexts/AudioContext.jsx wrangler.jsonc \
+            .github/workflows/deploy-prod.yml \
+            next.config.js src/middleware.js package.json)
+          if [ -z "$ARCH_DATE" ]; then
+            echo "::warning::ARCHITECTURE.md לא קיים בריפו — מומלץ ליצור אותו"
+          elif [ "$CORE_DATE" -gt "$ARCH_DATE" ]; then
+            echo "::warning::קבצי ליבה השתנו מאז עדכון אחרון של ARCHITECTURE.md — מומלץ לעדכנו לפני production"
+          else
+            echo "✅ ARCHITECTURE.md מעודכן"
+          fi
+
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
