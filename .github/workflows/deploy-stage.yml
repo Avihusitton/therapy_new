@@ -43,4 +43,4 @@ jobs:
         run: npx @opennextjs/cloudflare build
 
       - name: Deploy to Cloudflare stage env
-        run: npx @opennextjs/cloudflare deploy --env stage
+        run: npx @opennextjs/cloudflare deploy
