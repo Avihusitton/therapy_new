@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - stage
+    paths-ignore:
+      - "monitoring/**"
   workflow_dispatch:
 
 jobs:
