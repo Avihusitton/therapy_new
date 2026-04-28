@@ -32,9 +32,14 @@ export default function TestimonialsSection() {
 
     useEffect(() => {
         const fetchReviews = async () => {
+            console.log("Fetching reviews from Google Sheet...");
             try {
                 const response = await fetch(SHEET_URL);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch reviews: ${response.status}`);
+                }
                 const csvData = await response.text();
+                console.log("CSV Data received, length:", csvData.length);
                 
                 const parseCSV = (str) => {
                     const arr = [];
@@ -56,15 +61,19 @@ export default function TestimonialsSection() {
                 };
 
                 const allRows = parseCSV(csvData).slice(1);
+                console.log("Parsed rows count:", allRows.length);
+
                 const parsedReviews = allRows.map((columns, index) => {
+                    if (columns.length < 3) return null;
+
                     let content = columns[1]?.trim() || "";
                     if (content.includes("(Translated by Google)")) {
                         content = content.split("(Translated by Google)")[0].trim();
                     }
                     let rating = 5;
                     const rawRating = columns[2]?.toUpperCase().trim();
-                    if (rawRating === "FIVE") rating = 5;
-                    else if (rawRating === "FOUR") rating = 4;
+                    if (rawRating === "FIVE" || rawRating === "5") rating = 5;
+                    else if (rawRating === "FOUR" || rawRating === "4") rating = 4;
                     
                     let author = columns[0]?.trim() || "מטופל/ת";
                     if (author.startsWith('accounts/')) author = "מטופל/ת בקליניקה";
@@ -80,6 +89,7 @@ export default function TestimonialsSection() {
                     };
                 }).filter(Boolean);
 
+                console.log("Final reviews count:", parsedReviews.length);
                 setReviews(parsedReviews);
             } catch (error) {
                 console.error("Error fetching reviews:", error);
@@ -130,6 +140,10 @@ export default function TestimonialsSection() {
                 {loading ? (
                     <div className="flex justify-center py-20">
                         <Loader2 className="w-8 h-8 text-brand-primary animate-spin" aria-label="טוען ביקורות..." />
+                    </div>
+                ) : reviews.length === 0 ? (
+                    <div className="text-center py-12 text-brand-text/70">
+                        כרגע אין ביקורות זמינות להצגה. אפשר לנסות שוב בעוד רגע.
                     </div>
                 ) : (
                     <div className="relative">

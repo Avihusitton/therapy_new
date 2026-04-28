@@ -15,7 +15,7 @@ export function middleware(request) {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' blob: data: https://cdn.userway.org",
     "font-src 'self' https://fonts.gstatic.com",
-    "connect-src 'self' https://api.userway.org",
+    "connect-src 'self' https://api.userway.org https://hook.eu1.make.com https://docs.google.com",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
