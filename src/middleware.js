@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 
 export function middleware(request) {
   const isDev = process.env.NODE_ENV !== 'production';
+  const requestId = request.headers.get('x-request-id') || crypto.randomUUID();
 
   const cspHeader = [
     "default-src 'self'",
@@ -27,6 +28,8 @@ export function middleware(request) {
   });
 
   response.headers.set('Content-Security-Policy', cspHeader);
+  response.headers.set('x-request-id', requestId);
+  response.headers.set('x-monitor-env', isDev ? 'dev' : 'prod');
 
   return response;
 }
