@@ -1,9 +1,9 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
-export default function Document({ nonce }) {
+export default function Document() {
   return (
     <Html lang="he" dir="rtl">
-      <Head nonce={nonce}>
+      <Head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/favicon.png" />
@@ -14,22 +14,15 @@ export default function Document({ nonce }) {
       </Head>
       <body className="antialiased">
         <Main />
-        <NextScript nonce={nonce} />
+        <NextScript />
         <script 
           src="https://cdn.userway.org/widget.js" 
           data-account="Gi0yRfilYP" 
           data-position="6" 
           data-offset-bottom="100"
           async
-          nonce={nonce}
         ></script>
       </body>
     </Html>
   )
 }
-
-Document.getInitialProps = async (ctx) => {
-  const nonce = ctx.req?.headers['x-nonce'];
-  const initialProps = await ctx.defaultGetInitialProps(ctx);
-  return { ...initialProps, nonce };
-};
