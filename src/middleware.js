@@ -5,7 +5,7 @@ export function middleware(request) {
 
   const cspHeader = [
     "default-src 'self'",
-    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://cdn.userway.org`,
+    "script-src 'self' 'unsafe-inline'" + (isDev ? " 'unsafe-eval'" : "") + " https://cdn.userway.org",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' blob: data: https://cdn.userway.org",
     "font-src 'self' https://fonts.gstatic.com",
