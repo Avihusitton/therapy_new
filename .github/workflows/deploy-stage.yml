@@ -37,7 +37,10 @@ jobs:
           fi
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Verify react-dom/server.edge
+        run: node -e "console.log(require.resolve('react-dom/server.edge'))"
 
       - name: Next.js Build
         run: npm run build

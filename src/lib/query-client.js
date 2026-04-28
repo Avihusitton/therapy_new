@@ -16,13 +16,8 @@ let browserQueryClient = undefined;
 
 export function getQueryClient() {
   if (typeof window === 'undefined') {
-    // server/edge — צור instance חדש לכל request
     return makeQueryClient();
   }
-  // browser — שמור instance יציב
   if (!browserQueryClient) browserQueryClient = makeQueryClient();
   return browserQueryClient;
 }
-
-// backward compat — שומר על import ישן שעדיין עובד בדפדפן
-export const queryClientInstance = typeof window !== 'undefined' ? getQueryClient() : null;
