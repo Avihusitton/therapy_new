@@ -2,7 +2,12 @@ import { NextResponse } from 'next/server';
 
 export function middleware(request) {
   const isDev = process.env.NODE_ENV !== 'production';
-  const requestId = request.headers.get('x-request-id') || crypto.randomUUID();
+  const existingRequestId = request.headers.get('x-request-id');
+  const cfRay = request.headers.get('cf-ray');
+  const requestId =
+    existingRequestId ||
+    cfRay ||
+    `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
 
   const cspHeader = [
     "default-src 'self'",
