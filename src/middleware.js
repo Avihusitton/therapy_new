@@ -1,23 +1,13 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {
-  const cfRay = request.headers.get('cf-ray');
-  const requestId =
-    request.headers.get('x-request-id') ||
-    cfRay ||
-    `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
-
-  console.log(JSON.stringify({
-    event: 'request',
-    requestId,
-    cfRay,
-    method: request.method,
-    url: request.url,
-    ts: new Date().toISOString(),
-  }));
+  // Ultra-minimal middleware to avoid any potential runtime errors in Edge
+  const requestId = request.headers.get('x-request-id') || 
+                    request.headers.get('cf-ray') || 
+                    'local-' + Math.random().toString(36).slice(2);
 
   const response = NextResponse.next();
-
+  
   response.headers.set('x-request-id', requestId);
   response.headers.set('x-monitor-env', 'production');
 
