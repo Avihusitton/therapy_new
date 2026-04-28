@@ -6,8 +6,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { AudioProvider } from '@/contexts/AudioContext';
 
 function MyApp({ Component, pageProps }) {
+  const [queryClient] = React.useState(() => getQueryClient());
+
   return (
-    <QueryClientProvider client={getQueryClient()}>
+    <QueryClientProvider client={queryClient}>
       <AudioProvider>
         <Component {...pageProps} />
         <Toaster />

@@ -7,6 +7,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  transpilePackages: ['@tanstack/react-query'],
   images: {
     unoptimized: true,
   },
