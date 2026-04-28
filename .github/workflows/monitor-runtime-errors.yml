@@ -39,6 +39,7 @@ jobs:
             body_file="$(mktemp)"
 
             status_code="$(curl -sS -D "$headers_file" -o "$body_file" -w "%{http_code}" "$url" || true)"
+            echo "Checked $url: Status $status_code"
 
             if [ "$status_code" != "200" ]; then
               cf_ray="$(awk 'BEGIN{IGNORECASE=1} /^CF-RAY:/ {gsub(/\r/,"",$2); print $2; exit}' "$headers_file")"
@@ -47,6 +48,7 @@ jobs:
               ts="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
               # Capture up to 2000 characters of the body to see if there's a stack trace
               body_snippet="$(head -c 2000 "$body_file" | tr '\n' ' ' | sed 's/"/\\"/g')"
+              echo "Incident detected! Ray: $cf_ray"
               COMMIT_SHA="${{ github.sha }}"
 
               printf '{"timestamp":"%s","environment":"%s","url":"%s","status":%s,"cf_ray":"%s","request_id":"%s","commit_sha":"%s","body_snippet":"%s"}\n' \
