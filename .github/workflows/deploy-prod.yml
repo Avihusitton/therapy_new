@@ -1,15 +1,13 @@
-name: Deploy Stage
+name: Deploy Production
 
 on:
   push:
     branches:
-      - stage
-    paths-ignore:
-      - "monitoring/**"
+      - main
   workflow_dispatch:
 
 jobs:
-  deploy-stage:
+  deploy-prod:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
@@ -42,5 +40,5 @@ jobs:
       - name: Build OpenNext bundle
         run: npx @opennextjs/cloudflare build
 
-      - name: Deploy to Cloudflare stage env
-        run: npx @opennextjs/cloudflare deploy --env stage
+      - name: Deploy to Cloudflare prod env
+        run: npx @opennextjs/cloudflare deploy --env prod
