@@ -1,19 +1,8 @@
 import React from 'react';
 import '@/index.css';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClientInstance } from '@/lib/query-client';
-import { Toaster } from "@/components/ui/toaster";
-import { AudioProvider } from '@/contexts/AudioContext';
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <QueryClientProvider client={queryClientInstance}>
-      <AudioProvider>
-        <Component {...pageProps} />
-        <Toaster />
-      </AudioProvider>
-    </QueryClientProvider>
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
