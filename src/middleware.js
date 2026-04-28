@@ -4,14 +4,14 @@ export function middleware(request) {
   // Generate a random nonce for each request
   // Using a simpler crypto call compatible with Edge runtime
   const nonce = btoa(Math.random().toString()).substring(0, 16);
+  const isDev = process.env.NODE_ENV !== 'production';
   
   // Define CSP
-  // We include 'unsafe-eval' only because third-party widgets like UserWay 
-  // and some Next.js optimization paths in specific environments require it.
-  // We use 'strict-dynamic' and Nonces to maintain a high security posture.
+  // We include 'unsafe-eval' only in development to support Next.js/React Refresh.
+  // We use 'strict-dynamic' and Nonces to maintain a high security posture in production.
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval' https://cdn.userway.org;
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${isDev ? "'unsafe-eval'" : ""} https://cdn.userway.org;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' blob: data:;
     font-src 'self' https://fonts.gstatic.com;
