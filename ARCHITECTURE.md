@@ -347,4 +347,4 @@ next	15.5.15	תואם ל-OpenNext 1.19+
 wrangler	^4.84.1	תואם ל-compatibility_date 2026-04-27
 ⚠️ אל תוריד גרסאות אלו — שדרוג React 18→19 היה הכרחי לתמיכת Edge SSR.
 
-נוצר: 28.04.2026 | גרסת קוד: commit f78dec4 (stage) / main
+נכתב: 28.04.2026 | עודכן: 28.04.2026 — ניתוק Cloudflare Pages Integration
