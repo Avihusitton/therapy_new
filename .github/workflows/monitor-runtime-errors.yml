@@ -25,6 +25,10 @@ jobs:
 
           TARGETS=(
             "stage|https://therapy-new-stage.avihu-sitton.workers.dev"
+            "stage-home|https://therapy-new-stage.avihu-sitton.workers.dev/"
+            "stage-contact|https://therapy-new-stage.avihu-sitton.workers.dev/contact"
+            "stage-reviews|https://therapy-new-stage.avihu-sitton.workers.dev/api/reviews"
+            "stage-health|https://therapy-new-stage.avihu-sitton.workers.dev/api/health"
             "prod|https://avihusitton.com"
           )
 
@@ -43,8 +47,10 @@ jobs:
               ts="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
               body_snippet="$(head -c 300 "$body_file" | tr '\n' ' ' | sed 's/"/\\"/g')"
 
-              printf '{"timestamp":"%s","environment":"%s","url":"%s","status":%s,"cf_ray":"%s","request_id":"%s","monitor_env":"%s","body_snippet":"%s"}\n' \
-                "$ts" "$env_name" "$url" "$status_code" "${cf_ray:-missing}" "${request_id:-missing}" "${monitor_env:-missing}" "${body_snippet:-empty}" \
+              COMMIT_SHA="${{ github.sha }}"
+
+              printf '{"timestamp":"%s","environment":"%s","url":"%s","status":%s,"cf_ray":"%s","request_id":"%s","commit_sha":"%s","body_snippet":"%s"}\n' \
+                "$ts" "$env_name" "$url" "$status_code" "${cf_ray:-missing}" "${request_id:-missing}" "${COMMIT_SHA:-unknown}" "${body_snippet:-empty}" \
                 >> monitoring/incidents.ndjson
             fi
           done
@@ -62,3 +68,14 @@ jobs:
           git add monitoring/incidents.ndjson
           git commit -m "chore(monitor): append runtime incident log [skip ci]"
           git push origin HEAD:stage
+
+      - name: Surface incidents as GitHub warning
+        if: always()
+        run: |
+          count=$(grep -c '' monitoring/incidents.ndjson 2>/dev/null || echo 0)
+          if [ "$count" -gt "0" ]; then
+            echo "::warning::$count incident(s) detected — see monitoring/incidents.ndjson"
+            tail -5 monitoring/incidents.ndjson
+          else
+            echo "All endpoints healthy."
+          fi

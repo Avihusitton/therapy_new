@@ -1,0 +1,67 @@
+name: Fetch Cloudflare Worker Logs on Incident
+
+on:
+  workflow_run:
+    workflows: ["Monitor Runtime Errors"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-logs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: stage
+
+      - name: Fetch Cloudflare Worker error logs
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          mkdir -p monitoring
+
+          # שלוף לוגים מ-Cloudflare Workers Logs API
+          # הערה: השימוש ב-tails API מחייב Tail פעיל. 
+          # לחלופין ניתן להשתמש ב-Logpush או ב-Analytics API במידה ומוגדר.
+          # כאן נשתמש ב-Tails API כפי שהוצע.
+          
+          response=$(curl -s "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/workers/scripts/therapy-new-stage/tails" \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            -H "Content-Type: application/json")
+
+          echo "$response" | python3 - << 'PYEOF'
+          import json, sys, os
+          try:
+              data = json.loads(sys.stdin.read())
+          except:
+              print("Failed to parse JSON")
+              sys.exit(0)
+              
+          if not data.get('success'):
+              print("CF API error:", data)
+              sys.exit(0)
+          results = data.get('result', [])
+          print(f"Found {len(results)} tail entries")
+          for r in results:
+              print(json.dumps(r))
+          PYEOF
+
+          # שמור snapshot
+          ts=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo "$response" > "monitoring/cf-snapshot-$ts.json"
+
+      - name: Commit CF snapshot
+        run: |
+          if git diff --quiet -- monitoring/; then
+            echo "No new CF logs."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add monitoring/
+          git commit -m "chore(monitor): CF worker log snapshot [skip ci]"
+          git push origin HEAD:stage
