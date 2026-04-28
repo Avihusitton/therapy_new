@@ -7,5 +7,14 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
+  },
+  "env": {
+    "stage": {
+      "name": "therapy-new-stage",
+      "assets": {
+        "directory": ".open-next/assets",
+        "binding": "ASSETS"
+      }
+    }
   }
 }
