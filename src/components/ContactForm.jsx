@@ -19,35 +19,14 @@ export default function ContactForm() {
 
     const isValidPhone = (phone) => {
         const digitsOnly = phone.replace(/\D/g, '');
-        
-        // Handle International format (972)
-        if (digitsOnly.startsWith('972')) {
-            const afterPrefix = digitsOnly.substring(3);
-            if (afterPrefix.startsWith('5') || afterPrefix.startsWith('7')) {
-                return digitsOnly.length === 12; // 972 + 5/7 + 8 digits
-            }
-            if (['2','3','4','8','9'].includes(afterPrefix[0])) {
-                return digitsOnly.length === 11; // 972 + area code + 7 digits
-            }
-            return false;
-        }
-
-        // Handle Local format (0)
-        if (digitsOnly.startsWith('0')) {
-            const secondDigit = digitsOnly[1];
-            if (secondDigit === '5' || secondDigit === '7') {
-                return digitsOnly.length === 10; // 05x / 07x
-            }
-            if (['2','3','4','8','9'].includes(secondDigit)) {
-                return digitsOnly.length === 9; // 02, 03, 04, 08, 09
-            }
-        }
-        
-        return false;
+        // פשוט מוודא שיש מספיק ספרות (בין 9 ל-13 ספרות מתאים לרוב הפורמטים בישראל)
+        return digitsOnly.length >= 9 && digitsOnly.length <= 13;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Submitting form:", formData);
+
         if (!formData.full_name.trim() || !formData.phone.trim()) {
             alert('אנא מלא את השם ומספר הטלפון');
             return;
@@ -63,18 +42,17 @@ export default function ContactForm() {
         try {
             const webhookUrl = 'https://hook.eu1.make.com/xac8wtpa12wjh2c3glfktolfowdvrbbw';
             
-            // יצירת קישור קסם לווטסאפ
             let formattedPhone = formData.phone.trim();
             if (formattedPhone.startsWith('0')) {
                 formattedPhone = '972' + formattedPhone.substring(1);
             }
-            // מסיר תווים לא חוקיים כמו מקפים או רווחים
             formattedPhone = formattedPhone.replace(/\D/g, '');
             
             const messageText = `היי ${formData.full_name}, ראיתי שהשארת פרטים באתר, אשמח לעזור! מתי נוח לך שנדבר?`;
             const whatsappLink = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(messageText)}`;
             
-            await fetch(webhookUrl, {
+            console.log("Sending to webhook:", webhookUrl);
+            const response = await fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -83,14 +61,21 @@ export default function ContactForm() {
                     ...formData,
                     date: new Date().toLocaleDateString('he-IL'),
                     time: new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
-                    whatsapp_link: whatsappLink
+                    whatsapp_link: whatsappLink,
+                    source: 'therapy-new-stage'
                 }),
             });
 
+            if (!response.ok) {
+                console.error("Webhook error status:", response.status);
+                throw new Error(`Webhook request failed with status ${response.status}`);
+            }
+
+            console.log("Form submitted successfully");
             setIsSuccess(true);
         } catch (error) {
             console.error('Error submitting form:', error);
-            alert('אירעה שגיאה בשליחת הטופס, אנא נסה שוב או צור קשר טלפוני.');
+            alert('אירעה שגיאה בשליחת הטופס. ייתכן שיש בעיית חיבור לשרת. ניתן ליצור קשר ישירות בווטסאפ או בטלפון.');
         } finally {
             setIsSubmitting(false);
         }

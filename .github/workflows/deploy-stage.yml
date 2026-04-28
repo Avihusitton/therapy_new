@@ -1,0 +1,52 @@
+name: Deploy Stage
+
+on:
+  push:
+    branches:
+      - stage
+    paths-ignore:
+      - "monitoring/**"
+  workflow_dispatch:
+
+jobs:
+  deploy-stage:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Validate Cloudflare secrets
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "Missing secret: CLOUDFLARE_API_TOKEN"
+            exit 1
+          fi
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "Missing secret: CLOUDFLARE_ACCOUNT_ID"
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Verify react-dom/server.edge
+        run: node -e "console.log(require.resolve('react-dom/server.edge'))"
+
+      - name: Next.js Build
+        run: npm run build
+
+      - name: Build OpenNext bundle
+        run: npx @opennextjs/cloudflare build
+
+      - name: Deploy to Cloudflare stage env
+        run: npx @opennextjs/cloudflare deploy --env stage

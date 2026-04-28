@@ -37,8 +37,22 @@ export default function FloatingAudioPlayer({ isOpen, onClose }) {
         setIsPlaying(true);
       }, 100);
       return () => clearTimeout(playTimeout);
+    } else if (!isOpen && audioRef.current) {
+      // מוודא שהסאונד נעצר כשהנגן נסגר
+      audioRef.current.pause();
+      setIsPlaying(false);
     }
   }, [isOpen]);
+
+  // Cleanup מוחלט בעת unmount של הקומפוננטה
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;

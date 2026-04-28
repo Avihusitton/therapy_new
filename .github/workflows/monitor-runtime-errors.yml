@@ -25,6 +25,10 @@ jobs:
 
           TARGETS=(
             "stage|https://therapy-new-stage.avihu-sitton.workers.dev"
+            "stage-home|https://therapy-new-stage.avihu-sitton.workers.dev/"
+            "stage-contact|https://therapy-new-stage.avihu-sitton.workers.dev/contact"
+            "stage-reviews|https://therapy-new-stage.avihu-sitton.workers.dev/api/reviews"
+            "stage-health|https://therapy-new-stage.avihu-sitton.workers.dev/api/health"
             "prod|https://avihusitton.com"
           )
 
@@ -35,16 +39,20 @@ jobs:
             body_file="$(mktemp)"
 
             status_code="$(curl -sS -D "$headers_file" -o "$body_file" -w "%{http_code}" "$url" || true)"
+            echo "Checked $url: Status $status_code"
 
             if [ "$status_code" != "200" ]; then
               cf_ray="$(awk 'BEGIN{IGNORECASE=1} /^CF-RAY:/ {gsub(/\r/,"",$2); print $2; exit}' "$headers_file")"
               request_id="$(awk 'BEGIN{IGNORECASE=1} /^x-request-id:/ {gsub(/\r/,"",$2); print $2; exit}' "$headers_file")"
               monitor_env="$(awk 'BEGIN{IGNORECASE=1} /^x-monitor-env:/ {gsub(/\r/,"",$2); print $2; exit}' "$headers_file")"
               ts="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-              body_snippet="$(head -c 300 "$body_file" | tr '\n' ' ' | sed 's/"/\\"/g')"
+              # Capture up to 2000 characters of the body to see if there's a stack trace
+              body_snippet="$(head -c 2000 "$body_file" | tr '\n' ' ' | sed 's/"/\\"/g')"
+              echo "Incident detected! Ray: $cf_ray"
+              COMMIT_SHA="${{ github.sha }}"
 
-              printf '{"timestamp":"%s","environment":"%s","url":"%s","status":%s,"cf_ray":"%s","request_id":"%s","monitor_env":"%s","body_snippet":"%s"}\n' \
-                "$ts" "$env_name" "$url" "$status_code" "${cf_ray:-missing}" "${request_id:-missing}" "${monitor_env:-missing}" "${body_snippet:-empty}" \
+              printf '{"timestamp":"%s","environment":"%s","url":"%s","status":%s,"cf_ray":"%s","request_id":"%s","commit_sha":"%s","body_snippet":"%s"}\n' \
+                "$ts" "$env_name" "$url" "$status_code" "${cf_ray:-missing}" "${request_id:-missing}" "${COMMIT_SHA:-unknown}" "$body_snippet" \
                 >> monitoring/incidents.ndjson
             fi
           done
@@ -62,3 +70,14 @@ jobs:
           git add monitoring/incidents.ndjson
           git commit -m "chore(monitor): append runtime incident log [skip ci]"
           git push origin HEAD:stage
+
+      - name: Surface incidents as GitHub warning
+        if: always()
+        run: |
+          count=$(grep -c '' monitoring/incidents.ndjson 2>/dev/null || echo 0)
+          if [ "$count" -gt "0" ]; then
+            echo "::warning::$count incident(s) detected — see monitoring/incidents.ndjson"
+            tail -5 monitoring/incidents.ndjson
+          else
+            echo "All endpoints healthy."
+          fi

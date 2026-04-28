@@ -1,11 +1,12 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
-import HeroSection from '@/components/HeroSection';
+const HeroSection = dynamic(() => import('@/components/HeroSection'), { ssr: false });
 import AboutSection from '@/components/AboutSection';
 import ServicesSection from '@/components/ServicesSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import ContactForm from '@/components/ContactForm';
+const TestimonialsSection = dynamic(() => import('@/components/TestimonialsSection'), { ssr: false });
+const ContactForm = dynamic(() => import('@/components/ContactForm'), { ssr: false });
 import { motion } from 'framer-motion';
 import { Tv, Mic, Handshake, Monitor, Phone } from 'lucide-react';
 
