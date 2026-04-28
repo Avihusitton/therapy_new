@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "monitoring/**"
   workflow_dispatch:
 
 jobs:
@@ -35,7 +37,13 @@ jobs:
           fi
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
+
+      - name: Verify react-dom/server.edge
+        run: node -e "console.log(require.resolve('react-dom/server.edge'))"
+
+      - name: Next.js Build
+        run: npm run build
 
       - name: Build OpenNext bundle
         run: npx @opennextjs/cloudflare build
