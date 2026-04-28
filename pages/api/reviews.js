@@ -2,7 +2,11 @@ export default async function handler(req, res) {
   const SHEET_URL =
     'https://docs.google.com/spreadsheets/d/e/2PACX-1vRuKXRoldf0arwdSvlNVUPwndJDlvzsUQTmHR1fjplSrjOoz2Wya-8UwNQAPjlamjopk8iXyACCJVa0/pub?output=csv';
   try {
-    const response = await fetch(SHEET_URL);
+    const response = await fetch(SHEET_URL, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
+    });
     if (!response.ok) {
       return res.status(502).json({ error: 'upstream error' });
     }
