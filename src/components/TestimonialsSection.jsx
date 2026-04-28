@@ -28,7 +28,7 @@ export default function TestimonialsSection() {
         }
     }, []);
 
-    const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRuKXRoldf0arwdSvlNVUPwndJDlvzsUQTmHR1fjplSrjOoz2Wya-8UwNQAPjlamjopk8iXyACCJVa0/pub?output=csv";
+    const SHEET_URL = "/api/reviews";
 
     useEffect(() => {
         const fetchReviews = async () => {

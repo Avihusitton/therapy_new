@@ -45,16 +45,14 @@ export default function Home() {
             <div className="bg-white border-y border-[#D3C1B1]/30 py-8">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 text-center items-center">
-                        <a 
-                            href="https://www.youtube.com/watch?v=FYTVnIEOAWM" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
+                        <button
+                            onClick={() => window.open('https://www.youtube.com/watch?v=FYTVnIEOAWM', '_blank', 'noopener,noreferrer')}
                             className="group flex flex-col items-center hover:scale-105 transition-transform cursor-pointer"
                         >
                             <Tv className="w-6 h-6 text-[#A2673E] mb-2 group-hover:text-[#8d5a36]" />
                             <span className="block text-[#A2673E] text-sm font-medium group-hover:underline">ראיון בטלוויזיה</span>
                             <span className="block text-[#6B6867] text-[11px] font-light mt-1">חזרה לשגרה ממילואים</span>
-                        </a>
+                        </button>
                         <button 
                             onClick={() => setShowPlayer(true)}
                             className="group flex flex-col items-center hover:scale-105 transition-transform cursor-pointer"
