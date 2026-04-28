@@ -10,8 +10,10 @@ export function AudioProvider({ children }) {
   const router = useRouter();
 
   useEffect(() => {
+    if (!router || !router.events) return;
+    
     const handleRouteChange = () => {
-      setShowPlayer(false); // סוגר את הנגן בכל ניווט
+      setShowPlayer(false);
     };
     
     router.events.on('routeChangeStart', handleRouteChange);
@@ -21,7 +23,7 @@ export function AudioProvider({ children }) {
       router.events.off('routeChangeStart', handleRouteChange);
       router.events.off('hashChangeStart', handleRouteChange);
     };
-  }, [router.events]);
+  }, [router]);
 
   return (
     <AudioContext.Provider value={{ showPlayer, setShowPlayer }}>
