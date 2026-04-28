@@ -1,0 +1,64 @@
+name: Monitor Runtime Errors
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout stage branch
+        uses: actions/checkout@v4
+        with:
+          ref: stage
+
+      - name: Probe production and stage endpoints
+        run: |
+          set -euo pipefail
+          mkdir -p monitoring
+          touch monitoring/incidents.ndjson
+
+          TARGETS=(
+            "stage|https://therapy-new-stage.avihu-sitton.workers.dev"
+            "prod|https://avihusitton.com"
+          )
+
+          for target in "${TARGETS[@]}"; do
+            env_name="${target%%|*}"
+            url="${target#*|}"
+            headers_file="$(mktemp)"
+            body_file="$(mktemp)"
+
+            status_code="$(curl -sS -D "$headers_file" -o "$body_file" -w "%{http_code}" "$url" || true)"
+
+            if [ "$status_code" != "200" ]; then
+              cf_ray="$(awk 'BEGIN{IGNORECASE=1} /^CF-RAY:/ {gsub(/\r/,"",$2); print $2; exit}' "$headers_file")"
+              request_id="$(awk 'BEGIN{IGNORECASE=1} /^x-request-id:/ {gsub(/\r/,"",$2); print $2; exit}' "$headers_file")"
+              monitor_env="$(awk 'BEGIN{IGNORECASE=1} /^x-monitor-env:/ {gsub(/\r/,"",$2); print $2; exit}' "$headers_file")"
+              ts="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+              body_snippet="$(head -c 300 "$body_file" | tr '\n' ' ' | sed 's/"/\\"/g')"
+
+              printf '{"timestamp":"%s","environment":"%s","url":"%s","status":%s,"cf_ray":"%s","request_id":"%s","monitor_env":"%s","body_snippet":"%s"}\n' \
+                "$ts" "$env_name" "$url" "$status_code" "${cf_ray:-missing}" "${request_id:-missing}" "${monitor_env:-missing}" "${body_snippet:-empty}" \
+                >> monitoring/incidents.ndjson
+            fi
+          done
+
+      - name: Commit incident log changes
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- monitoring/incidents.ndjson; then
+            echo "No incidents detected in this run."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add monitoring/incidents.ndjson
+          git commit -m "chore(monitor): append runtime incident log [skip ci]"
+          git push origin HEAD:stage
