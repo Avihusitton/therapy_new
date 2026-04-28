@@ -45,12 +45,12 @@ jobs:
               request_id="$(awk 'BEGIN{IGNORECASE=1} /^x-request-id:/ {gsub(/\r/,"",$2); print $2; exit}' "$headers_file")"
               monitor_env="$(awk 'BEGIN{IGNORECASE=1} /^x-monitor-env:/ {gsub(/\r/,"",$2); print $2; exit}' "$headers_file")"
               ts="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-              body_snippet="$(head -c 300 "$body_file" | tr '\n' ' ' | sed 's/"/\\"/g')"
-
+              # Capture up to 2000 characters of the body to see if there's a stack trace
+              body_snippet="$(head -c 2000 "$body_file" | tr '\n' ' ' | sed 's/"/\\"/g')"
               COMMIT_SHA="${{ github.sha }}"
 
               printf '{"timestamp":"%s","environment":"%s","url":"%s","status":%s,"cf_ray":"%s","request_id":"%s","commit_sha":"%s","body_snippet":"%s"}\n' \
-                "$ts" "$env_name" "$url" "$status_code" "${cf_ray:-missing}" "${request_id:-missing}" "${COMMIT_SHA:-unknown}" "${body_snippet:-empty}" \
+                "$ts" "$env_name" "$url" "$status_code" "${cf_ray:-missing}" "${request_id:-missing}" "${COMMIT_SHA:-unknown}" "$body_snippet" \
                 >> monitoring/incidents.ndjson
             fi
           done
