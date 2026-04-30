@@ -1,9 +1,13 @@
 #!/bin/sh
-echo ""
-echo "📝 האם השינוי הזה דורש עדכון ב-ARCHITECTURE.md? (y/n)"
-read answer </dev/tty
-if [ "$answer" = "y" ]; then
-  echo "⚠️  עדכן את ARCHITECTURE.md ואז:"
-  echo "   git add ARCHITECTURE.md"
-  echo "   git commit --amend --no-edit"
+. "$(dirname "$0")/_/husky.sh"
+
+if [ -t 0 ] || [ -c /dev/tty ]; then
+  echo ""
+  echo "📝 האם השינוי הזה דורש עדכון ב-ARCHITECTURE.md? (y/n)"
+  read answer </dev/tty || answer="n"
+  if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
+    echo "⚠️  עדכן את ARCHITECTURE.md ואז:"
+    echo "   git add ARCHITECTURE.md"
+    echo "   git commit --amend --no-edit"
+  fi
 fi
