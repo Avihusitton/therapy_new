@@ -350,5 +350,4 @@ wrangler	^4.84.1	תואם ל-compatibility_date 2026-04-27
 נכתב: 28.04.2026 | עודכן: 28.04.2026 — ניתוק Cloudflare Pages Integration
 t e s t  
  t e s t  
- t e s t  
  
