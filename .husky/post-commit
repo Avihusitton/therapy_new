@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -t 1 ]; then
+  printf "האם השינוי דורש עדכון ב-ARCHITECTURE.md? (y/n): "
+  read answer </dev/tty
+  if [ "" = "y" ]; then
+    echo "עדכן ARCHITECTURE.md ואז: git add ARCHITECTURE.md && git commit --amend --no-edit"
+  fi
+fi

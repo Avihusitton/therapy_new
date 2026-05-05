@@ -347,4 +347,72 @@ next	15.5.15	תואם ל-OpenNext 1.19+
 wrangler	^4.84.1	תואם ל-compatibility_date 2026-04-27
 ⚠️ אל תוריד גרסאות אלו — שדרוג React 18→19 היה הכרחי לתמיכת Edge SSR.
 
+## 11. Branch Strategy & Deploy Policy
+
+| Branch | Environment | Purpose |
+|--------|-------------|---------|
+| `stage` | therapy-new-stage.avihu-sitton.workers.dev | כל עבודה שוטפת |
+| `main` | avihusitton.com (Production) | רק אחרי אישור מפורש |
+
+### כללים
+- כל שינוי — קטן או גדול — הולך קודם ל-`stage`.
+- מעבר ל-`main` מתבצע רק אחרי:
+  1. Stage עובד תקין ונבדק ידנית
+  2. הנחיה מפורשת וברורה מהבעלים
+- אין push ישיר ל-`main` בשום מצב — גם לא לתיקון קטן.
+
+## 12. Production Incident Runbook
+
+### סימנים לתקלה
+- scriptVersion.id לא השתנה אחרי deploy → --env חסר
+- GitHub Actions ירוק אבל האתר לא מתעדכן → בדוק --env
+- TypeError: Cannot read properties of undefined → browser-only API ב-SSR
+- npm ci נכשל → נסה --legacy-peer-deps
+- ביקורות נעלמו → בדוק ש-Google Sheet עדיין Published to web
+
+### סדר פעולות כשיש תקלה ב-Stage
+1. פתח Cloudflare Dashboard → Workers → therapy-new-stage
+2. בדוק scriptVersion.id — השתנה?
+3. בדוק /api/health → status: ok?
+4. פתח Cloudflare Logs → חפש outcome: "exception"
+5. אם לא מוצא סיבה — אל תגע ב-main
+
+### סדר פעולות כשיש תקלה ב-Production
+1. תעד מה השתנה לאחרונה
+2. בדוק Cloudflare Logs ב-therapy-new
+3. Rollback = push של commit קודם ל-main — רק אחרי הנחיה מפורשת מהבעלים
+
+## 13. כללים לשימוש בספריות
+
+### ספריות Legacy — אל תוסיף שימושים חדשים
+| ספרייה | תחליף מועדף |
+|--------|-------------|
+| `moment` | `date-fns` |
+| `react-hot-toast` | `sonner` |
+
+### ספריות Browser-Only — חובה dynamic import
+אל תשתמש ישירות ב-import רגיל עבור:
+`react-quill`, `three`, `html2canvas`, `jspdf`, `canvas-confetti`, `react-leaflet`
+
+```javascript
+// ✅ תמיד כך
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+```
+
+### לפני הוספת ספרייה חדשה
+- עצור ושאל את הבעלים
+- בדוק Edge runtime compatibility
+- בדוק אם צריך להוסיף domain ל-CSP ב-middleware.js
+
+## 14. טופס יצירת קשר
+
+⚠️ זו נקודת הכשל הרגישה ביותר מבחינת הבעלים — אל תיגע בלי אישור מפורש.
+
+יש לתעד כאן את הפרטים הבאים ברגע שידועים:
+- לאן הנתונים של הטופס נשלחים (email / שירות חיצוני)
+- האם יש validation ב-client וב-server
+- מה קורה כשהשליחה נכשלת
+
+עד שהתיעוד מלא — כל שינוי בטופס דורש הנחיה מפורשת מהבעלים.
+
 נכתב: 28.04.2026 | עודכן: 28.04.2026 — ניתוק Cloudflare Pages Integration

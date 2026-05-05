@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { motion, useAnimationControls } from 'framer-motion';
-import { Star, Quote, Loader2, User, CheckCircle2 } from 'lucide-react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { motion } from 'framer-motion';
+import { Star, Quote, Loader2, User, ChevronRight, ChevronLeft, CheckCircle2 } from 'lucide-react';
 
 // לוגו גוגל מקורי ב-SVG כדי להבטיח טעינה תקינה
 const GoogleLogo = () => (
@@ -12,53 +12,26 @@ const GoogleLogo = () => (
     </svg>
 );
 
-// Component for a single review card (reused)
-const ReviewCard = ({ review }) => (
-    <motion.div
-        className="w-[320px] sm:w-[380px] bg-white dark:bg-card p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-border/20 flex flex-col h-full shrink-0 select-none mx-3"
-        role="group"
-        aria-roledescription="ביקורת"
-    >
-        <Quote className="absolute top-6 left-6 w-10 h-10 text-brand-border opacity-20" aria-hidden="true" />
-        
-        <div className="flex gap-1 mb-5 text-[#FFD700]" aria-label={`דירוג: ${review.rating} מתוך 5 כוכבים`}>
-            {[...Array(review.rating)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-current" aria-hidden="true" />
-            ))}
-        </div>
-
-        <p className="text-brand-text text-base leading-relaxed mb-8 text-right italic whitespace-pre-line flex-grow">
-            "{review.content}"
-        </p>
-        
-        <div className="flex items-center gap-4 pt-6 border-t border-brand-secondary">
-            <div className="w-10 h-10 rounded-full bg-brand-secondary flex items-center justify-center border border-brand-border/30">
-                <User className="w-5 h-5 text-brand-border" aria-hidden="true" />
-            </div>
-            <div className="text-right">
-                <h4 className="text-brand-text font-semibold text-base">
-                    {formatReviewerName(review.author)}
-                </h4>
-                <p className="text-xs text-brand-primary font-medium">{review.date}</p>
-            </div>
-        </div>
-    </motion.div>
-);
-
-const formatReviewerName = (fullName) => {
-    if (!fullName || fullName === "מטופל/ת" || fullName === "מטופל/ת בקליניקה") return "א.פ";
-    const parts = fullName.trim().split(" ");
-    if (parts.length === 1) return parts[0][0] + ".";
-    return parts.map(part => part[0] + ".").join("");
-};
+const VISIBLE_DESKTOP = 3;
+const VISIBLE_MOBILE = 1;
+const AUTO_ADVANCE_MS = 4000;
 
 export default function TestimonialsSection() {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const controls = useAnimationControls();
-    const containerRef = useRef(null);
-    const [cardWidth, setCardWidth] = useState(344); // 320 + 24 margin
+    const autoTimerRef = useRef(null);
+
+    // Determine how many cards to show based on screen width
+    const [cardsToShow, setCardsToShow] = useState(VISIBLE_DESKTOP);
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const update = () => setCardsToShow(window.innerWidth < 640 ? VISIBLE_MOBILE : VISIBLE_DESKTOP);
+        update();
+        window.addEventListener('resize', update);
+        return () => window.removeEventListener('resize', update);
+    }, []);
 
     const SHEET_URL = "/api/reviews";
 
@@ -133,40 +106,70 @@ export default function TestimonialsSection() {
         fetchReviews();
     }, []);
 
-    // Update card width based on screen size
+    // Auto-advance timer
     useEffect(() => {
-        if (typeof window === 'undefined') return;
-        const updateWidth = () => {
-            setCardWidth(window.innerWidth < 640 ? 320 + 24 : 380 + 24);
-        };
-        updateWidth();
-        window.addEventListener('resize', updateWidth);
-        return () => window.removeEventListener('resize', updateWidth);
-    }, []);
+        if (reviews.length <= cardsToShow) return;
+        if (isPaused) return;
+        
+        autoTimerRef.current = setInterval(() => {
+            setActiveIndex(prev => (prev + 1) % reviews.length);
+        }, AUTO_ADVANCE_MS);
+        
+        return () => clearInterval(autoTimerRef.current);
+    }, [reviews.length, cardsToShow, isPaused]);
 
-    // Infinite scrolling animation: move left by the total width of one full set
-    useEffect(() => {
-        if (reviews.length === 0 || isPaused) {
-            controls.stop();
-            return;
+    // Build the displayed cards: starting from activeIndex, wrap around
+    const displayedReviews = reviews.length === 0 ? [] : (() => {
+        const count = Math.min(cardsToShow, reviews.length);
+        const result = [];
+        for (let i = 0; i < count; i++) {
+            result.push(reviews[(activeIndex + i) % reviews.length]);
         }
+        return result;
+    })();
 
-        const totalWidth = reviews.length * cardWidth;
-        const duration = totalWidth / 40; // pixels per second speed
+    const canGoPrev = reviews.length > cardsToShow;
+    const canGoNext = reviews.length > cardsToShow;
 
-        controls.start({
-            x: -totalWidth,
-            transition: {
-                duration: duration,
-                ease: "linear",
-                repeat: Infinity,
-                repeatType: "loop",
-            },
-        });
-    }, [reviews.length, cardWidth, isPaused, controls]);
+    const goNext = useCallback(() => {
+        if (!canGoNext) return;
+        setIsPaused(true);
+        clearInterval(autoTimerRef.current);
+        setActiveIndex(prev => (prev + 1) % reviews.length);
+        autoTimerRef.current = setInterval(() => {
+            setActiveIndex(prev => (prev + 1) % reviews.length);
+        }, AUTO_ADVANCE_MS);
+        setIsPaused(false);
+    }, [canGoNext, reviews.length]);
 
-    // Triplicate the reviews for seamless infinite loop
-    const duplicatedReviews = [...reviews, ...reviews, ...reviews];
+    const goPrev = useCallback(() => {
+        if (!canGoPrev) return;
+        setIsPaused(true);
+        clearInterval(autoTimerRef.current);
+        setActiveIndex(prev => (prev - 1 + reviews.length) % reviews.length);
+        autoTimerRef.current = setInterval(() => {
+            setActiveIndex(prev => (prev + 1) % reviews.length);
+        }, AUTO_ADVANCE_MS);
+        setIsPaused(false);
+    }, [canGoPrev, reviews.length]);
+
+    const formatReviewerName = (fullName) => {
+        if (!fullName || fullName === "מטופל/ת" || fullName === "מטופל/ת בקליניקה") return "א.פ";
+        const parts = fullName.trim().split(" ");
+        if (parts.length === 1) return parts[0][0] + ".";
+        return parts.map(part => part[0] + ".").join("");
+    };
+
+    // Pause on hover/touch
+    const pauseAuto = () => {
+        setIsPaused(true);
+        clearInterval(autoTimerRef.current);
+    };
+    const resumeAuto = () => {
+        if (reviews.length <= cardsToShow) return;
+        clearInterval(autoTimerRef.current);
+        setIsPaused(false);
+    };
 
     return (
         <section className="py-20 sm:py-28 bg-brand-secondary relative overflow-hidden w-full transition-colors duration-300">
@@ -197,26 +200,73 @@ export default function TestimonialsSection() {
                         כרגע אין ביקורות זמינות להצגה. אפשר לנסות שוב בעוד רגע.
                     </div>
                 ) : (
-                    <div 
-                        className="relative overflow-hidden"
-                        onMouseEnter={() => setIsPaused(true)}
-                        onMouseLeave={() => setIsPaused(false)}
-                        ref={containerRef}
+                    <div
+                        className="relative"
+                        onMouseEnter={pauseAuto}
+                        onMouseLeave={resumeAuto}
+                        onTouchStart={pauseAuto}
+                        onTouchEnd={() => {
+                            setTimeout(resumeAuto, 500);
+                        }}
                     >
-                        <motion.div
-                            className="flex"
-                            animate={controls}
-                            initial={{ x: 0 }}
-                            style={{ direction: 'ltr' }}
-                        >
-                            {duplicatedReviews.map((review, index) => (
-                                <ReviewCard key={`${review.id}-${index}`} review={review} />
-                            ))}
-                        </motion.div>
+                        {/* Cards container */}
+                        <div className="flex gap-6 justify-center" style={{ direction: 'rtl' }}>
+                            {displayedReviews.map((review, i) => (
+                                <motion.div
+                                    key={`${review.id}-${activeIndex}-${i}`}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.25 }}
+                                        className="w-[85%] sm:w-[calc(33.333%-16px)] max-w-md bg-white dark:bg-card p-6 sm:p-10 rounded-3xl shadow-sm border border-brand-border/20 flex flex-col h-full relative shrink-0"
+                                        role="group"
+                                        aria-roledescription="ביקורת"
+                                    >
+                                        <Quote className="absolute top-6 left-6 w-10 h-10 text-brand-border opacity-20" aria-hidden="true" />
+                                        
+                                        <div className="flex gap-1 mb-5 text-[#FFD700]" aria-label={`דירוג: ${review.rating} מתוך 5 כוכבים`}>
+                                            {[...Array(review.rating)].map((_, i) => (
+                                                <Star key={i} className="w-4 h-4 fill-current" aria-hidden="true" />
+                                            ))}
+                                        </div>
 
-                        {/* Gradient overlays on edges for smooth fade effect (direction-aware: for RTL page with LTR scroll) */}
-                        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-transparent to-brand-secondary pointer-events-none z-10" />
-                        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-transparent to-brand-secondary pointer-events-none z-10" />
+                                        <p className="text-brand-text text-base sm:text-lg leading-relaxed mb-8 text-right italic whitespace-pre-line flex-grow">
+                                            "{review.content}"
+                                        </p>
+                                        
+                                        <div className="flex items-center gap-4 pt-6 border-t border-brand-secondary">
+                                            <div className="w-10 h-10 rounded-full bg-brand-secondary flex items-center justify-center border border-brand-border/30">
+                                                <User className="w-5 h-5 text-brand-border" aria-hidden="true" />
+                                            </div>
+                                            <div className="text-right">
+                                                <h4 className="text-brand-text font-semibold text-base">
+                                                    {formatReviewerName(review.author)}
+                                                </h4>
+                                                <p className="text-xs text-brand-primary font-medium">{review.date}</p>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                        </div>
+
+                        {/* Navigation Buttons */}
+                        {reviews.length > cardsToShow && (
+                            <div className="flex justify-center gap-4 mt-12">
+                                <button 
+                                    onClick={goNext}
+                                    className="p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all hover:scale-110"
+                                    aria-label="גלול ימינה"
+                                >
+                                    <ChevronRight className="w-6 h-6" aria-hidden="true" />
+                                </button>
+                                <button 
+                                    onClick={goPrev}
+                                    className="p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all hover:scale-110"
+                                    aria-label="גלול שמאלה"
+                                >
+                                    <ChevronLeft className="w-6 h-6" aria-hidden="true" />
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
 
