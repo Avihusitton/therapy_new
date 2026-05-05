@@ -1,33 +1,44 @@
-# .clinerules — AvihuSitton.com
+# CLINE RULES FOR THERAPY-NEW REPO
 
-## Before every change — run these 3 checks internally
+## 1. Project Context & Git Rules
+- Stack: Next.js (Pages Router), Cloudflare Workers, OpenNext.
+- For deep technical context, deployment rules, and known issues, MUST READ `ARCHITECTURE.md`. Do not guess the architecture.
+- GIT RULE: NEVER commit or work directly on the `main` branch. Your default working branch is ALWAYS `stage`. If you are on `main`, switch to `stage` IMMEDIATELY before reading or editing files.
 
-### QA Hat
-- What could break as a result of this change?
-- Does this affect any other pages or components beyond the one requested?
-- Are there links, forms, or interactive elements that need manual testing after the change?
+## 2. AUTO-TRIAGE & CATEGORY RULES (Crucial Step!)
+When the user gives you a task, FIRST classify the issue into one of these 3 categories and apply the specific rules:
 
-### Frontend / UX Hat
-- Is the change visually consistent with the rest of the site (colors, fonts, spacing)?
-- Does the layout work on both mobile and desktop?
-- Is RTL (Hebrew text direction) preserved correctly?
+* **Category A: UI / Design / Layout Issue**
+  - Focus ONLY on Tailwind classes and UI components.
+  - DO NOT change business logic.
+  - Preserve RTL layout and existing design language.
+  
+* **Category B: Functional / Logic Bug**
+  - Locate the exact component or API route.
+  - Explain the gap between actual and expected behavior.
+  - Fix ONLY the broken logic with minimal changes.
 
-### Content / Brand Hat
-- Does any new text match the tone of the site (warm, personal, professional)?
-- Is there any placeholder text (e.g. "Lorem ipsum") left behind?
+* **Category C: Deployment / Cloudflare / Stage Issue**
+  - IMMEDIATELY read Section 7 in `ARCHITECTURE.md` (Deployment Crisis).
+  - Check `wrangler.jsonc`, SSR guards (window/document), and environment flags.
+  - Do not change code before identifying if it's an edge runtime incompatibility.
 
-## Iron Rules
-- Never delete existing code before understanding its purpose. If unsure — ask.
-- Never change more than what was requested. If you spot another issue — report it, do not fix it without approval.
-- After every change — briefly state: what was changed, and what should be tested manually.
-- If the request is unclear — ask one focused question before starting.
-- Before any infrastructure change (deploy, dependencies, API routes, SSR, CSP) — read ARCHITECTURE.md first.
+## 3. Golden Workflow (Mandatory on every task)
+After classifying the task, execute these phases in order:
+1. **Audit**: Read only the relevant files. Verify your current branch.
+2. **Diagnose**: State the Category (A, B, or C) and explain the root cause clearly in the chat.
+3. **Fix**: Make the smallest safe change. One task = one file. Edit file by file.
+4. **Validate**: Prove your fix. 
 
-## Red Flags — Stop and ask before doing
-- Deleting any file
-- Changing navigation structure
-- Changing or touching any form (contact form)
-- Any change touching SEO (meta tags, H1 headings, URL structure)
-- Adding a new external library
-- Any change to wrangler.jsonc, next.config.js, or CI/CD workflows
-- Any new browser API usage — check SSR compatibility in ARCHITECTURE.md first
+## 4. Strict Development Rules
+- DO NOT scan the entire project at the start. Only read directly relevant files.
+- DO NOT upgrade versions of: `react`, `react-dom`, `next`, `@opennextjs/cloudflare`.
+- ANY browser-only API (window, document, AudioContext) MUST have a SSR guard: `if (typeof window === 'undefined') return;`
+- ANY deployment must include the environment flag: `--env stage` or `--env prod`.
+
+## 5. Output Contract
+At the end of every file change, you must report in this format:
+- Category Identified: [UI / Logic / Deploy]
+- File Edited: [path]
+- Root Cause / Reason: [brief reason]
+- Status: [Done / Needs verification]

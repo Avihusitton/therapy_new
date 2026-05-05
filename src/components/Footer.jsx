@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="max-w-6xl mx-auto px-6 text-center">
                 <div className="mb-10 sm:mb-12">
                     <h2 className="text-2xl sm:text-3xl font-light mb-2">אביהו סיטון</h2>
-                    <p className="text-sm text-[#B5A89D] dark:text-brand-text/60 font-light mb-6">מנחה קבוצות, סדנאות ופסיכותרפיסט בשיטת "דרך"</p>
+                    <p className="text-sm text-[#B5A89D] dark:text-brand-text/60 font-light mb-6">פסיכותרפיסט | קליניקה ברתמים ובזום</p>
                     <div className="w-24 h-px bg-brand-border/30 mx-auto mb-8"></div>
                     
                     <nav aria-label="ניווט תחתון" className="flex flex-wrap justify-center gap-6 mb-10 text-sm font-light text-brand-secondary/80 dark:text-brand-text/80">

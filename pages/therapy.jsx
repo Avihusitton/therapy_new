@@ -54,7 +54,7 @@ export default function Therapy() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">לחזור להיות הגיבור של הסיפור שלך</h1>
+                        <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">לזהות את הדפוסים שמחזיקים אותך במקום — ולבחור אחרת</h1>
                         <div className="w-32 h-px bg-[#D3C1B1] mx-auto mb-12"></div>
                         
                         <div className="text-lg text-[#4C4A49] leading-relaxed space-y-8 mb-16 font-light">
@@ -159,6 +159,13 @@ export default function Therapy() {
                                 ))}
                             </Accordion>
                         </div>
+
+                        <section className="mt-20 py-16 bg-[#FDF8F0] rounded-2xl">
+                            <div className="max-w-3xl mx-auto px-6 text-center">
+                                <h2 className="text-3xl text-[#4C4A49] mb-10 font-light">מה אנשים אומרים</h2>
+                                <div className="w-24 h-px bg-[#D3C1B1] mx-auto mb-10"></div>
+                            </div>
+                        </section>
 
                         <div className="mt-24 p-10 bg-[#4C4A49] text-white rounded-2xl text-center">
                             <h3 className="text-2xl mb-6 font-light">מרגישים שזה הזמן הנכון להתחיל?</h3>

@@ -113,6 +113,13 @@ export default function Couples() {
                             </Accordion>
                         </div>
 
+                        <section className="mt-20 py-16 bg-[#FDF8F0] rounded-2xl">
+                            <div className="max-w-3xl mx-auto px-6 text-center">
+                                <h2 className="text-3xl text-[#4C4A49] mb-10 font-light">מה אנשים אומרים</h2>
+                                <div className="w-24 h-px bg-[#D3C1B1] mx-auto mb-10"></div>
+                            </div>
+                        </section>
+
                         <div className="mt-24 p-10 bg-[#4C4A49] text-white rounded-2xl text-center">
                             <h3 className="text-2xl mb-6 font-light">מוכנים להחזיר את הזרימה לזוגיות?</h3>
                             <p className="mb-8 text-[#D3C1B1] font-light">אני מזמין אתכם לשיחה משותפת, שבה נניח את הבסיס למסע הזוגי החדש שלכם.</p>

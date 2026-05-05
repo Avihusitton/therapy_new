@@ -66,12 +66,11 @@ export default function HeroSection() {
                             </p>
 
                             <h2 className="text-lg sm:text-2xl text-brand-text font-light mb-3 leading-relaxed px-2 max-w-2xl mx-auto">
-                                מרחב לחזור לעצמך — אחרי מילואים, בתוך הזוגיות, או בצומת דרכים
+                                כשמשהו בפנים מבקש לזוז
                             </h2>
 
                             <p className="text-sm sm:text-base text-brand-text/80 font-light leading-relaxed max-w-xl mx-auto">
-                                סדנאות וקבוצות למילואימניקים בחזרה לשגרה, מסעות זוגיים וטיפול אישי —
-                                מתוך אמונה שכל אחד יכול להיות המטפל הטוב ביותר של עצמו.
+                                יש אנשים שמגיעים אחרי משבר. יש שמגיעים כשהכל בסדר — אבל משהו בפנים אומר: לא ממש. אם הגעת לכאן, כנראה שיש בך משהו שמחפש מרחב.
                             </p>
 
                             <meta itemProp="url" content="https://avihusitton.com" />

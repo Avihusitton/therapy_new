@@ -76,6 +76,19 @@ export default function About() {
                 </div>
             </section>
 
+            {/* Why I Chose This Section */}
+            <section className="py-16 bg-[#FDF8F0]">
+                <div className="max-w-4xl mx-auto px-6">
+                    <div className="text-center mb-8">
+                        <h2 className="text-3xl sm:text-4xl text-[#4C4A49] font-light mb-6">למה בחרתי בזה</h2>
+                        <div className="w-24 h-px bg-[#D3C1B1] mx-auto"></div>
+                    </div>
+                    <div className="text-lg text-[#6B6867] font-light leading-relaxed text-right">
+                        <p>[PLACEHOLDER — אביהו ימלא כאן סיפור אישי קצר]</p>
+                    </div>
+                </div>
+            </section>
+
             {/* How I Work Section */}
             <section className="py-20 bg-[#FDF8F0]">
                 <div className="max-w-4xl mx-auto px-6">
@@ -230,7 +243,7 @@ export default function About() {
                     <MessageCircle className="text-[#A2673E] mx-auto mb-6" size={40} />
                     <h2 className="text-3xl sm:text-4xl text-[#4C4A49] font-light mb-8">נשמע לכם שהגעתם למקום הנכון?</h2>
                     <p className="text-xl text-[#6B6867] font-light leading-relaxed mb-12">
-                        אני מזמין אתכם לשיחה פתוחה, בגובה העיניים, שבה נבדוק יחד איך אפשר להתחיל את המסע שלכם. בואו נדבר, בכיף.
+                        אני מזמין אתכם לשיחה פתוחה, בגובה העיניים, שבה נבדוק יחד איך אפשר להתחיל את המסע שלכם. בואו נדבר.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a 
