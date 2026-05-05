@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote, Loader2, User, ChevronRight, ChevronLeft, CheckCircle2 } from 'lucide-react';
 
@@ -12,27 +12,25 @@ const GoogleLogo = () => (
     </svg>
 );
 
+const VISIBLE_DESKTOP = 3;
+const VISIBLE_MOBILE = 1;
+const AUTO_ADVANCE_MS = 4000;
+
 export default function TestimonialsSection() {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [windowWidth, setWindowWidth] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const autoTimerRef = useRef(null);
 
-    const trackRef = useRef(null);
-    const scrollPosRef = useRef(0);
-    const rafRef = useRef(null);
-    const isDraggingRef = useRef(false);
-    const dragStartXRef = useRef(0);
-    const dragStartScrollRef = useRef(0);
-    const pauseTimeoutRef = useRef(null);
-
+    // Determine how many cards to show based on screen width
+    const [cardsToShow, setCardsToShow] = useState(VISIBLE_DESKTOP);
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setWindowWidth(window.innerWidth);
-            const handleResize = () => setWindowWidth(window.innerWidth);
-            window.addEventListener('resize', handleResize);
-            return () => window.removeEventListener('resize', handleResize);
-        }
+        if (typeof window === 'undefined') return;
+        const update = () => setCardsToShow(window.innerWidth < 640 ? VISIBLE_MOBILE : VISIBLE_DESKTOP);
+        update();
+        window.addEventListener('resize', update);
+        return () => window.removeEventListener('resize', update);
     }, []);
 
     const SHEET_URL = "/api/reviews";
@@ -108,76 +106,69 @@ export default function TestimonialsSection() {
         fetchReviews();
     }, []);
 
-    // Duplicate reviews for seamless infinite loop
-    const duplicatedReviews = reviews.length > 0 ? [...reviews, ...reviews] : [];
-
-    // RAF-based continuous smooth scroll
+    // Auto-advance timer
     useEffect(() => {
-        if (reviews.length <= 1) return;
+        if (reviews.length <= cardsToShow) return;
+        if (isPaused) return;
+        
+        autoTimerRef.current = setInterval(() => {
+            setActiveIndex(prev => (prev + 1) % reviews.length);
+        }, AUTO_ADVANCE_MS);
+        
+        return () => clearInterval(autoTimerRef.current);
+    }, [reviews.length, cardsToShow, isPaused]);
 
-        const SPEED = 0.5; // pixels per frame ≈ 30px/sec
-
-        const animate = () => {
-            const track = trackRef.current;
-            if (!track) {
-                rafRef.current = requestAnimationFrame(animate);
-                return;
-            }
-
-            if (!isPaused && !isDraggingRef.current) {
-                scrollPosRef.current -= SPEED;
-                const halfWidth = track.scrollWidth / 2;
-                if (scrollPosRef.current <= -halfWidth) {
-                    scrollPosRef.current += halfWidth;
-                }
-            }
-
-            track.style.transform = `translateX(${scrollPosRef.current}px)`;
-            rafRef.current = requestAnimationFrame(animate);
-        };
-
-        rafRef.current = requestAnimationFrame(animate);
-        return () => {
-            if (rafRef.current) cancelAnimationFrame(rafRef.current);
-        };
-    }, [reviews.length, isPaused]);
-
-    // Set initial scroll position when duplicated reviews are ready
-    useEffect(() => {
-        scrollPosRef.current = 0;
-    }, [reviews.length]);
-
-    // Pointer events for drag/swipe
-    const handlePointerDown = (e) => {
-        isDraggingRef.current = true;
-        dragStartXRef.current = e.clientX;
-        dragStartScrollRef.current = scrollPosRef.current;
-        setIsPaused(true);
-        clearTimeout(pauseTimeoutRef.current);
-        // Capture pointer to track movement outside the element
-        if (e.target.setPointerCapture) {
-            e.target.setPointerCapture(e.pointerId);
+    // Build the displayed cards: starting from activeIndex, wrap around
+    const displayedReviews = reviews.length === 0 ? [] : (() => {
+        const count = Math.min(cardsToShow, reviews.length);
+        const result = [];
+        for (let i = 0; i < count; i++) {
+            result.push(reviews[(activeIndex + i) % reviews.length]);
         }
-    };
+        return result;
+    })();
 
-    const handlePointerMove = (e) => {
-        if (!isDraggingRef.current) return;
-        const dx = e.clientX - dragStartXRef.current;
-        scrollPosRef.current = dragStartScrollRef.current + dx;
-    };
+    const canGoPrev = reviews.length > cardsToShow;
+    const canGoNext = reviews.length > cardsToShow;
 
-    const handlePointerUp = () => {
-        if (!isDraggingRef.current) return;
-        isDraggingRef.current = false;
-        // Resume auto-scroll after a delay
-        pauseTimeoutRef.current = setTimeout(() => setIsPaused(false), 4000);
-    };
+    const goNext = useCallback(() => {
+        if (!canGoNext) return;
+        setIsPaused(true);
+        clearInterval(autoTimerRef.current);
+        setActiveIndex(prev => (prev + 1) % reviews.length);
+        autoTimerRef.current = setInterval(() => {
+            setActiveIndex(prev => (prev + 1) % reviews.length);
+        }, AUTO_ADVANCE_MS);
+        setIsPaused(false);
+    }, [canGoNext, reviews.length]);
+
+    const goPrev = useCallback(() => {
+        if (!canGoPrev) return;
+        setIsPaused(true);
+        clearInterval(autoTimerRef.current);
+        setActiveIndex(prev => (prev - 1 + reviews.length) % reviews.length);
+        autoTimerRef.current = setInterval(() => {
+            setActiveIndex(prev => (prev + 1) % reviews.length);
+        }, AUTO_ADVANCE_MS);
+        setIsPaused(false);
+    }, [canGoPrev, reviews.length]);
 
     const formatReviewerName = (fullName) => {
         if (!fullName || fullName === "מטופל/ת" || fullName === "מטופל/ת בקליניקה") return "א.פ";
         const parts = fullName.trim().split(" ");
         if (parts.length === 1) return parts[0][0] + ".";
         return parts.map(part => part[0] + ".").join("");
+    };
+
+    // Pause on hover/touch
+    const pauseAuto = () => {
+        setIsPaused(true);
+        clearInterval(autoTimerRef.current);
+    };
+    const resumeAuto = () => {
+        if (reviews.length <= cardsToShow) return;
+        clearInterval(autoTimerRef.current);
+        setIsPaused(false);
     };
 
     return (
@@ -211,30 +202,22 @@ export default function TestimonialsSection() {
                 ) : (
                     <div
                         className="relative"
-                        onMouseEnter={() => setIsPaused(true)}
-                        onMouseLeave={() => setIsPaused(false)}
-                        onTouchStart={() => {
-                            setIsPaused(true);
-                            clearTimeout(pauseTimeoutRef.current);
-                        }}
+                        onMouseEnter={pauseAuto}
+                        onMouseLeave={resumeAuto}
+                        onTouchStart={pauseAuto}
                         onTouchEnd={() => {
-                            pauseTimeoutRef.current = setTimeout(() => setIsPaused(false), 4000);
+                            setTimeout(resumeAuto, 500);
                         }}
                     >
-                        <div className="overflow-hidden">
-                            <div
-                                ref={trackRef}
-                                className="flex gap-6 cursor-grab active:cursor-grabbing select-none"
-                                onPointerDown={handlePointerDown}
-                                onPointerMove={handlePointerMove}
-                                onPointerUp={handlePointerUp}
-                                onPointerCancel={handlePointerUp}
-                                style={{ willChange: 'transform' }}
-                            >
-                                {duplicatedReviews.map((review, index) => (
-                                    <motion.div
-                                        key={`${review.id}-${index < reviews.length ? 'a' : 'b'}`}
-                                        className="w-[85%] sm:w-[calc(40%-16px)] bg-white dark:bg-card p-6 sm:p-10 rounded-3xl shadow-sm border border-brand-border/20 flex flex-col h-full relative shrink-0"
+                        {/* Cards container */}
+                        <div className="flex gap-6 justify-center" style={{ direction: 'rtl' }}>
+                            {displayedReviews.map((review, i) => (
+                                <motion.div
+                                    key={`${review.id}-${activeIndex}-${i}`}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.25 }}
+                                        className="w-[85%] sm:w-[calc(33.333%-16px)] max-w-md bg-white dark:bg-card p-6 sm:p-10 rounded-3xl shadow-sm border border-brand-border/20 flex flex-col h-full relative shrink-0"
                                         role="group"
                                         aria-roledescription="ביקורת"
                                     >
@@ -263,36 +246,27 @@ export default function TestimonialsSection() {
                                         </div>
                                     </motion.div>
                                 ))}
-                            </div>
                         </div>
 
                         {/* Navigation Buttons */}
-                        <div className="flex justify-center gap-4 mt-12">
-                            <button 
-                                onClick={() => {
-                                    scrollPosRef.current += 350;
-                                    setIsPaused(true);
-                                    clearTimeout(pauseTimeoutRef.current);
-                                    pauseTimeoutRef.current = setTimeout(() => setIsPaused(false), 4000);
-                                }}
-                                className="p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all hover:scale-110"
-                                aria-label="גלול ימינה"
-                            >
-                                <ChevronRight className="w-6 h-6" aria-hidden="true" />
-                            </button>
-                            <button 
-                                onClick={() => {
-                                    scrollPosRef.current -= 350;
-                                    setIsPaused(true);
-                                    clearTimeout(pauseTimeoutRef.current);
-                                    pauseTimeoutRef.current = setTimeout(() => setIsPaused(false), 4000);
-                                }}
-                                className="p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all hover:scale-110"
-                                aria-label="גלול שמאלה"
-                            >
-                                <ChevronLeft className="w-6 h-6" aria-hidden="true" />
-                            </button>
-                        </div>
+                        {reviews.length > cardsToShow && (
+                            <div className="flex justify-center gap-4 mt-12">
+                                <button 
+                                    onClick={goNext}
+                                    className="p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all hover:scale-110"
+                                    aria-label="גלול ימינה"
+                                >
+                                    <ChevronRight className="w-6 h-6" aria-hidden="true" />
+                                </button>
+                                <button 
+                                    onClick={goPrev}
+                                    className="p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all hover:scale-110"
+                                    aria-label="גלול שמאלה"
+                                >
+                                    <ChevronLeft className="w-6 h-6" aria-hidden="true" />
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
 
