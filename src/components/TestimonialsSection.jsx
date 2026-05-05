@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Star, Quote, Loader2, User, ChevronRight, ChevronLeft, CheckCircle2 } from 'lucide-react';
 
 // לוגו גוגל מקורי ב-SVG כדי להבטיח טעינה תקינה
@@ -15,9 +15,16 @@ const GoogleLogo = () => (
 export default function TestimonialsSection() {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [currentIndex, setCurrentIndex] = useState(0);
     const [windowWidth, setWindowWidth] = useState(0);
-    const dragX = useMotionValue(0);
+    const [isPaused, setIsPaused] = useState(false);
+
+    const trackRef = useRef(null);
+    const scrollPosRef = useRef(0);
+    const rafRef = useRef(null);
+    const isDraggingRef = useRef(false);
+    const dragStartXRef = useRef(0);
+    const dragStartScrollRef = useRef(0);
+    const pauseTimeoutRef = useRef(null);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -101,13 +108,69 @@ export default function TestimonialsSection() {
         fetchReviews();
     }, []);
 
-    const onDragEnd = () => {
-        const x = dragX.get();
-        if (x <= -50 && currentIndex < reviews.length - 1) {
-            setCurrentIndex((prev) => prev + 1);
-        } else if (x >= 50 && currentIndex > 0) {
-            setCurrentIndex((prev) => prev - 1);
+    // Duplicate reviews for seamless infinite loop
+    const duplicatedReviews = reviews.length > 0 ? [...reviews, ...reviews] : [];
+
+    // RAF-based continuous smooth scroll
+    useEffect(() => {
+        if (reviews.length <= 1) return;
+
+        const SPEED = 0.5; // pixels per frame ≈ 30px/sec
+
+        const animate = () => {
+            const track = trackRef.current;
+            if (!track) {
+                rafRef.current = requestAnimationFrame(animate);
+                return;
+            }
+
+            if (!isPaused && !isDraggingRef.current) {
+                scrollPosRef.current -= SPEED;
+                const halfWidth = track.scrollWidth / 2;
+                if (scrollPosRef.current <= -halfWidth) {
+                    scrollPosRef.current += halfWidth;
+                }
+            }
+
+            track.style.transform = `translateX(${scrollPosRef.current}px)`;
+            rafRef.current = requestAnimationFrame(animate);
+        };
+
+        rafRef.current = requestAnimationFrame(animate);
+        return () => {
+            if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        };
+    }, [reviews.length, isPaused]);
+
+    // Set initial scroll position when duplicated reviews are ready
+    useEffect(() => {
+        scrollPosRef.current = 0;
+    }, [reviews.length]);
+
+    // Pointer events for drag/swipe
+    const handlePointerDown = (e) => {
+        isDraggingRef.current = true;
+        dragStartXRef.current = e.clientX;
+        dragStartScrollRef.current = scrollPosRef.current;
+        setIsPaused(true);
+        clearTimeout(pauseTimeoutRef.current);
+        // Capture pointer to track movement outside the element
+        if (e.target.setPointerCapture) {
+            e.target.setPointerCapture(e.pointerId);
         }
+    };
+
+    const handlePointerMove = (e) => {
+        if (!isDraggingRef.current) return;
+        const dx = e.clientX - dragStartXRef.current;
+        scrollPosRef.current = dragStartScrollRef.current + dx;
+    };
+
+    const handlePointerUp = () => {
+        if (!isDraggingRef.current) return;
+        isDraggingRef.current = false;
+        // Resume auto-scroll after a delay
+        pauseTimeoutRef.current = setTimeout(() => setIsPaused(false), 4000);
     };
 
     const formatReviewerName = (fullName) => {
@@ -146,32 +209,34 @@ export default function TestimonialsSection() {
                         כרגע אין ביקורות זמינות להצגה. אפשר לנסות שוב בעוד רגע.
                     </div>
                 ) : (
-                    <div className="relative">
-                        <div className="flex items-center overflow-visible">
-                            <motion.div
-                                drag="x"
-                                dragConstraints={{ left: 0, right: 0 }}
-                                style={{ x: dragX }}
-                                animate={{
-                                    translateX: reviews.length <= 2 && windowWidth >= 640 
-                                        ? 0 
-                                        : `calc(-${currentIndex * (100 / (windowWidth < 640 ? 1 : 2.5))}% - ${currentIndex * 24}px)`
-                                }}
-                                onDragEnd={onDragEnd}
-                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                className={`flex gap-6 cursor-grab active:cursor-grabbing w-full ${reviews.length <= 2 && windowWidth >= 640 ? 'justify-center' : ''}`}
+                    <div
+                        className="relative"
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
+                        onTouchStart={() => {
+                            setIsPaused(true);
+                            clearTimeout(pauseTimeoutRef.current);
+                        }}
+                        onTouchEnd={() => {
+                            pauseTimeoutRef.current = setTimeout(() => setIsPaused(false), 4000);
+                        }}
+                    >
+                        <div className="overflow-hidden">
+                            <div
+                                ref={trackRef}
+                                className="flex gap-6 cursor-grab active:cursor-grabbing select-none"
+                                onPointerDown={handlePointerDown}
+                                onPointerMove={handlePointerMove}
+                                onPointerUp={handlePointerUp}
+                                onPointerCancel={handlePointerUp}
+                                style={{ willChange: 'transform' }}
                             >
-                                {reviews.map((review, index) => (
+                                {duplicatedReviews.map((review, index) => (
                                     <motion.div
-                                        key={review.id}
-                                        animate={{
-                                            scale: currentIndex === index ? 1 : 0.95,
-                                            opacity: (index >= currentIndex && index < currentIndex + 3) || (index >= currentIndex - 1 && index <= currentIndex + 1) ? 1 : 0.3,
-                                        }}
+                                        key={`${review.id}-${index < reviews.length ? 'a' : 'b'}`}
                                         className="w-[85%] sm:w-[calc(40%-16px)] bg-white dark:bg-card p-6 sm:p-10 rounded-3xl shadow-sm border border-brand-border/20 flex flex-col h-full relative shrink-0"
                                         role="group"
                                         aria-roledescription="ביקורת"
-                                        aria-label={`ביקורת ${index + 1} מתוך ${reviews.length}`}
                                     >
                                         <Quote className="absolute top-6 left-6 w-10 h-10 text-brand-border opacity-20" aria-hidden="true" />
                                         
@@ -198,38 +263,35 @@ export default function TestimonialsSection() {
                                         </div>
                                     </motion.div>
                                 ))}
-                            </motion.div>
+                            </div>
                         </div>
 
                         {/* Navigation Buttons */}
                         <div className="flex justify-center gap-4 mt-12">
                             <button 
-                                onClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}
-                                className={`p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all ${currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:scale-110'}`}
-                                disabled={currentIndex === 0}
-                                aria-label="ביקורת קודמת"
+                                onClick={() => {
+                                    scrollPosRef.current += 350;
+                                    setIsPaused(true);
+                                    clearTimeout(pauseTimeoutRef.current);
+                                    pauseTimeoutRef.current = setTimeout(() => setIsPaused(false), 4000);
+                                }}
+                                className="p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all hover:scale-110"
+                                aria-label="גלול ימינה"
                             >
                                 <ChevronRight className="w-6 h-6" aria-hidden="true" />
                             </button>
                             <button 
-                                onClick={() => setCurrentIndex(prev => Math.min(reviews.length - 1, prev + 1))}
-                                className={`p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all ${currentIndex === reviews.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:scale-110'}`}
-                                disabled={currentIndex === reviews.length - 1}
-                                aria-label="ביקורת הבאה"
+                                onClick={() => {
+                                    scrollPosRef.current -= 350;
+                                    setIsPaused(true);
+                                    clearTimeout(pauseTimeoutRef.current);
+                                    pauseTimeoutRef.current = setTimeout(() => setIsPaused(false), 4000);
+                                }}
+                                className="p-4 rounded-full bg-white dark:bg-card shadow-md text-brand-text hover:text-brand-primary transition-all hover:scale-110"
+                                aria-label="גלול שמאלה"
                             >
                                 <ChevronLeft className="w-6 h-6" aria-hidden="true" />
                             </button>
-                        </div>
-
-                        {/* Pagination Dots */}
-                        <div className="flex justify-center gap-2 mt-6">
-                            {reviews.map((_, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => setCurrentIndex(i)}
-                                    className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-brand-primary w-6' : 'bg-brand-border w-1.5'}`}
-                                />
-                            ))}
                         </div>
                     </div>
                 )}
