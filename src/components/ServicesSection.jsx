@@ -44,7 +44,7 @@ export default function ServicesSection() {
             {/* רקע עדין */}
             <div className="absolute inset-0 opacity-5">
                 <img
-                    src="/images/services-bg.jpg"
+                    src="/images/services-bg.png"
                     alt=""
                     width="1920"
                     height="1080"
@@ -61,9 +61,9 @@ export default function ServicesSection() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-3xl sm:text-5xl text-[#4C4A49] mb-4 sm:mb-6">איך אוכל ללוות אותך</h2>
+                        <h2 className="text-4xl sm:text-6xl text-[#4C4A49] mb-4 sm:mb-6">איך אוכל ללוות אותך</h2>
                         <div className="w-24 h-px bg-[#D3C1B1] mx-auto mb-4"></div>
-                        <p className="text-base sm:text-lg text-[#6B6867] font-light max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-base sm:text-lg text-[#4A4847] font-light max-w-2xl mx-auto leading-relaxed">
                             ארבע דרכים להיכנס לתהליך — בחר את הדרך שמתאימה לרגע שאתה נמצא בו.
                         </p>
                     </motion.div>
@@ -135,15 +135,15 @@ export default function ServicesSection() {
                     <div className="w-full max-w-4xl mx-auto">
                         <div className="rounded-2xl overflow-hidden shadow-2xl">
                             <img
-                                src="/images/services-bg.jpg"
-                                alt="הקליניקה ברתמים"
+                                src="/images/services-bg.png"
+                                alt="קליניקה ברתמים"
                                 width="800"
                                 height="450"
                                 loading="lazy"
                                 className="w-full h-48 sm:h-96 object-cover"
                             />
                         </div>
-                        <p className="text-sm text-[#8B7355] mt-4 font-light">הקליניקה ברתמים • מפגשים בקבוצות גם בזום</p>
+                        <p className="text-sm text-[#8B7355] mt-4 font-light">קליניקה ברתמים • מפגשים בקבוצות גם בזום</p>
                     </div>
                 </motion.div>
             </div>

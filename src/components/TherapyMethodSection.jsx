@@ -20,7 +20,7 @@ export default function TherapyMethodSection() {
                     transition={{ duration: 0.8 }}
                     className="text-center"
                 >
-                    <h2 className="text-3xl sm:text-4xl text-[#4C4A49] mb-4 sm:mb-6">איך זה נראה בפועל?</h2>
+                    <h2 className="text-4xl sm:text-5xl text-[#4C4A49] mb-4 sm:mb-6">איך זה נראה בפועל?</h2>
                     <div className="w-24 h-px bg-[#D3C1B1] mx-auto mb-6 sm:mb-8"></div>
                     
                     <div className="bg-white/80 backdrop-blur-sm p-5 sm:p-8 rounded-xl shadow-lg w-full max-w-4xl mx-auto">
@@ -39,11 +39,11 @@ export default function TherapyMethodSection() {
                                     className="flex items-center gap-2 bg-[#A2673E]/10 px-3 sm:px-4 py-2 rounded-full"
                                 >
                                     <tool.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#A2673E]" />
-                                    <span className="text-sm sm:text-base text-[#6B6867]">{tool.label}</span>
+                                    <span className="text-sm sm:text-base text-[#4A4847]">{tool.label}</span>
                                 </motion.div>
                             ))}
                             <div className="flex items-center gap-2 bg-[#A2673E]/10 px-3 sm:px-4 py-2 rounded-full">
-                                <span className="text-sm sm:text-base text-[#6B6867]">ועוד</span>
+                                <span className="text-sm sm:text-base text-[#4A4847]">ועוד</span>
                             </div>
                         </div>
                     </div>

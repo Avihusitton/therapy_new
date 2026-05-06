@@ -91,7 +91,7 @@ export default function ContactForm() {
                 >
                     <CheckCircle2 className="w-16 h-16 text-[#25D366] mx-auto mb-4" />
                     <h3 className="text-2xl text-[#4C4A49] mb-2">תודה רבה, {formData.full_name}!</h3>
-                    <p className="text-[#6B6867]">
+                    <p className="text-[#4A4847]">
                         הפרטים שלך התקבלו בהצלחה. <br/>אצור איתך קשר בהקדם.
                     </p>
                 </motion.div>
@@ -104,7 +104,7 @@ export default function ContactForm() {
             <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-5 sm:p-10">
                 <div className="text-center mb-8">
                     <h3 className="text-2xl text-[#4C4A49] mb-4">צור קשר</h3>
-                    <p className="text-[#6B6867]">השאר פרטים ונחזור אליך בהקדם לשיחת היכרות</p>
+                    <p className="text-[#4A4847]">השאר פרטים ונחזור אליך בהקדם לשיחת היכרות</p>
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
@@ -153,7 +153,7 @@ export default function ContactForm() {
                                 required={false}
                                 className="mt-1 h-4 w-4 rounded border-gray-300 text-[#8B9F6B] focus:ring-[#8B9F6B]"
                             />
-                            <label htmlFor="marketing-consent" className="text-sm text-[#6B6867] leading-tight select-none cursor-pointer">
+                            <label htmlFor="marketing-consent" className="text-sm text-[#4A4847] leading-tight select-none cursor-pointer">
                                 אני מאשר/ת קבלת עדכונים על סדנאות וקבוצות טיפוליות עתידיות
                                 למייל ולנייד
                             </label>

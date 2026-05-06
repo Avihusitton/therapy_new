@@ -19,7 +19,7 @@ export default function PageNotFound({}) {
                         <h2 className="text-2xl font-medium text-[#4C4A49]">
                             העמוד לא נמצא
                         </h2>
-                        <p className="text-[#6B6867] leading-relaxed">
+                        <p className="text-[#4A4847] leading-relaxed">
                             העמוד שניסית להגיע אליו <span className="font-medium">"{pageName}"</span> אינו קיים.
                         </p>
                     </div>

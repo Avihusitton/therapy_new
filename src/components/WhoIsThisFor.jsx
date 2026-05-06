@@ -37,9 +37,9 @@ export default function WhoIsThisFor() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12 sm:mb-16"
                 >
-                    <h2 className="text-3xl sm:text-5xl text-[#4C4A49] mb-4 sm:mb-6">למי זה מתאים</h2>
+                    <h2 className="text-4xl sm:text-6xl text-[#4C4A49] mb-4 sm:mb-6">למי זה מתאים</h2>
                     <div className="w-24 h-px bg-[#D3C1B1] mx-auto mb-6"></div>
-                    <p className="text-base sm:text-lg text-[#6B6867] font-light max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-base sm:text-lg text-[#4A4847] font-light max-w-2xl mx-auto leading-relaxed">
                         אני עובד עם שלושה קהלים עיקריים — אבל מעל הכל, עם אנשים שמוכנים
                         להוביל שינוי, לקחת אחריות ולחזור לבחור.
                     </p>
@@ -68,7 +68,7 @@ export default function WhoIsThisFor() {
                                 className="w-12 h-px mb-4"
                                 style={{ backgroundColor: a.color, opacity: 0.5 }}
                             />
-                            <p className="text-sm sm:text-base text-[#6B6867] leading-relaxed font-light">
+                            <p className="text-sm sm:text-base text-[#4A4847] leading-relaxed font-light">
                                 {a.description}
                             </p>
                         </motion.div>

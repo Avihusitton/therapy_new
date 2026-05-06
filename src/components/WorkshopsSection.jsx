@@ -64,9 +64,9 @@ export default function WorkshopsSection() {
                     <p className="text-sm sm:text-base text-[#A2673E] font-medium tracking-widest uppercase mb-3">
                         הלב של העבודה שלי
                     </p>
-                    <h2 className="text-3xl sm:text-5xl text-[#4C4A49] mb-4 sm:mb-6">סדנאות וקבוצות</h2>
+                    <h2 className="text-4xl sm:text-6xl text-[#4C4A49] mb-4 sm:mb-6">סדנאות וקבוצות</h2>
                     <div className="w-24 h-px bg-[#D3C1B1] mx-auto mb-6"></div>
-                    <p className="text-base sm:text-lg text-[#6B6867] font-light max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-base sm:text-lg text-[#4A4847] font-light max-w-2xl mx-auto leading-relaxed">
                         יש תהליכים שקורים הכי טוב לא לבד. קבוצה קטנה, מנוהלת ומוגנת,
                         היא אחד המרחבים הריפויים החזקים שאני מכיר.
                     </p>
@@ -104,7 +104,7 @@ export default function WorkshopsSection() {
                                         <h3 className="text-xl sm:text-2xl text-[#4C4A49] font-normal leading-snug mb-2">
                                             {w.title}
                                         </h3>
-                                        <p className="text-sm sm:text-base text-[#6B6867] font-light leading-relaxed">
+                                        <p className="text-sm sm:text-base text-[#4A4847] font-light leading-relaxed">
                                             {w.subtitle}
                                         </p>
                                     </div>
@@ -129,7 +129,7 @@ export default function WorkshopsSection() {
                                     {w.details.map((d) => (
                                         <div
                                             key={d.text}
-                                            className="flex items-center gap-3 text-sm text-[#6B6867] font-light justify-end"
+                                            className="flex items-center gap-3 text-sm text-[#4A4847] font-light justify-end"
                                         >
                                             <span>{d.text}</span>
                                             <d.icon className="w-4 h-4" style={{ color: w.accent }} />
@@ -139,7 +139,7 @@ export default function WorkshopsSection() {
 
                                 <button
                                     onClick={scrollToContact}
-                                    className="mt-6 w-full text-white px-6 py-3 rounded-lg text-sm sm:text-base transition-all duration-300 font-light flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                                    className="mt-6 w-full text-white px-6 py-3 rounded-lg text-lg transition-all duration-300 font-light flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
                                     style={{ backgroundColor: w.accent }}
                                 >
                                     {w.cta}
@@ -158,7 +158,7 @@ export default function WorkshopsSection() {
                     transition={{ duration: 0.8, delay: 0.3 }}
                     className="text-center mt-10 sm:mt-12"
                 >
-                    <p className="text-sm sm:text-base text-[#6B6867] font-light">
+                    <p className="text-sm sm:text-base text-[#4A4847] font-light">
                         מחפשים סדנה מותאמת אישית לארגון, ליחידה או לקבוצת חברים?{' '}
                         <button
                             onClick={scrollToContact}
