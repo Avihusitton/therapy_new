@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     }
     const csv = await response.text();
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=60');
     res.setHeader('Access-Control-Allow-Origin', '*');
     return res.status(200).send(csv);
   } catch (err) {
