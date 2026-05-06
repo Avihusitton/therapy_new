@@ -26,3 +26,10 @@ build/
 
 # backups
 *.bak
+
+# Large files
+node-v20.18.0-win-x64/
+*.exe
+
+# Wrangler state
+.wrangler/state/
