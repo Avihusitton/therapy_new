@@ -14,7 +14,7 @@ const GoogleLogo = () => (
 
 const VISIBLE_DESKTOP = 3;
 const VISIBLE_MOBILE = 1;
-const AUTO_ADVANCE_MS = 4000;
+const AUTO_ADVANCE_MS = 2500;
 
 export default function TestimonialsSection() {
     const [reviews, setReviews] = useState([]);
@@ -22,6 +22,7 @@ export default function TestimonialsSection() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const autoTimerRef = useRef(null);
+    const manualStopRef = useRef(false);
 
     // Determine how many cards to show based on screen width
     const [cardsToShow, setCardsToShow] = useState(VISIBLE_DESKTOP);
@@ -133,24 +134,18 @@ export default function TestimonialsSection() {
 
     const goNext = useCallback(() => {
         if (!canGoNext) return;
+        manualStopRef.current = true;
         setIsPaused(true);
         clearInterval(autoTimerRef.current);
         setActiveIndex(prev => (prev + 1) % reviews.length);
-        autoTimerRef.current = setInterval(() => {
-            setActiveIndex(prev => (prev + 1) % reviews.length);
-        }, AUTO_ADVANCE_MS);
-        setIsPaused(false);
     }, [canGoNext, reviews.length]);
 
     const goPrev = useCallback(() => {
         if (!canGoPrev) return;
+        manualStopRef.current = true;
         setIsPaused(true);
         clearInterval(autoTimerRef.current);
         setActiveIndex(prev => (prev - 1 + reviews.length) % reviews.length);
-        autoTimerRef.current = setInterval(() => {
-            setActiveIndex(prev => (prev + 1) % reviews.length);
-        }, AUTO_ADVANCE_MS);
-        setIsPaused(false);
     }, [canGoPrev, reviews.length]);
 
     const formatReviewerName = (fullName) => {
@@ -166,6 +161,7 @@ export default function TestimonialsSection() {
         clearInterval(autoTimerRef.current);
     };
     const resumeAuto = () => {
+        if (manualStopRef.current) return;
         if (reviews.length <= cardsToShow) return;
         clearInterval(autoTimerRef.current);
         setIsPaused(false);
@@ -175,7 +171,7 @@ export default function TestimonialsSection() {
         <section className="py-20 sm:py-28 bg-brand-secondary relative overflow-hidden w-full transition-colors duration-300">
             <div className="w-full max-w-7xl mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl sm:text-5xl text-brand-text mb-4">מה אומרים בגוגל</h2>
+                    <h2 className="text-4xl sm:text-6xl text-brand-text mb-4">מה אומרים בגוגל</h2>
                     
                     {/* 5 Stars Rating */}
                     <div className="flex items-center justify-center gap-1 mb-4 text-[#FFD700]">

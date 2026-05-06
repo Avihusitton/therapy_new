@@ -40,7 +40,7 @@ export default function AboutSection() {
                         className="order-1 lg:order-2 text-center"
                     >
                         <div className="mb-8 sm:mb-12 flex flex-col items-center">
-                            <h2 className="text-3xl sm:text-5xl text-[#4C4A49] mb-4 sm:mb-6">
+                            <h2 className="text-4xl sm:text-6xl text-[#4C4A49] mb-4 sm:mb-6">
                                 הדרך שנעבור יחד
                             </h2>
                             <div className="w-24 h-px bg-[#D3C1B1]"></div>

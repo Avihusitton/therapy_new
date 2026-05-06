@@ -55,7 +55,7 @@ export default function EmotionalToolsCarousel() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-4xl text-[#4C4A49] mb-6">הדרך לעצמאות רגשית</h2>
+                    <h2 className="text-5xl text-[#4C4A49] mb-6">הדרך לעצמאות רגשית</h2>
                     <div className="w-24 h-px bg-[#D3C1B1] mx-auto"></div>
                 </motion.div>
 
@@ -99,7 +99,7 @@ export default function EmotionalToolsCarousel() {
                                 <h3 className="text-lg md:text-2xl text-[#4C4A49] mb-4 md:mb-6 font-medium">
                                     {slides[currentSlide].title}
                                 </h3>
-                                <p className="text-[#6B6867] leading-relaxed text-sm md:text-lg max-w-4xl mx-auto">
+                                <p className="text-[#4A4847] leading-relaxed text-sm md:text-lg max-w-4xl mx-auto">
                                     {slides[currentSlide].content}
                                 </p>
                             </motion.div>

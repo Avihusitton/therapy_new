@@ -27,7 +27,7 @@ export default function AudioPlayer({ src, title, subtitle }) {
                 
                 <div className="text-right flex-1">
                     <h3 className="text-lg font-medium text-[#4C4A49] mb-1">{title}</h3>
-                    <p className="text-sm text-[#6B6867] font-light">{subtitle}</p>
+                    <p className="text-sm text-[#4A4847] font-light">{subtitle}</p>
                     
                     <audio 
                         ref={audioRef} 

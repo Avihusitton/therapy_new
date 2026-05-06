@@ -52,20 +52,20 @@ export default function HeroSection() {
                             </div>
 
                             <h1
-                                className="text-3xl sm:text-5xl font-light text-brand-text tracking-wide mb-3"
+                                className="text-4xl sm:text-6xl font-light text-brand-text tracking-wide mb-3"
                                 itemProp="name"
                             >
                                 אביהו סיטון
                             </h1>
 
                             <p
-                                className="text-base sm:text-lg text-brand-primary font-medium mb-4 tracking-wide"
+                                className="text-lg sm:text-xl text-brand-primary font-medium mb-4 tracking-wide"
                                 itemProp="jobTitle"
                             >
                                 מנחה קבוצות, סדנאות ופסיכותרפיסט בשיטת "דרך"
                             </p>
 
-                            <h2 className="text-lg sm:text-2xl text-brand-text font-light mb-3 leading-relaxed px-2 max-w-2xl mx-auto">
+                            <h2 className="text-xl sm:text-3xl text-brand-text font-light mb-3 leading-relaxed px-2 max-w-2xl mx-auto">
                                 כשמשהו בפנים מבקש לזוז
                             </h2>
 
@@ -135,7 +135,7 @@ export default function HeroSection() {
                     >
                         <button
                             onClick={scrollToContact}
-                            className="w-full sm:w-auto bg-brand-primary hover:bg-brand-accent text-white px-8 py-3.5 rounded-lg text-base sm:text-lg transition-all duration-300 shadow-lg font-light flex items-center justify-center gap-3"
+                            className="w-full sm:w-auto bg-brand-primary hover:bg-brand-accent text-white px-8 py-3.5 rounded-lg text-lg transition-all duration-300 shadow-lg font-light flex items-center justify-center gap-3"
                         >
                             <Phone className="w-5 h-5" />
                             שיחת היכרות ללא עלות
@@ -143,7 +143,7 @@ export default function HeroSection() {
 
                         <button
                             onClick={scrollToWorkshops}
-                            className="w-full sm:w-auto border border-brand-primary/60 bg-white/80 dark:bg-brand-secondary/30 backdrop-blur-sm text-brand-primary hover:bg-brand-primary hover:text-white px-8 py-3.5 rounded-lg text-base sm:text-lg transition-all duration-300 font-light flex items-center justify-center gap-3"
+                            className="w-full sm:w-auto border border-brand-primary/60 bg-white/80 dark:bg-brand-secondary/30 backdrop-blur-sm text-brand-primary hover:bg-brand-primary hover:text-white px-8 py-3.5 rounded-lg text-lg transition-all duration-300 font-light flex items-center justify-center gap-3"
                         >
                             <Users className="w-5 h-5" />
                             הסדנה הקרובה

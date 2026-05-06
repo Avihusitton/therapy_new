@@ -150,7 +150,7 @@ export default function FloatingAudioPlayer({ isOpen, onClose }) {
               borderRadius: '20px',
               padding: '4px 10px',
               cursor: 'pointer',
-              color: '#6B6867',
+              color: '#4A4847',
               fontSize: '12px',
             }}
           >
