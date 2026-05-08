@@ -1,3 +1,4 @@
+// [Category B: Functional / Logic]
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {

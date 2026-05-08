@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority";

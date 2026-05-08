@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import { useToast } from "@/components/ui/use-toast";
 import {
   Toast,

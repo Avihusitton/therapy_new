@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 "use client"
 
 import { GripVertical } from "lucide-react"

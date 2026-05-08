@@ -415,4 +415,21 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 עד שהתיעוד מלא — כל שינוי בטופס דורש הנחיה מפורשת מהבעלים.
 
-נכתב: 28.04.2026 | עודכן: 28.04.2026 — ניתוק Cloudflare Pages Integration
+## 15. אינטגרציה עם Antigravity וסוכני AI
+
+הפרויקט מנוהל בעזרת **Google Antigravity** בלבד (לאחר מעבר מ-VSCode/Cline במאי 2026).
+
+> ⚠️ `.clinerules` — קיים בפרויקט אך **אינו פעיל** ב-Antigravity. כל ההנחיות הרלוונטיות הועתקו אל `AGENTS.md`, שהוא הקובץ הפעיל היחיד.
+
+### שיטת הניווט (Navigation Categories)
+כל קובץ קוד בפרויקט חייב לכלול בשורה הראשונה הערה עם אחת מהקטגוריות הבאות:
+- `// [Category A: UI / Design / Layout]` — מראה האתר, רכיבי React, Tailwind.
+- `// [Category B: Functional / Logic]` — לוגיקה עסקית, טפסים, API וכו'.
+- `// [Category C: Deployment / Cloudflare]` — הגדרות שרת, CI/CD, פריסה.
+
+### נהלי עבודה עבור סוכנים
+1. **Agent Navigation**: בכל משימה, זהה תחילה את הקטגוריה (A/B/C) ונווט ישירות לתיקיות הרלוונטיות.
+2. **קובץ כללים**: קרא `AGENTS.md` — שם נמצאים ה-Golden Workflow, Version Lock, ו-Output Contract.
+3. **ביצירת קובץ חדש**: חובה להוסיף את תגית הקטגוריה המתאימה בשורה 1.
+
+נכתב: 28.04.2026 | עודכן: מאי 2026 — מעבר ל-Antigravity, עדכון §15

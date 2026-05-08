@@ -1,3 +1,4 @@
+// [Category B: Functional / Logic]
 const isNode = typeof window === 'undefined';
 const windowObj = isNode ? { 
     localStorage: {

@@ -1,4 +1,5 @@
 #!/bin/bash
+# [Category C: Deployment / Cloudflare]
 # Simple build command for Cloudflare Pages
 # This script runs the OpenNext build which is optimized for Cloudflare Workers.
 # It solves the 500 Internal Server Error by using the correct wrappers and config.

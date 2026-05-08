@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import { cn } from "@/lib/utils"
 
 function Skeleton({

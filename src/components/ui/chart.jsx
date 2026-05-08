@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 "use client";
 import * as React from "react"
 import * as RechartsPrimitive from "recharts"

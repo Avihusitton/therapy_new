@@ -1,3 +1,4 @@
+// [Category C: Deployment / Cloudflare]
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
@@ -8,8 +9,7 @@ export default [
   {
     files: [
       "src/components/**/*.{js,mjs,cjs,jsx}",
-      "src/pages/**/*.{js,mjs,cjs,jsx}",
-      "src/Layout.jsx",
+      "pages/**/*.{js,mjs,cjs,jsx}",
     ],
     ...pluginJs.configs.recommended,
     ...pluginReact.configs.flat.recommended,

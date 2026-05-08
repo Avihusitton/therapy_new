@@ -1,3 +1,4 @@
+// [Category C: Deployment / Cloudflare]
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,

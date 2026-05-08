@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import { useState, useRef, useEffect } from 'react';
 import { X, Play, Pause, Mic } from 'lucide-react';
 

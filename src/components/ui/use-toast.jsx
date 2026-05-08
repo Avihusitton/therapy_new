@@ -1,3 +1,4 @@
+// [Category B: Functional / Logic]
 // Inspired by react-hot-toast library
 import { useState, useEffect } from "react";
 
