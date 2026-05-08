@@ -1,6 +1,8 @@
-# Avihu Sitton Therapy - Website & Automation System
+# Avihu Sitton Therapy — Website & Automation System
 
-This is a modern React + Vite application for Avihu Sitton's therapy clinic. It features a clean, responsive UI built with TailwindCSS and `shadcn/ui` components.
+This is a **Next.js 15 (Pages Router)** application for Avihu Sitton's therapy clinic, deployed on **Cloudflare Workers** via OpenNext. It features a clean, responsive RTL UI built with TailwindCSS and `shadcn/ui` components.
+
+> For full technical documentation, see [ARCHITECTURE.md](./ARCHITECTURE.md).
 
 ## Lead Management Automation (Make.com)
 
@@ -25,7 +27,7 @@ To run this project locally:
 
 1. Install dependencies:
    ```bash
-   npm install
+   npm install --legacy-peer-deps
    ```
 
 2. Start the development server:
@@ -33,8 +35,11 @@ To run this project locally:
    npm run dev
    ```
 
-## Deployment (Cloudflare Pages)
-This project is connected directly to GitHub and deployed via **Cloudflare Pages**.
-Any `git push` to the `main` branch will automatically trigger a build (`npm run build`) and update the live website within minutes.
+## Deployment (Cloudflare Workers)
+This project is deployed via **Cloudflare Workers** using the OpenNext adapter.
+- Push to `stage` → deploys to `therapy-new-stage.avihu-sitton.workers.dev`
+- Push to `main` → deploys to `avihusitton.com` (production, requires explicit approval)
 
-*Note: The project was previously bootstrapped with Base44 SDK, but has been completely detached. All images are now hosted locally in `/public/images/` and the application is a pure, independent React SPA.*
+Deployments are automated via GitHub Actions. See `.github/workflows/` for CI/CD pipelines.
+
+> ⚠️ See `ARCHITECTURE.md` for critical deployment rules (version locks, `--env` flags, SSR guards).

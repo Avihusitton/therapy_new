@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { User, Users, Shield } from 'lucide-react';

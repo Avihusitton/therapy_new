@@ -1,3 +1,4 @@
+// [Category B: Functional / Logic]
 import { createContext, useContext, useState, useEffect } from 'react';
 
 const AudioContext = createContext({ showPlayer: false, setShowPlayer: () => {} });

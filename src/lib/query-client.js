@@ -1,3 +1,4 @@
+// [Category B: Functional / Logic]
 import { QueryClient } from '@tanstack/react-query';
 
 function makeQueryClient() {

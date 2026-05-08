@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import React from 'react';
 import dynamic from 'next/dynamic';
 import Layout from '@/components/Layout';

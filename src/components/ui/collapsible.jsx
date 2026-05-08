@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 "use client"
 
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"

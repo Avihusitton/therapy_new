@@ -1,4 +1,4 @@
-
+// [Category A: UI / Design / Layout]
 import React from 'react';
 import { motion } from 'framer-motion';
 import GrowthElements from './GrowthElements';

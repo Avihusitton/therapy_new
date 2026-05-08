@@ -1,3 +1,4 @@
+// [Category B: Functional / Logic]
 export default function handler(req, res) {
   const requestId = req.headers['x-request-id'] || 'missing';
   const cfRay = req.headers['cf-ray'] || 'missing';

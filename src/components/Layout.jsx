@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import React, { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';

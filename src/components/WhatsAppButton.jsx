@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import { useEffect, useState } from 'react';
 
 export default function WhatsAppButton() {

@@ -1,4 +1,5 @@
-﻿const fs = require('fs');
+// [Category C: Deployment / Cloudflare]
+const fs = require('fs');
 const content = [
   '#!/bin/sh',
   '',

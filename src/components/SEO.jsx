@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import Head from 'next/head';
 
 export default function SEO({ title, description, canonical, schema, noindex, image = '/images/therapy-logo.png' }) {

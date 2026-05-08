@@ -1,3 +1,4 @@
+// [Category C: Deployment / Cloudflare]
 const config = {
   default: {
     override: {

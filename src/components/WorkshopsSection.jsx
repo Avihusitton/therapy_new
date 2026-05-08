@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Heart, Calendar, MapPin, Users, ArrowLeft } from 'lucide-react';

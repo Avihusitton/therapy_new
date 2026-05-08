@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import React from 'react';
 
 const UserNotRegisteredError = () => {

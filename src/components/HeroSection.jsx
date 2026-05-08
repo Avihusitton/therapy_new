@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 import Link from 'next/link';
 import { ArrowDown, Phone, Users, Shield, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';

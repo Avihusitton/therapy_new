@@ -1,3 +1,4 @@
+// [Category A: UI / Design / Layout]
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [

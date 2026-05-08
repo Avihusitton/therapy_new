@@ -1,3 +1,4 @@
+// [Category B: Functional / Logic]
 import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
