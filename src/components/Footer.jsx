@@ -1,5 +1,4 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -21,13 +20,13 @@ export default function Footer() {
                     </nav>
 
                     <div className="flex flex-col md:flex-row justify-center items-center gap-6 sm:gap-8 text-brand-secondary/80 dark:text-brand-text/80 font-light">
-                        <a href="tel:0532853235" className="flex items-center gap-3 hover:text-white transition-colors">
+                        <a href="tel:053-285-3235" className="flex items-center gap-3 hover:text-white transition-colors">
                             <span aria-hidden>📞</span>
-                            <span className="ltr-text">053-2853235</span>
+                            <span className="ltr-text">053-285-3235</span>
                         </a>
-                        <a href="mailto:Avihu.sitton@gmail.com" className="flex items-center gap-3 hover:text-white transition-colors">
+                        <a href="mailto:therapy@avihusitton.com" className="flex items-center gap-3 hover:text-white transition-colors">
                             <span aria-hidden>✉️</span>
-                            <span className="ltr-text">Avihu.sitton@gmail.com</span>
+                            <span className="ltr-text">therapy@avihusitton.com</span>
                         </a>
                         <a 
                             href="https://www.google.com/maps/search/?api=1&query=31.05365127751188,34.69029811783664" 

@@ -1,5 +1,4 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
@@ -56,7 +55,7 @@ export default function Accessibility() {
                                     טיפולים וסדנאות באופן מלא אונליין.
                                 </p>
                                 <p className="font-medium text-[#4C4A49]">
-                                    לתיאום: טלפון <a href="tel:0532853235" className="ltr-text underline">053-285-3235</a> | מייל: <a href="mailto:avihu.sitton@gmail.com" className="underline">avihu.sitton@gmail.com</a>
+                                    לתיאום: טלפון <a href="tel:053-285-3235" className="ltr-text underline">053-285-3235</a> | מייל: <a href="mailto:therapy@avihusitton.com" className="underline">therapy@avihusitton.com</a>
                                 </p>
                             </section>
 
