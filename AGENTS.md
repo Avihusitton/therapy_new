@@ -38,7 +38,7 @@ To optimize performance, classify every task into one of these categories **firs
 - **Rules:** Focus ONLY on Tailwind classes and UI components. DO NOT change business logic. Preserve RTL layout and existing design language.
 
 ### Category B: Functional / Logic
-- **Location:** `src/lib/`, `pages/api/`, `src/hooks/`, `src/contexts/`, `src/utils/`
+- **Location:** `src/lib/`, `pages/api/`, `src/hooks/`, `src/contexts/`, `src/lib/utils.js`
 - **Purpose:** API calls, business logic, state management, form handling, helper functions.
 - **Rules:** Locate the exact component or API route. Explain the gap between actual and expected behavior. Fix ONLY the broken logic with minimal changes.
 

@@ -1,5 +1,4 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
@@ -70,21 +69,21 @@ export default function Couples() {
                             <div className="bg-[#FDF8F0] p-8 rounded-xl shadow-sm">
                                 <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">מה נשיג בתהליך?</h2>
                                 <ul className="space-y-4 text-[#555251] font-light">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        זיהוי ה"ריקוד" הזוגי והדפוסים שחוסמים אתכם
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>זיהוי ה"ריקוד" הזוגי והדפוסים שחוסמים אתכם</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        בניית שיח ישיר, אמיץ ומכבד שיוצר אינטימיות חדשה
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>בניית שיח ישיר, אמיץ ומכבד שיוצר אינטימיות חדשה</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        לימוד כלים לניהול קונפליקטים מתוך צמיחה ולא מתוך פגיעה
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>לימוד כלים לניהול קונפליקטים מתוך צמיחה ולא מתוך פגיעה</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        החזרת הסקרנות והחברות למרכז המערכת הזוגית
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>החזרת הסקרנות והחברות למרכז המערכת הזוגית</span>
                                     </li>
                                 </ul>
                             </div>

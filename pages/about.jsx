@@ -1,5 +1,4 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
@@ -85,7 +84,15 @@ export default function About() {
                         <div className="w-24 h-px bg-[#D3C1B1] mx-auto"></div>
                     </div>
                     <div className="text-lg text-[#6B6867] font-light leading-relaxed text-right">
-                        <p>[PLACEHOLDER — אביהו ימלא כאן סיפור אישי קצר]</p>
+                        <p>
+                            הגעתי לעולם הטיפול מתוך הסיפור האישי שלי. במשך שנים חייתי מאחורי מסכות, וניסיתי להתאים את עצמי לכל סיטואציה, עד שהרגשתי כמה זה שוחק ומרחיק אותי מעצמי.
+                        </p>
+                        <p className="mt-4">
+                            המפגש עם עולם 'דרך' פתח עבורי אפשרות אחרת — להיות נוכח יותר, אמיתי יותר, ולחזור בהדרגה למגע חי עם עצמי ועם האנשים הקרובים אליי. מתוך התהליך הזה גם זכיתי לחדש קשרים משמעותיים, ובהמשך להכיר את אשתי ולבנות חיים זוגיים מלאים, נעימים ומתפתחים.
+                        </p>
+                        <p className="mt-4">
+                            בשבילי הבחירה בעולם הטיפול לא נולדה רק מתוך לימודים או מקצוע, אלא מתוך משהו שעברתי בעצמי וששינה אותי מבפנים.
+                        </p>
                     </div>
                 </div>
             </section>

@@ -10,11 +10,12 @@ export function middleware(request) {
   // We use 'self' and 'unsafe-inline' which is standard for Next.js SSG.
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://cdn.userway.org;
+    script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://cdn.userway.org https://www.googletagmanager.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' blob: data: https://cdn.userway.org;
+    img-src 'self' blob: data: https://cdn.userway.org https://www.google-analytics.com https://www.googletagmanager.com;
     font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https://api.userway.org;
+    connect-src 'self' https://api.userway.org https://www.google-analytics.com https://analytics.google.com;
+    frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com;
     object-src 'none';
     base-uri 'self';
     form-action 'self';

@@ -1,5 +1,4 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
 import dynamic from 'next/dynamic';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
@@ -16,21 +15,33 @@ import { useAudio } from '@/contexts/AudioContext';
 export default function Home() {
     const { setShowPlayer } = useAudio();
     const homeSchema = {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "אביהו סיטון",
-        "jobTitle": "פסיכותרפיסט",
-        "description": "מנחה קבוצות, סדנאות ופסיכותרפיסט בשיטת דרך",
-        "url": "https://avihusitton.com",
-        "telephone": "+972-53-2853235",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "רמת נגב",
-            "addressCountry": "IL"
-        },
-        "sameAs": [
-            "https://g.page/r/CXrRjxeYVWw_EAI"
-        ]
+      "@context": "https://schema.org",
+      "@type": "Therapist",
+      "name": "אביהו סיטון — פסיכותרפיסט",
+      "description": "פסיכותרפיה אישית, ליווי זוגי וסדנאות למילואימניקים ברמת נגב ובזום בשיטת דרך.",
+      "image": "https://avihusitton.com/images/therapy-logo.png",
+      "telephone": "+972-53-2853235",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "רתמים 17",
+        "addressLocality": "רתמים",
+        "addressRegion": "רמת נגב",
+        "addressCountry": "IL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 31.053651,
+        "longitude": 34.690298
+      },
+      "url": "https://avihusitton.com",
+      "sameAs": ["https://g.page/r/CXrRjxeYVWw_EAI"],
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
+        "opens": "09:00",
+        "closes": "20:00"
+      }
     };
 
     return (
@@ -152,7 +163,7 @@ export default function Home() {
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                             <a 
-                                href="https://wa.me/972532853235?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%91%D7%99%D7%94%D7%95%20%F0%9F%8C%BF%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" 
+                                href="https://wa.me/972532853235?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%91%D7%99%D7%94%D7%95%20-%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="bg-[#A2673E] text-white px-8 py-3 rounded-lg shadow-md hover:bg-[#8d5a36] transition-all w-full sm:w-auto text-lg"

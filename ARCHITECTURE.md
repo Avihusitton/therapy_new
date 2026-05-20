@@ -229,27 +229,19 @@ zod ^3.24.2	Schema validation
 @tanstack/react-query ^5.84.1	Server state	חייב per-request instance ב-SSR
 recharts ^2.15.4	גרפים	
 date-fns ^3.6.0	תאריכים	
-moment ^2.30.1	תאריכים (legacy)	כפילות עם date-fns — לנטוש בעתיד
 lodash ^4.17.21	Utils	
 6.4 Media & Rich Content
 ספרייה	שימוש	הערות
-react-quill ^2.0.0	Rich text editor	Browser only — דורש dynamic import עם ssr: false
 react-markdown ^9.0.1	Markdown rendering	
-three ^0.171.0	3D graphics	Heavy bundle — lazy load
-html2canvas ^1.4.1	Screenshot	Browser only
-jspdf ^2.5.2	PDF generation	Browser only
-canvas-confetti ^1.9.4	Confetti effect	Browser only
 6.5 Layout & Navigation
 ספרייה	שימוש
 @hello-pangea/dnd ^17.0.0	Drag & Drop
 react-resizable-panels ^2.1.7	Resizable panels
-react-leaflet ^4.2.1	מפות
 vaul ^1.1.2	Drawer component
 cmdk ^1.0.0	Command palette
 6.6 Notifications
 ספרייה	שימוש	הערות
 sonner ^2.0.1	Toast notifications	Primary
-react-hot-toast ^2.6.0	Toast notifications	Secondary — כפילות, לנטוש בעתיד
 @radix-ui/react-toast	Toast primitive	
 6.7 אינטגרציות חיצוניות
 שירות	אינטגרציה	נקודת כשל
@@ -332,12 +324,6 @@ outcome: "exception" או response.status: 500 = יש בעיה
 
 scriptVersion.id = הטיפול בגרסה שרצה. אם לא השתנה אחרי deploy ← --env חסר
 
-Browser-Only Libraries — חובה dynamic import
-javascript
-// ✅ נכון — react-quill, three, html2canvas, jspdf
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-ספריות שדורשות זאת: react-quill, three, html2canvas, jspdf, canvas-confetti, react-leaflet.
-
 10. תלויות ומפת גרסאות קריטיות
 חבילה	גרסה	למה גרסה זו
 react	19.0.0	חובה ל-react-dom/server.edge ב-Edge runtime
@@ -383,21 +369,6 @@ wrangler	^4.84.1	תואם ל-compatibility_date 2026-04-27
 3. Rollback = push של commit קודם ל-main — רק אחרי הנחיה מפורשת מהבעלים
 
 ## 13. כללים לשימוש בספריות
-
-### ספריות Legacy — אל תוסיף שימושים חדשים
-| ספרייה | תחליף מועדף |
-|--------|-------------|
-| `moment` | `date-fns` |
-| `react-hot-toast` | `sonner` |
-
-### ספריות Browser-Only — חובה dynamic import
-אל תשתמש ישירות ב-import רגיל עבור:
-`react-quill`, `three`, `html2canvas`, `jspdf`, `canvas-confetti`, `react-leaflet`
-
-```javascript
-// ✅ תמיד כך
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-```
 
 ### לפני הוספת ספרייה חדשה
 - עצור ושאל את הבעלים

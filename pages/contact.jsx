@@ -1,10 +1,9 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import ContactForm from '@/components/ContactForm';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, MapPin } from 'lucide-react';
 
 export default function Contact() {
     return (
@@ -33,7 +32,7 @@ export default function Contact() {
 
                         <div className="grid lg:grid-cols-1 gap-12 max-w-4xl mx-auto">
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                                <a href="https://wa.me/972532853235?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%91%D7%99%D7%94%D7%95%20%F0%9F%8C%BF%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%95%D7%97%D7%90" target="_blank" rel="noopener noreferrer" className="bg-white p-6 rounded-xl border border-[#D3C1B1] hover:shadow-md transition-all text-center group">
+                                <a href="https://wa.me/972532853235?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%91%D7%99%D7%94%D7%95%20-%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%95%D7%97%D7%97" target="_blank" rel="noopener noreferrer" className="bg-white p-6 rounded-xl border border-[#D3C1B1] hover:shadow-md transition-all text-center group">
                                     <div className="w-10 h-10 bg-[#25D366]/10 text-[#25D366] rounded-full flex items-center justify-center mx-auto mb-3">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
                                     </div>
@@ -56,6 +55,17 @@ export default function Contact() {
                                     <h3 className="text-[#4C4A49] text-sm mb-1">נמצא מחוץ לאזור?</h3>
                                     <span className="text-[#6B6867] text-xs font-light">מפגשים זמינים גם בזום</span>
                                 </div>
+                            </div>
+
+                            <div className="flex justify-center mb-8">
+                                <a 
+                                    href="https://g.page/r/CXrRjxeYVWw_EAI" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-xl border border-[#D3C1B1] hover:shadow-md transition-all text-[#A2673E] text-sm font-medium"
+                                >
+                                    כתבו לי ביקורת בגוגל ⭐
+                                </a>
                             </div>
                             
                             <div className="bg-[#FDF8F0] p-8 sm:p-12 rounded-2xl shadow-sm border border-[#D3C1B1]/20 relative">
