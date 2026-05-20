@@ -1,5 +1,4 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
@@ -124,21 +123,21 @@ export default function ReservistsWorkshops() {
                             <div className="bg-[#FDF8F0] p-8 rounded-xl shadow-sm">
                                 <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">מה נשיג בתהליך?</h2>
                                 <ul className="space-y-4 text-[#555251] font-light">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        עיבוד חוויות השירות במרחב בטוח ונטול שיפוטיות
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>עיבוד חוויות השירות במרחב בטוח ונטול שיפוטיות</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        כלים פרקטיים לגישור על הפער בין ה"שטח" ל"בית"
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>כלים פרקטיים לגישור על הפער בין ה"שטח" ל"בית"</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        התמודדות עם מתח, דריכות יתר ושינויים רגשיים
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>התמודדות עם מתח, דריכות יתר ושינויים רגשיים</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        מציאת הקצב האישי מחדש בתוך השגרה האזרחית
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>מציאת הקצב האישי מחדש בתוך השגרה האזרחית</span>
                                     </li>
                                 </ul>
                             </div>
@@ -210,7 +209,7 @@ export default function ReservistsWorkshops() {
                             <p className="mb-8 text-[#D3C1B1] font-light">צרו קשר לבירור מועדי הסדנאות הקרובות.</p>
                             <div className="flex flex-wrap justify-center gap-4">
                                 <a 
-                                    href="https://wa.me/972532853235?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%91%D7%99%D7%94%D7%95%20%F0%9F%8C%BF%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%94%D7%A1%D7%93%D7%A0%D7%94%20%D7%9C%D7%9E%D7%99%D7%9C%D7%95%D7%90%D7%99%D7%9E%D7%A0%D7%99%D7%A7%D7%99%D7%9D" 
+                                    href="https://wa.me/972532853235?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%91%D7%99%D7%94%D7%95%20-%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%94%D7%A1%D7%93%D7%A0%D7%94%20%D7%9C%D7%9E%D7%99%D7%9C%D7%95%D7%90%D7%99%D7%9E%D7%A0%D7%99%D7%A7%D7%99%D7%9D" 
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="bg-[#A2673E] hover:bg-[#8d5a36] px-8 py-3 rounded-lg transition-all shadow-md"

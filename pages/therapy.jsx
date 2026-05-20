@@ -1,5 +1,4 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
@@ -55,7 +54,9 @@ export default function Therapy() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">לזהות את הדפוסים שמחזיקים אותך במקום — ולבחור אחרת</h1>
+                        <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">
+                            לזהות את הדפוסים שמחזיקים אותך במקום <span className="whitespace-nowrap">— ולבחור אחרת</span>
+                        </h1>
                         <div className="w-32 h-px bg-[#D3C1B1] mx-auto mb-12"></div>
                         
                         <div className="text-lg text-[#4C4A49] leading-relaxed space-y-8 mb-16 font-light">
@@ -74,21 +75,21 @@ export default function Therapy() {
                             <div className="bg-[#FDF8F0] p-8 rounded-xl shadow-sm">
                                 <h2 className="text-2xl text-[#4C4A49] mb-6 font-normal">מה נשיג בתהליך?</h2>
                                 <ul className="space-y-4 text-[#555251] font-light">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        זיהוי הדפוסים שגורמים לכם להגיב ב"אוטומט" ושינוי שלהם
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>זיהוי הדפוסים שגורמים לכם להגיב ב"אוטומט" ושינוי שלהם</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        הפיכת משברים והתמודדויות להזדמנויות לצמיחה וריפוי
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>הפיכת משברים והתמודדויות להזדמנויות לצמיחה וריפוי</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        פיתוח חוסן רגשי פנימי שאינו תלוי בנסיבות חיצוניות
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>פיתוח חוסן רגשי פנימי שאינו תלוי בנסיבות חיצוניות</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-[#A2673E] mt-1">•</span>
-                                        יצירת שקט נפשי ובניית בסיס משמעותי לשינוי בחיים
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#A2673E] mt-2.5 flex-shrink-0"></div>
+                                        <span>יצירת שקט נפשי ובניית בסיס משמעותי לשינוי בחיים</span>
                                     </li>
                                 </ul>
                             </div>
@@ -173,7 +174,7 @@ export default function Therapy() {
                             <p className="mb-8 text-[#D3C1B1] font-light">אני מזמין אתכם לשיחה קצרה שבה נבדוק יחד אם המרחב הזה נכון לכם עכשיו.</p>
                             <div className="flex flex-wrap justify-center gap-4">
                                 <a 
-                                    href="https://wa.me/972532853235?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%91%D7%99%D7%94%D7%95%20%F0%9F%8C%BF%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%98%D7%99%D7%A4%D7%95%D7%9C%20%D7%90%D7%99%D7%A9%D7%99" 
+                                    href="https://wa.me/972532853235?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%91%D7%99%D7%94%D7%95%20-%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%98%D7%99%D7%A4%D7%95%D7%9C%20%D7%90%D7%99%D7%A9%D7%99" 
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="bg-[#A2673E] hover:bg-[#8d5a36] px-8 py-3 rounded-lg transition-all shadow-md"

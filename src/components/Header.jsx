@@ -69,15 +69,15 @@ export default function Header() {
                 </div>
 
                 {/* New Mobile Quick Links - Right Aligned */}
-                <div className="md:hidden mt-2 overflow-x-auto no-scrollbar flex items-center justify-start gap-3 pb-1 scroll-smooth">
+                <div className="md:hidden mt-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 pb-1">
                     {navLinks.map((link, index) => (
                         <React.Fragment key={link.path}>
                             {index > 0 && (
-                                <span className="text-brand-border/40 text-[10px] shrink-0" aria-hidden="true">|</span>
+                                <span className="text-brand-border/40 text-[10px]" aria-hidden="true">|</span>
                             )}
                             <Link
                                 href={link.path}
-                                className={`text-[11px] whitespace-nowrap transition-colors shrink-0 ${
+                                className={`text-[11.5px] whitespace-nowrap transition-colors ${
                                     router.pathname === link.path 
                                         ? 'text-brand-primary font-medium' 
                                         : 'text-brand-text/70 hover:text-brand-primary'
