@@ -67,7 +67,7 @@ export default function Accessibility() {
                                 <div className="p-6 bg-[#FDF8F0] rounded-xl border border-[#D3C1B1]/30">
                                     <p className="font-medium text-[#4C4A49]">אביהו סיטון</p>
                                     <p>טלפון: <a href="tel:0532853235" className="ltr-text">053-285-3235</a></p>
-                                    <p>מייל: <a href="mailto:avihu.sitton@gmail.com">avihu.sitton@gmail.com</a></p>
+                                    <p>מייל: <a href="mailto:therapy@avihusitton.com">therapy@avihusitton.com</a></p>
                                 </div>
                             </section>
                         </div>
