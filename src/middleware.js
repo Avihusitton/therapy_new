@@ -14,7 +14,7 @@ export function middleware(request) {
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' blob: data: https://cdn.userway.org https://www.google-analytics.com https://www.googletagmanager.com;
     font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https://api.userway.org https://www.google-analytics.com https://analytics.google.com;
+    connect-src 'self' https://api.userway.org https://www.google-analytics.com https://analytics.google.com https://hook.eu1.make.com;
     frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com;
     object-src 'none';
     base-uri 'self';

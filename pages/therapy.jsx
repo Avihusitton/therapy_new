@@ -57,6 +57,9 @@ export default function Therapy() {
                         <h1 className="text-4xl sm:text-6xl text-[#4C4A49] mb-8 font-light text-center">
                             לזהות את הדפוסים שמחזיקים אותך במקום <span className="whitespace-nowrap">— ולבחור אחרת</span>
                         </h1>
+                        <p className="text-lg text-[#7A7068] text-center mb-4 font-light">
+                          טיפול רגשי אישי | קליניקה ברמת נגב ומפגשים בזום
+                        </p>
                         <div className="w-32 h-px bg-[#D3C1B1] mx-auto mb-12"></div>
                         
                         <div className="text-lg text-[#4C4A49] leading-relaxed space-y-8 mb-16 font-light">
@@ -178,6 +181,14 @@ export default function Therapy() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="bg-[#A2673E] hover:bg-[#8d5a36] px-8 py-3 rounded-lg transition-all shadow-md"
+                                    onClick={() => {
+                                        if (typeof gtag === 'function') {
+                                            gtag('event', 'click_whatsapp', {
+                                                event_category: 'lead',
+                                                event_label: 'whatsapp_cta'
+                                            });
+                                        }
+                                    }}
                                 >
                                     בואו נדבר
                                 </a>

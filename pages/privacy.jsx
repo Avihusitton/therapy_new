@@ -1,5 +1,4 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
@@ -52,7 +51,7 @@ export default function Privacy() {
                             <section>
                                 <h2 className="text-xl font-medium text-[#4C4A49] mb-4">זכות מחיקה</h2>
                                 <p>
-                                    כל פונה רשאי לבקש מחיקת פרטיו בפנייה ל: <a href="mailto:avihu.sitton@gmail.com" className="text-[#A2673E] underline">avihu.sitton@gmail.com</a>
+                                    כל פונה רשאי לבקש מחיקת פרטיו בפנייה ל: <a href="mailto:therapy@avihusitton.com" className="text-[#A2673E] underline">therapy@avihusitton.com</a>
                                 </p>
                             </section>
 

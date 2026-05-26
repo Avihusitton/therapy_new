@@ -259,6 +259,14 @@ export default function About() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-[#A2673E] text-white px-10 py-4 rounded-xl shadow-lg hover:bg-[#8d5a36] transition-all text-lg font-light"
+                            onClick={() => {
+                                if (typeof gtag === 'function') {
+                                    gtag('event', 'click_whatsapp', {
+                                        event_category: 'lead',
+                                        event_label: 'whatsapp_cta'
+                                    });
+                                }
+                            }}
                         >
                             שלח הודעה בוואטסאפ
                         </a>

@@ -15,12 +15,12 @@
 
 ## 3. Golden Workflow (Mandatory on every task)
 After classifying the task category (see §5), execute these phases in order:
-1. **Audit** — Read ONLY the directly relevant files. Verify current branch.
+1. **Audit** — Read the Knowledge Graph report (`graphify-out/GRAPH_REPORT.md`) at the start of the task to understand dependencies and architecture, then read ONLY the directly relevant files. Verify current branch.
 2. **Diagnose** — State the Category (A, B, or C) and explain the root cause clearly.
 3. **Fix** — Make the smallest safe change. One task = one file. Edit file by file.
 4. **Validate** — Prove your fix works (check SSR guards, no regressions).
 
-> ❌ DO NOT scan the entire project at the start. Only read directly relevant files.
+> ❌ DO NOT scan the entire project at the start. Use the Knowledge Graph (`graphify-out/GRAPH_REPORT.md`) to navigate directly to the relevant files.
 
 ## 4. Surgical Editing Protocol
 - Locate the specific line(s) requested.

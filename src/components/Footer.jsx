@@ -1,5 +1,4 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -10,7 +9,7 @@ export default function Footer() {
                     <h2 className="text-2xl sm:text-3xl font-light mb-2">אביהו סיטון</h2>
                     <p className="text-sm text-[#B5A89D] dark:text-brand-text/60 font-light mb-6">פסיכותרפיסט | קליניקה ברתמים ובזום</p>
                     <div className="w-24 h-px bg-brand-border/30 mx-auto mb-8"></div>
-                    
+
                     <nav aria-label="ניווט תחתון" className="flex flex-wrap justify-center gap-6 mb-10 text-sm font-light text-brand-secondary/80 dark:text-brand-text/80">
                         <Link href="/" className="hover:text-white transition-colors">בית</Link>
                         <Link href="/therapy" className="hover:text-white transition-colors">טיפול אישי</Link>
@@ -21,22 +20,43 @@ export default function Footer() {
                     </nav>
 
                     <div className="flex flex-col md:flex-row justify-center items-center gap-6 sm:gap-8 text-brand-secondary/80 dark:text-brand-text/80 font-light">
-                        <a href="tel:0532853235" className="flex items-center gap-3 hover:text-white transition-colors">
+                        <a
+                            href="tel:053-285-3235"
+                            className="flex items-center gap-3 hover:text-white transition-colors"
+                            onClick={() => {
+                                if (typeof gtag === 'function') {
+                                    gtag('event', 'click_phone', {
+                                        event_category: 'lead',
+                                        event_label: 'phone_cta'
+                                    });
+                                }
+                            }}
+                        >
                             <span aria-hidden>📞</span>
-                            <span className="ltr-text">053-2853235</span>
+                            <span className="ltr-text">053-285-3235</span>
                         </a>
-                        <a href="mailto:Avihu.sitton@gmail.com" className="flex items-center gap-3 hover:text-white transition-colors">
+                        <a href="mailto:therapy@avihusitton.com" className="flex items-center gap-3 hover:text-white transition-colors">
                             <span aria-hidden>✉️</span>
-                            <span className="ltr-text">Avihu.sitton@gmail.com</span>
+                            <span className="ltr-text">therapy@avihusitton.com</span>
                         </a>
-                        <a 
-                            href="https://www.google.com/maps/search/?api=1&query=31.05365127751188,34.69029811783664" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
+                        <a
+                            href="https://www.google.com/maps/search/?api=1&query=31.05365127751188,34.69029811783664"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center gap-3 hover:text-white transition-colors"
                         >
                             <span aria-hidden>📍</span>
                             <span>קליניקה ברתמים | מפגשים בזום</span>
+                        </a>
+                    </div>
+                    <div className="mt-6 text-center">
+                        <a
+                            href="https://g.page/r/CXrRjxeYVWw_EAI"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-[#B5A89D] dark:text-brand-text/60 hover:text-white transition-colors underline underline-offset-4 decoration-brand-secondary/10 dark:decoration-brand-text/10"
+                        >
+                            ⭐ כתוב ביקורת בגוגל
                         </a>
                     </div>
                 </div>

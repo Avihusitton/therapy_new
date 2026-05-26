@@ -14,5 +14,5 @@ Services:
 Contact:
 - Website: https://avihusitton.com
 - Phone: +972-53-285-3235
-- Email: avihu.sitton@gmail.com
+- Email: therapy@avihusitton.com
 - Location: Retamim 17, Ramat Negev, Israel (31.053657999291975, 34.690296501868055)

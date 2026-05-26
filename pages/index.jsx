@@ -130,6 +130,14 @@ export default function Home() {
                         <a 
                             href="tel:0532853235"
                             className="group flex flex-col items-center hover:scale-105 transition-transform cursor-pointer col-span-2 md:col-span-1"
+                            onClick={() => {
+                                if (typeof gtag === 'function') {
+                                    gtag('event', 'click_phone', {
+                                        event_category: 'lead',
+                                        event_label: 'phone_cta'
+                                    });
+                                }
+                            }}
                         >
                             <Phone className="w-6 h-6 text-[#A2673E] mb-2 group-hover:text-[#8d5a36]" />
                             <span className="block text-[#A2673E] text-sm font-medium group-hover:underline">היכרות ללא עלות</span>
@@ -167,6 +175,14 @@ export default function Home() {
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="bg-[#A2673E] text-white px-8 py-3 rounded-lg shadow-md hover:bg-[#8d5a36] transition-all w-full sm:w-auto text-lg"
+                                onClick={() => {
+                                    if (typeof gtag === 'function') {
+                                        gtag('event', 'click_whatsapp', {
+                                            event_category: 'lead',
+                                            event_label: 'whatsapp_cta'
+                                        });
+                                    }
+                                }}
                             >
                                 שלח הודעה בוואטסאפ
                             </a>

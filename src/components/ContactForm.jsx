@@ -1,6 +1,6 @@
 // @ts-nocheck
 // [Category B: Functional / Logic]
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Send, CheckCircle2, Loader2 } from 'lucide-react';
@@ -73,6 +73,12 @@ export default function ContactForm() {
             }
 
             console.log("Form submitted successfully");
+            if (typeof window !== 'undefined' && typeof gtag === 'function') {
+                gtag('event', 'lead_form_submit', {
+                    event_category: 'lead',
+                    event_label: 'contact_form'
+                });
+            }
             setIsSuccess(true);
         } catch (error) {
             console.error('Error submitting form:', error);
@@ -183,7 +189,17 @@ export default function ContactForm() {
                         <Button
                             type="button"
                             variant="outline"
-                            onClick={() => window.open('tel:0532853235', '_self')}
+                            onClick={() => {
+                                if (typeof gtag === 'function') {
+                                    gtag('event', 'click_phone', {
+                                        event_category: 'lead',
+                                        event_label: 'phone_cta'
+                                    });
+                                }
+                                if (typeof window !== 'undefined') {
+                                    window.open('tel:053-285-3235', '_self');
+                                }
+                            }}
                             disabled={isSubmitting}
                             className="border border-[#A2673E] text-[#A2673E] hover:bg-[#A2673E] hover:text-white px-8 py-4 rounded-lg text-lg transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto"
                         >
