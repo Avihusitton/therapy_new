@@ -213,6 +213,14 @@ export default function ReservistsWorkshops() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="bg-[#A2673E] hover:bg-[#8d5a36] px-8 py-3 rounded-lg transition-all shadow-md"
+                                    onClick={() => {
+                                        if (typeof gtag === 'function') {
+                                            gtag('event', 'click_whatsapp', {
+                                                event_category: 'lead',
+                                                event_label: 'whatsapp_cta'
+                                            });
+                                        }
+                                    }}
                                 >
                                     צרו קשר לבירור
                                 </a>

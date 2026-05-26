@@ -20,7 +20,7 @@ The core logic of the contact form is completely decoupled from any specific bac
 The Make.com scenario consists of 3 sequential steps:
 1. **Webhook Listener**: Catches the incoming JSON payload from the website.
 2. **Google Sheets Integration**: Maps the incoming fields (`date`, `time`, `full_name`, `phone`) and inserts them as a new row in the Leads spreadsheet. (Configured to use Column Headers as IDs to avoid breaking if columns move).
-3. **Gmail Integration**: Sends an immediate email notification to `avihu.sitton@gmail.com`. The email body contains the lead's details and the clickable **WhatsApp Magic Link**, allowing the clinic owner to reply to the lead in one tap directly from their phone.
+3. **Gmail Integration**: Sends an immediate email notification to `therapy@avihusitton.com`. The email body contains the lead's details and the clickable **WhatsApp Magic Link**, allowing the clinic owner to reply to the lead in one tap directly from their phone.
 
 ## Local Development
 To run this project locally:

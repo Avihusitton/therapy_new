@@ -1,0 +1,692 @@
+{
+  "C:\\Avihusitton\\therapy_new\\build-cf.sh": {
+    "mtime": 1778232555.6899421,
+    "ast_hash": "fdc653336965f027b67b9e7bf42492c9",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\components.json": {
+    "mtime": 1778232555.6904593,
+    "ast_hash": "fb881accf623546d5c81c34bb2d91770",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\eslint.config.js": {
+    "mtime": 1778232555.6914897,
+    "ast_hash": "490944e7b2d8cb1d3bc8795dd1741a80",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\find_untagged.ps1": {
+    "mtime": 1778232555.6920092,
+    "ast_hash": "18536b9c60f738cf5f558f0925f3aa22",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\jsconfig.json": {
+    "mtime": 1778232555.6930494,
+    "ast_hash": "5c0f6b79654e359504dd3f32de716f98",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\next.config.js": {
+    "mtime": 1778232555.6940837,
+    "ast_hash": "ca6f2e51b96d43dce8dff2a7d3f5077b",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\open-next.config.ts": {
+    "mtime": 1778232555.6946042,
+    "ast_hash": "ed6afb909f3bfff3aee458fa7660368a",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\package.json": {
+    "mtime": 1778184009.1054459,
+    "ast_hash": "c28e3f25c9b0e765cdfcf666b646251f",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\skills-lock.json": {
+    "mtime": 1779303664.8489158,
+    "ast_hash": "a098f4fa5189c72fa444fd16833d06f7",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\post-commit": {
+    "mtime": 1778184008.5173671,
+    "ast_hash": "58bdee42f110f1c73faec568d3b7f309",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\pre-commit": {
+    "mtime": 1778184008.5184095,
+    "ast_hash": "62554a324f5dc35537d876de1aff6ba5",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\applypatch-msg": {
+    "mtime": 1778191580.8851054,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\commit-msg": {
+    "mtime": 1778191580.884062,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\h": {
+    "mtime": 1778191536.5165646,
+    "ast_hash": "15239a01c5554e56ff745570fb583a91",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\husky.sh": {
+    "mtime": 1778191580.8876898,
+    "ast_hash": "13871d2ab13e8423790ecb2c01c78c18",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\post-applypatch": {
+    "mtime": 1778191580.886146,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\post-checkout": {
+    "mtime": 1778191580.8871746,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\post-commit": {
+    "mtime": 1778191580.8851054,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\post-merge": {
+    "mtime": 1778191580.8871746,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\post-rewrite": {
+    "mtime": 1778191580.8866606,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\pre-applypatch": {
+    "mtime": 1778191580.8856237,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\pre-auto-gc": {
+    "mtime": 1778191580.8876898,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\pre-commit": {
+    "mtime": 1778191580.8829806,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\pre-merge-commit": {
+    "mtime": 1778191580.883495,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\pre-push": {
+    "mtime": 1778191580.8876898,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\pre-rebase": {
+    "mtime": 1778191580.886146,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.husky\\_\\prepare-commit-msg": {
+    "mtime": 1778191580.884062,
+    "ast_hash": "0b71c2e7d39daa010985d529f1320b37",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\about.jsx": {
+    "mtime": 1779303664.8452895,
+    "ast_hash": "0f80f9842894bf05feaddb325c4e1be2",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\accessibility.jsx": {
+    "mtime": 1779339429.787559,
+    "ast_hash": "4aafbbd3a4de4571d89374f28ea36acf",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\contact.jsx": {
+    "mtime": 1779303664.8458197,
+    "ast_hash": "92893ece6364b6d9db7582e53a9cce99",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\couples.jsx": {
+    "mtime": 1779303664.8463416,
+    "ast_hash": "5973ce512f4e49f5c6c8db5c25170dca",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\index.jsx": {
+    "mtime": 1779303664.8468592,
+    "ast_hash": "207d38737b5f43128157e98d7b1325e7",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\privacy.jsx": {
+    "mtime": 1779307135.0936136,
+    "ast_hash": "5ed7dc7a226072c5b68b63640a82f18e",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\reservists-workshops.jsx": {
+    "mtime": 1779303664.8473678,
+    "ast_hash": "8538f3688f209a149b5664124fa40221",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\terms.jsx": {
+    "mtime": 1778232555.70251,
+    "ast_hash": "b8dcd618981245fcdbf760c9cc24c858",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\therapy.jsx": {
+    "mtime": 1779303664.8478796,
+    "ast_hash": "05b2f24c589657ae95dbf81bafbc7fca",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\_app.jsx": {
+    "mtime": 1778232555.6951456,
+    "ast_hash": "676cf8530c75ed726e87498de6562801",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\_document.jsx": {
+    "mtime": 1779303664.844776,
+    "ast_hash": "fa5923f18fc5fa19ad1f41585b2619e4",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\api\\diag.js": {
+    "mtime": 1778232555.6980145,
+    "ast_hash": "f9a01f59b02cb401eca6612eb7d2edb3",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\api\\health.js": {
+    "mtime": 1778232555.6985247,
+    "ast_hash": "cbc68a8a8f264a28585dd6a5f97f6122",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\pages\\api\\reviews.js": {
+    "mtime": 1778232555.6985247,
+    "ast_hash": "0588322c9ebd6c413b4751bea38bbf6f",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\public\\manifest.json": {
+    "mtime": 1778184009.2356193,
+    "ast_hash": "81aebf6226800a3f3cb98b4f9b841030",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\middleware.js": {
+    "mtime": 1779303664.8499556,
+    "ast_hash": "b2c08852b2cb3fbc52358ae91f6cfbff",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\AboutSection.jsx": {
+    "mtime": 1778232555.704081,
+    "ast_hash": "3b030d2276ef5cfea11eec90d3f6f3fc",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\AudioPlayer.jsx": {
+    "mtime": 1778232555.7051177,
+    "ast_hash": "5ce70a73748982d638841ac459634a56",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ContactForm.jsx": {
+    "mtime": 1779307135.0936136,
+    "ast_hash": "630a24d0a53db7abe9ed95ec49db8824",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\EmotionalToolsCarousel.jsx": {
+    "mtime": 1778232555.7061474,
+    "ast_hash": "228bb048684fc4a23a111b87eef78b5e",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\FloatingAudioPlayer.jsx": {
+    "mtime": 1778232555.70667,
+    "ast_hash": "040565eada0284d3f9552a05a243d6c7",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\FloralDivider.jsx": {
+    "mtime": 1778232555.7071865,
+    "ast_hash": "50e4e4624ddda9133b14ef9dbf39731b",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\Footer.jsx": {
+    "mtime": 1779307135.0936136,
+    "ast_hash": "264f9fb81d6b68a2a7dd09935e3d9028",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\GrowthElements.jsx": {
+    "mtime": 1778232555.708218,
+    "ast_hash": "82d053811f2599ce9f33c165e6cd1832",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\Header.jsx": {
+    "mtime": 1779303664.8494377,
+    "ast_hash": "6c9e7a8336cd834b5beff4bcd2b9b299",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\HeroSection.jsx": {
+    "mtime": 1778232555.709253,
+    "ast_hash": "95ae3e046d8cc43fceac4cd2e886c804",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\Layout.jsx": {
+    "mtime": 1778232555.7097704,
+    "ast_hash": "f75600e18a29a423cd8fae28c5d4f924",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ScrollToTop.jsx": {
+    "mtime": 1778232555.710849,
+    "ast_hash": "c4748adc797b3d771fe647fa23dc3789",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\SEO.jsx": {
+    "mtime": 1778232555.710849,
+    "ast_hash": "9c01dd67cb4f299045f3e2cd3b801e7c",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ServicesSection.jsx": {
+    "mtime": 1778232555.7119322,
+    "ast_hash": "0366691b967e2b41a0ea141abe8c45a8",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\TestimonialsSection.jsx": {
+    "mtime": 1778232555.712309,
+    "ast_hash": "3d49589812d45c779986311557c3184a",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\TherapyMethodSection.jsx": {
+    "mtime": 1778232555.7128284,
+    "ast_hash": "f16bc05cf3973f8b02c27507c605fc7d",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\WhatsAppButton.jsx": {
+    "mtime": 1778232555.7138662,
+    "ast_hash": "3f84fe9e82bd1a4de096337b3269d29c",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\WhoIsThisFor.jsx": {
+    "mtime": 1778232555.7149203,
+    "ast_hash": "04a73149befc030480b216c7092926e0",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\WorkshopsSection.jsx": {
+    "mtime": 1778232555.7149203,
+    "ast_hash": "d74f687ce2b6c775f3ef500ddaa6bfc9",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\accordion.jsx": {
+    "mtime": 1778232555.7149203,
+    "ast_hash": "5c54c9a2fd48424962709914ff6356b2",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\alert-dialog.jsx": {
+    "mtime": 1778232555.7149203,
+    "ast_hash": "f3208b85d5569d164f872297431ee977",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\alert.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "b3d5875d4f5797f719e9b0bc4ef2dfd5",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\aspect-ratio.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "38209576e920e58eda910d1b0c6c709f",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\avatar.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "2ebcce47726dd7c8215fa02270cc29ff",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\badge.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "bc41ac7e2cc391b6e6a58dd8959d4aac",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\breadcrumb.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "43c7b781ed7d39d4414380a92091bdad",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\button.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "6c079291f783ff1f5b87c3eba12293e5",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\calendar.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "7e88eecbe6d8f8ca4a7d787705a38079",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\card.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "5ad69418d8d1862687f1579a41d06f1e",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\carousel.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "6c41e3eb29514121ba5d90ac4f2a331b",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\chart.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "59d09930eb415ca029ad513d90a3c121",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\checkbox.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "ca34fd15a04cff7762f48ef53dec4872",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\collapsible.jsx": {
+    "mtime": 1778232555.7169285,
+    "ast_hash": "b03f94ab518102c03b0d14eef10a6c81",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\command.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "f1b524968add903447edc7a37d350787",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\context-menu.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "e17b9208a0489426e9b29548b70c4ef9",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\dialog.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "8bf818624b5f65c30717380c140c2e5e",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\drawer.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "5def0c0d6ecf8f9d2587807330d3a44e",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\dropdown-menu.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "27d0ec14a0c624c0a739c965d5554148",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\form.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "078867fe17e150e3db656dee211daeec",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\hover-card.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "e78dd98d6bef9e1d72f1930e5b026414",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\input-otp.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "874bf4b7d4091e1028d86d841eea3094",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\input.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "da1f25570e04dfe6815f4b970f19380b",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\label.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "3b5f457542051801bd22ae1123d2cb63",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\menubar.jsx": {
+    "mtime": 1778232555.7232223,
+    "ast_hash": "509b3a499dd86237dca0ee5bcdeeb242",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\navigation-menu.jsx": {
+    "mtime": 1778232555.7290564,
+    "ast_hash": "099fd1efc0fc752cecc418bb40ef0677",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\pagination.jsx": {
+    "mtime": 1778232555.7298746,
+    "ast_hash": "7f7b94e4d898bf667f420b16d341502d",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\popover.jsx": {
+    "mtime": 1778232555.730348,
+    "ast_hash": "e0ac4e86d045f274daa9f267a2bb27d2",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\progress.jsx": {
+    "mtime": 1778232555.730348,
+    "ast_hash": "dfb7a8b00fd82eea349b4d5bf4a3e52a",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\radio-group.jsx": {
+    "mtime": 1778232555.7324476,
+    "ast_hash": "cbffce8fb23bdeabccafee428230af09",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\resizable.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "4b9e3124040eaf6b5146dc8085af5103",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\scroll-area.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "278d3d2713a8fd2d85edc0a1001db19a",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\select.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "3a1bfd8829d430b988733aded3f01fed",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\separator.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "656dde3e0f8a4f6cd5acf7b368a41e53",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\sheet.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "b7c13732b6dd68eb5ec679d36bba1de7",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\sidebar.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "50ed8f58bdd4c1ae6ca40b9681620649",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\skeleton.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "72bdb31db6c52c4e571785b5b6c9ab5f",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\slider.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "76e3b2873a1784a4c1bbc92df3c22c1c",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\sonner.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "c7b3205c7c94b793abb6a69b4f7f268c",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\switch.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "46a4dd84579c5d4e41bb75ad395e53d5",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\table.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "65902906c8f2eb830668fed60e492788",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\tabs.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "6f2a69ce202b1f4b0e7aefb554dcc664",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\textarea.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "fa95302cee5148ba8b120cd5143bbbe4",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\toast.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "ef3bf196eca903e1ffc2dd4e53c4fd9a",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\toaster.jsx": {
+    "mtime": 1778232555.7329514,
+    "ast_hash": "52853948297b312e38f529208c0fb8fe",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\toggle-group.jsx": {
+    "mtime": 1778232555.7413182,
+    "ast_hash": "919406e2bf746dcb275cfafae9d325fc",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\toggle.jsx": {
+    "mtime": 1778232555.7413182,
+    "ast_hash": "17b825f795843d447b91e37b6b5d84d1",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\tooltip.jsx": {
+    "mtime": 1778232555.7413182,
+    "ast_hash": "a28c86da46e786e5b634bdefec569150",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\components\\ui\\use-toast.jsx": {
+    "mtime": 1778232555.7428334,
+    "ast_hash": "39a14e75451fc016a7e4937dd98f19e1",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\contexts\\AudioContext.jsx": {
+    "mtime": 1778232555.7428334,
+    "ast_hash": "ce6718031c99fe41cc40d9bae95fcea3",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\hooks\\use-mobile.jsx": {
+    "mtime": 1778232555.7438433,
+    "ast_hash": "6090b8dddaef0cb50a0cd0a944956d4a",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\lib\\app-params.js": {
+    "mtime": 1778232555.7455516,
+    "ast_hash": "8678c39646736c01be1559ad9ac6c389",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\lib\\PageNotFound.jsx": {
+    "mtime": 1778232555.7450297,
+    "ast_hash": "4f720d9fd0353dffd37a60575c324771",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\lib\\query-client.js": {
+    "mtime": 1778232555.746143,
+    "ast_hash": "6153cb751c193ca9f23286584c0fdbd2",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\lib\\utils.js": {
+    "mtime": 1778232555.7466607,
+    "ast_hash": "275910416f0bdb945345ae27b7b7d7e0",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\utils\\index.ts": {
+    "mtime": 1778232555.7471783,
+    "ast_hash": "2f7be8f6098f9788818535525d95643c",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\AGENTS.md": {
+    "mtime": 1779303664.8436947,
+    "ast_hash": "1016bcff899180c7d828f4e437635948",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\ARCHITECTURE.md": {
+    "mtime": 1779303664.844259,
+    "ast_hash": "1479dc575db53c0b9ca1816daca9926e",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\AUDIT.md": {
+    "mtime": 1778232555.6883876,
+    "ast_hash": "59810b2d932c289c94fcd2b704190867",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\product-context.md": {
+    "mtime": 1779303664.8484058,
+    "ast_hash": "737d6fe9a46baa894cfc6ff6508b5be9",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\README.md": {
+    "mtime": 1779307200.4325511,
+    "ast_hash": "0c2c4693d9af5bbeaa29a98492ebc269",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.github\\pull_request_template.md": {
+    "mtime": 1778184008.515391,
+    "ast_hash": "199bf0d75b1d41f44f07324b25a99000",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.github\\workflows\\deploy-prod.yml": {
+    "mtime": 1778184008.515391,
+    "ast_hash": "6b41d3ff6cf2efcb39a0929f5f0f9a4b",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.github\\workflows\\deploy-stage.yml": {
+    "mtime": 1778184008.5163915,
+    "ast_hash": "585e4deaa782a47b02daab20aa62002a",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.github\\workflows\\fetch-cf-logs.yml": {
+    "mtime": 1778184008.5163915,
+    "ast_hash": "e19c14c7592b8283005df2c3c70d7ae4",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\.github\\workflows\\monitor-runtime-errors.yml": {
+    "mtime": 1778184008.5163915,
+    "ast_hash": "e2bd84391e6b1004b01c1ea5518a1be3",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\public\\llms.txt": {
+    "mtime": 1779339400.3220737,
+    "ast_hash": "a0711885bb39b498b1c5ab4c5f5bc7ff",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\public\\robots.txt": {
+    "mtime": 1778184009.2366464,
+    "ast_hash": "31d70773766fd21ef0696b9453ff5437",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\public\\favicon.png": {
+    "mtime": 1778184009.2067933,
+    "ast_hash": "dc68755cb96270da40f820f1714b4dfd",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\public\\images\\about-profile.jpg": {
+    "mtime": 1778184009.2088861,
+    "ast_hash": "98b270bb2198d084fac37fc995a6d34a",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\public\\images\\hero-bg.jpg": {
+    "mtime": 1778184009.21091,
+    "ast_hash": "4aa414a0fda60a4f70d9af101ba59fde",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\public\\images\\services-bg-old.jpg": {
+    "mtime": 1778184009.2129934,
+    "ast_hash": "7ddf1edee1ea6b35dee94a901cb54c9d",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\public\\images\\services-bg.png": {
+    "mtime": 1778184009.23082,
+    "ast_hash": "f86edcb26659e15b4ac374347fa6d24b",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\public\\images\\therapy-logo.png": {
+    "mtime": 1778184009.2350743,
+    "ast_hash": "13bf21dd8e4d344e3b88e924dcbd87c1",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\src\\assets\\react.svg": {
+    "mtime": 1778184009.2366464,
+    "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": ""
+  },
+  "C:\\Avihusitton\\therapy_new\\public\\audio\\glz-interview.mp3": {
+    "mtime": 1778184009.1390276,
+    "ast_hash": "2da6884bf4aae908543524ef1e78ba33",
+    "semantic_hash": ""
+  }
+}

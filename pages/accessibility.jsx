@@ -55,7 +55,18 @@ export default function Accessibility() {
                                     טיפולים וסדנאות באופן מלא אונליין.
                                 </p>
                                 <p className="font-medium text-[#4C4A49]">
-                                    לתיאום: טלפון <a href="tel:053-285-3235" className="ltr-text underline">053-285-3235</a> | מייל: <a href="mailto:therapy@avihusitton.com" className="underline">therapy@avihusitton.com</a>
+                                    לתיאום: טלפון <a
+                                        href="tel:053-285-3235"
+                                        className="ltr-text underline"
+                                        onClick={() => {
+                                            if (typeof gtag === 'function') {
+                                                gtag('event', 'click_phone', {
+                                                    event_category: 'lead',
+                                                    event_label: 'phone_cta'
+                                                });
+                                            }
+                                        }}
+                                    >053-285-3235</a> | מייל: <a href="mailto:therapy@avihusitton.com" className="underline">therapy@avihusitton.com</a>
                                 </p>
                             </section>
 
@@ -66,7 +77,18 @@ export default function Accessibility() {
                                 </p>
                                 <div className="p-6 bg-[#FDF8F0] rounded-xl border border-[#D3C1B1]/30">
                                     <p className="font-medium text-[#4C4A49]">אביהו סיטון</p>
-                                    <p>טלפון: <a href="tel:0532853235" className="ltr-text">053-285-3235</a></p>
+                                    <p>טלפון: <a
+                                        href="tel:0532853235"
+                                        className="ltr-text"
+                                        onClick={() => {
+                                            if (typeof gtag === 'function') {
+                                                gtag('event', 'click_phone', {
+                                                    event_category: 'lead',
+                                                    event_label: 'phone_cta'
+                                                });
+                                            }
+                                        }}
+                                    >053-285-3235</a></p>
                                     <p>מייל: <a href="mailto:therapy@avihusitton.com">therapy@avihusitton.com</a></p>
                                 </div>
                             </section>

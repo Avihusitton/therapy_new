@@ -22,6 +22,14 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="צור קשר בוואטסאפ"
+      onClick={() => {
+        if (typeof gtag === 'function') {
+          gtag('event', 'click_whatsapp', {
+            event_category: 'lead',
+            event_label: 'whatsapp_cta'
+          });
+        }
+      }}
       style={{
         position: 'fixed',
         bottom: '24px',
