@@ -48,8 +48,6 @@ export default function ContactForm() {
         setIsSubmitting(true);
         
         try {
-            const webhookUrl = 'https://hook.eu1.make.com/xac8wtpa12wjh2c3glfktolfowdvrbbw';
-            
             let formattedPhone = formData.phone.trim();
             if (formattedPhone.startsWith('0')) {
                 formattedPhone = '972' + formattedPhone.substring(1);
@@ -59,13 +57,14 @@ export default function ContactForm() {
             const messageText = `היי ${formData.full_name}, ראיתי שהשארת פרטים באתר, אשמח לעזור! מתי נוח לך שנדבר?`;
             const whatsappLink = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(messageText)}`;
             
-            const response = await fetch(webhookUrl, {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     ...formData,
+                    website: honeypot,
                     date: new Date().toLocaleDateString('he-IL'),
                     time: new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
                     whatsapp_link: whatsappLink,
