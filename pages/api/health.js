@@ -6,8 +6,7 @@ export default function handler(req, res) {
     env: {
       NODE_ENV: process.env.NODE_ENV,
       NEXT_RUNTIME: process.env.NEXT_RUNTIME,
-    },
-    headers: req.headers
+    }
   });
 }
 

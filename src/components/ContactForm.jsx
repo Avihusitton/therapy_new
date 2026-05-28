@@ -11,6 +11,7 @@ export default function ContactForm() {
         full_name: '',
         phone: ''
     });
+    const [honeypot, setHoneypot] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
@@ -26,7 +27,13 @@ export default function ContactForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Submitting form:", formData);
+
+        // Honeypot check
+        if (honeypot) {
+            console.warn("Spam submission blocked");
+            setIsSuccess(true);
+            return;
+        }
 
         if (!formData.full_name.trim() || !formData.phone.trim()) {
             alert('אנא מלא את השם ומספר הטלפון');
@@ -52,7 +59,6 @@ export default function ContactForm() {
             const messageText = `היי ${formData.full_name}, ראיתי שהשארת פרטים באתר, אשמח לעזור! מתי נוח לך שנדבר?`;
             const whatsappLink = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(messageText)}`;
             
-            console.log("Sending to webhook:", webhookUrl);
             const response = await fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
@@ -63,7 +69,8 @@ export default function ContactForm() {
                     date: new Date().toLocaleDateString('he-IL'),
                     time: new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
                     whatsapp_link: whatsappLink,
-                    source: 'therapy-new-stage'
+                    source: 'therapy-new-stage',
+                    source_token: "avi_therapy_secure_2026"
                 }),
             });
 
@@ -115,6 +122,20 @@ export default function ContactForm() {
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                    {/* Honeypot field - hidden from real users */}
+                    <div className="absolute left-[-9999px] opacity-0" aria-hidden="true">
+                        <label htmlFor="website">website</label>
+                        <input
+                            id="website"
+                            type="text"
+                            name="website"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            value={honeypot}
+                            onChange={(e) => setHoneypot(e.target.value)}
+                        />
+                    </div>
+
                     <div className="grid sm:grid-cols-2 gap-5 sm:gap-8">
                         <div>
                             <label htmlFor="full_name" className="sr-only">שם מלא</label>
