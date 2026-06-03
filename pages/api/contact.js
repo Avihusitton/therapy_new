@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { website, source_token, ...rest } = req.body || {};
+    const { website, ...rest } = req.body || {};
 
     // 1. Server-side Honeypot validation
     if (website) {
@@ -15,10 +15,19 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, message: 'Form submitted successfully' });
     }
 
-    // 2. Validate source_token against MAKE_TOKEN
-    const makeToken = process.env.MAKE_TOKEN;
-    if (!source_token || source_token !== makeToken) {
-      console.error("Invalid source token received");
+    // 2. Validate request origin (replaces client-exposed source_token)
+    const allowedOrigins = [
+      'https://avihusitton.com',
+      'https://www.avihusitton.com',
+      'https://therapy-new-stage.avihusitton.com',
+    ];
+    if (process.env.NODE_ENV === 'development') {
+      allowedOrigins.push('http://localhost:3000', 'http://localhost:3001');
+    }
+    const origin = req.headers.origin || req.headers.referer || '';
+    const isAllowed = allowedOrigins.some(allowed => origin.startsWith(allowed));
+    if (!isAllowed) {
+      console.error("Request from unauthorized origin:", origin);
       return res.status(403).json({ error: 'Forbidden' });
     }
 

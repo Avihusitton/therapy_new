@@ -18,6 +18,6 @@ export default async function handler(req, res) {
     return res.status(200).send(csv);
   } catch (err) {
     console.error(JSON.stringify({ route: '/api/reviews', error: err.message, stack: err.stack }));
-    return res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: 'Internal server error' });
   }
 }

@@ -1,5 +1,5 @@
 // [Category A: UI / Design / Layout]
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote, Loader2, User, ChevronRight, ChevronLeft, CheckCircle2 } from 'lucide-react';
 
@@ -39,14 +39,14 @@ export default function TestimonialsSection() {
 
     useEffect(() => {
         const fetchReviews = async () => {
-            console.log("Fetching reviews from Google Sheet...");
+
             try {
                 const response = await fetch(SHEET_URL);
                 if (!response.ok) {
                     throw new Error(`Failed to fetch reviews: ${response.status}`);
                 }
                 const csvData = await response.text();
-                console.log("CSV Data received, length:", csvData.length);
+
                 
                 const parseCSV = (str) => {
                     const arr = [];
@@ -68,7 +68,7 @@ export default function TestimonialsSection() {
                 };
 
                 const allRows = parseCSV(csvData).slice(1);
-                console.log("Parsed rows count:", allRows.length);
+
 
                 const parsedReviews = allRows.map((columns, index) => {
                     if (columns.length < 3) return null;
@@ -96,7 +96,7 @@ export default function TestimonialsSection() {
                     };
                 }).filter(Boolean);
 
-                console.log("Final reviews count:", parsedReviews.length);
+
                 setReviews(parsedReviews);
             } catch (error) {
                 console.error("Error fetching reviews:", error);

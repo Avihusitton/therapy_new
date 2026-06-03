@@ -39,24 +39,24 @@ export default function ContactForm() {
             alert('אנא מלא את השם ומספר הטלפון');
             return;
         }
-        
+
         if (!isValidPhone(formData.phone)) {
             alert('אנא הזן מספר טלפון תקין (למשל: 054-1234567)');
             return;
         }
 
         setIsSubmitting(true);
-        
+
         try {
             let formattedPhone = formData.phone.trim();
             if (formattedPhone.startsWith('0')) {
                 formattedPhone = '972' + formattedPhone.substring(1);
             }
             formattedPhone = formattedPhone.replace(/\D/g, '');
-            
+
             const messageText = `היי ${formData.full_name}, ראיתי שהשארת פרטים באתר, אשמח לעזור! מתי נוח לך שנדבר?`;
             const whatsappLink = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(messageText)}`;
-            
+
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
@@ -68,8 +68,7 @@ export default function ContactForm() {
                     date: new Date().toLocaleDateString('he-IL'),
                     time: new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
                     whatsapp_link: whatsappLink,
-                    source: 'therapy-new-stage',
-                    source_token: "avi_therapy_secure_2026"
+                    source: 'therapy-new-stage'
                 }),
             });
 
@@ -78,7 +77,7 @@ export default function ContactForm() {
                 throw new Error(`Webhook request failed with status ${response.status}`);
             }
 
-            console.log("Form submitted successfully");
+
             if (typeof window !== 'undefined' && typeof gtag === 'function') {
                 gtag('event', 'lead_form_submit', {
                     event_category: 'lead',
@@ -97,7 +96,7 @@ export default function ContactForm() {
     if (isSuccess) {
         return (
             <div className="w-full max-w-4xl mx-auto">
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-5 sm:p-10 text-center"
@@ -105,7 +104,7 @@ export default function ContactForm() {
                     <CheckCircle2 className="w-16 h-16 text-[#25D366] mx-auto mb-4" />
                     <h3 className="text-2xl text-[#4C4A49] mb-2">תודה רבה, {formData.full_name}!</h3>
                     <p className="text-[#4A4847]">
-                        הפרטים שלך התקבלו בהצלחה. <br/>אצור איתך קשר בהקדם.
+                        הפרטים שלך התקבלו בהצלחה. <br />אצור איתך קשר בהקדם.
                     </p>
                 </motion.div>
             </div>
@@ -119,7 +118,7 @@ export default function ContactForm() {
                     <h3 className="text-2xl text-[#4C4A49] mb-4">צור קשר</h3>
                     <p className="text-[#4A4847]">השאר פרטים ונחזור אליך בהקדם לשיחת היכרות</p>
                 </div>
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                     {/* Honeypot field - hidden from real users */}
                     <div className="absolute left-[-9999px] opacity-0" aria-hidden="true">
@@ -164,7 +163,7 @@ export default function ContactForm() {
                             />
                         </div>
                     </div>
-                    
+
                     <div className="space-y-4">
                         <p style={{ fontSize: "0.8rem", color: "#888", marginBottom: "8px" }}>
                             לתשומת לבך — טופס זה מיועד ליצירת קשר ראשוני בלבד.
@@ -205,7 +204,7 @@ export default function ContactForm() {
                                 </>
                             )}
                         </Button>
-                        
+
                         <Button
                             type="button"
                             variant="outline"
@@ -227,7 +226,7 @@ export default function ContactForm() {
                         </Button>
                     </div>
                 </form>
-                
+
                 <div className="text-center mt-6 text-sm text-[#8B9F6B]">
                     הפרטים שלך נשמרים בדיסקרטיות מלאה
                 </div>
