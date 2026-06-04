@@ -95,7 +95,7 @@ export default function ContactForm() {
 
     if (isSuccess) {
         return (
-            <div className="w-full max-w-4xl mx-auto">
+            <div className="w-full max-w-4xl mx-auto" data-testid="contact-form-success">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -172,6 +172,7 @@ export default function ContactForm() {
 
                         <div className="flex items-start gap-3 text-right">
                             <input
+                                data-testid="marketing-consent-checkbox"
                                 type="checkbox"
                                 id="marketing-consent"
                                 name="marketingConsent"

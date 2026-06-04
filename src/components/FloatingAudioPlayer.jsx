@@ -193,6 +193,7 @@ export default function FloatingAudioPlayer({ isOpen, onClose }) {
           {/* Progress Bar */}
           <div style={{ flex: 1 }}>
             <div
+              data-testid="audio-progress-bar"
               style={{
                 width: '100%',
                 height: '4px',

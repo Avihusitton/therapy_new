@@ -33,3 +33,9 @@ node-v20.18.0-win-x64/
 
 # Wrangler state
 .wrangler/state/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
