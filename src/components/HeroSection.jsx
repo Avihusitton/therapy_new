@@ -1,6 +1,7 @@
 // [Category A: UI / Design / Layout]
 import Link from 'next/link';
-import { ArrowDown, Phone, Users, Shield, Heart } from 'lucide-react';
+import Image from 'next/image';
+import { Phone, Users, Shield, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function HeroSection() {
@@ -41,13 +42,12 @@ export default function HeroSection() {
                     >
                         <div className="mb-8 sm:mb-10 flex flex-col items-center">
                             <div className="mb-4 sm:mb-6">
-                                <img
+                                <Image
                                     src="/images/therapy-logo.png"
                                     alt="לוגו טיפול רגשי"
-                                    width="96"
-                                    height="96"
-                                    fetchpriority="high"
-                                    decoding="async"
+                                    width={96}
+                                    height={96}
+                                    priority
                                     className="w-20 h-20 sm:w-24 sm:h-24"
                                 />
                             </div>

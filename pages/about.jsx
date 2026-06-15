@@ -1,6 +1,8 @@
 // [Category A: UI / Design / Layout]
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
+import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Play, Heart, Shield, Users, Award, BookOpen, MessageCircle } from 'lucide-react';
 import { useAudio } from '@/contexts/AudioContext';
@@ -62,9 +64,12 @@ export default function About() {
                         >
                             <div className="relative">
                                 <div className="w-64 h-80 sm:w-80 sm:h-[450px] rounded-2xl overflow-hidden shadow-2xl z-10 relative border-8 border-white">
-                                    <img 
+                                    <Image 
                                         src="/images/about-profile.jpg"
                                         alt="אביהו סיטון"
+                                        width={320}
+                                        height={450}
+                                        priority
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
@@ -270,12 +275,12 @@ export default function About() {
                         >
                             שלח הודעה בוואטסאפ
                         </a>
-                        <a 
+                        <Link 
                             href="/contact" 
                             className="border border-[#A2673E] text-[#A2673E] px-10 py-4 rounded-xl hover:bg-[#A2673E]/5 transition-all text-lg font-light"
                         >
                             השאר פרטים באתר
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>

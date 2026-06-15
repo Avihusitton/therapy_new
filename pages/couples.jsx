@@ -1,5 +1,6 @@
 // [Category A: UI / Design / Layout]
 import Layout from '@/components/Layout';
+import Link from 'next/link';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import FloralDivider from '@/components/FloralDivider';
@@ -124,12 +125,12 @@ export default function Couples() {
                             <h3 className="text-2xl mb-6 font-light">מוכנים להחזיר את הזרימה לזוגיות?</h3>
                             <p className="mb-8 text-[#D3C1B1] font-light">אני מזמין אתכם לשיחה משותפת, שבה נניח את הבסיס למסע הזוגי החדש שלכם.</p>
                             <div className="flex flex-wrap justify-center gap-4">
-                                <a href="/contact" className="bg-[#A2673E] hover:bg-[#8d5a36] px-8 py-3 rounded-lg transition-all shadow-md">
+                                <Link href="/contact" className="bg-[#A2673E] hover:bg-[#8d5a36] px-8 py-3 rounded-lg transition-all shadow-md">
                                     בואו נדבר
-                                </a>
-                                <a href="/reservists-workshops" className="border border-white/30 hover:bg-white/10 px-8 py-3 rounded-lg transition-all">
+                                </Link>
+                                <Link href="/reservists-workshops" className="border border-white/30 hover:bg-white/10 px-8 py-3 rounded-lg transition-all">
                                     סדנאות למילואימניקים
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </motion.div>

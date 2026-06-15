@@ -1,5 +1,6 @@
 // [Category A: UI / Design / Layout]
 import Layout from '@/components/Layout';
+import Link from 'next/link';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import FloralDivider from '@/components/FloralDivider';
@@ -192,9 +193,9 @@ export default function Therapy() {
                                 >
                                     בואו נדבר
                                 </a>
-                                <a href="/couples" className="border border-white/30 hover:bg-white/10 px-8 py-3 rounded-lg transition-all">
+                                <Link href="/couples" className="border border-white/30 hover:bg-white/10 px-8 py-3 rounded-lg transition-all">
                                     לפרטים על ליווי זוגי
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </motion.div>

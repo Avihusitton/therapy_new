@@ -12,6 +12,7 @@ export default function ContactForm() {
         phone: ''
     });
     const [honeypot, setHoneypot] = useState('');
+    const [formLoadedAt] = useState(() => Date.now());
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
@@ -65,6 +66,7 @@ export default function ContactForm() {
                 body: JSON.stringify({
                     ...formData,
                     website: honeypot,
+                    _t: formLoadedAt,
                     date: new Date().toLocaleDateString('he-IL'),
                     time: new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
                     whatsapp_link: whatsappLink,
@@ -121,7 +123,17 @@ export default function ContactForm() {
 
                 <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                     {/* Honeypot field - hidden from real users */}
-                    <div className="absolute left-[-9999px] opacity-0" aria-hidden="true">
+                    <div
+                        aria-hidden="true"
+                        style={{
+                            position: 'absolute',
+                            left: '-9999px',
+                            top: '-9999px',
+                            opacity: 0,
+                            height: 0,
+                            overflow: 'hidden',
+                        }}
+                    >
                         <label htmlFor="website">website</label>
                         <input
                             id="website"
@@ -165,7 +177,7 @@ export default function ContactForm() {
                     </div>
 
                     <div className="space-y-4">
-                        <p style={{ fontSize: "0.8rem", color: "#888", marginBottom: "8px" }}>
+                        <p className="text-xs text-gray-400 mb-2">
                             לתשומת לבך — טופס זה מיועד ליצירת קשר ראשוני בלבד.
                             אין לשלוח מידע קליני או רגיש דרך טופס זה.
                         </p>

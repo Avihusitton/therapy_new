@@ -29,10 +29,16 @@ build/
 
 # Large files
 node-v20.18.0-win-x64/
+node-v*/
+node.zip
 *.exe
 
 # Wrangler state
 .wrangler/state/
+
+# Log files
+*_log.txt
+wrangler_output.txt
 
 # Playwright
 /test-results/

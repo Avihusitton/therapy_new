@@ -1,5 +1,5 @@
 // [Category A: UI / Design / Layout]
-import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import GrowthElements from './GrowthElements';
 import FloralDivider from './FloralDivider';
@@ -19,11 +19,11 @@ export default function AboutSection() {
                     >
                         <div className="relative">
                             <div className="w-52 h-64 sm:w-64 sm:h-80 rounded-2xl overflow-hidden shadow-2xl mx-auto lg:mx-0">
-                                <img 
+                                <Image 
                                     src="/images/about-profile.jpg"
                                     alt="אביהו סיטון"
-                                    width="256"
-                                    height="320"
+                                    width={256}
+                                    height={320}
                                     loading="lazy"
                                     className="w-full h-full object-cover"
                                 />

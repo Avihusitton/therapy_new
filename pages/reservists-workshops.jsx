@@ -1,5 +1,6 @@
 // [Category A: UI / Design / Layout]
 import Layout from '@/components/Layout';
+import Link from 'next/link';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import FloralDivider from '@/components/FloralDivider';
@@ -88,21 +89,7 @@ export default function ReservistsWorkshops() {
                             <div className="flex justify-center my-12">
                                 <button
                                     onClick={() => setShowPlayer(true)}
-                                    style={{
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        gap: '8px',
-                                        backgroundColor: 'transparent',
-                                        border: '1px solid rgba(162, 103, 62, 0.4)',
-                                        borderRadius: '24px',
-                                        padding: '10px 24px',
-                                        cursor: 'pointer',
-                                        color: '#A2673E',
-                                        fontSize: '15px',
-                                        fontWeight: '500',
-                                        transition: 'all 0.2s',
-                                    }}
-                                    className="hover:bg-[#A2673E]/5 hover:border-[#A2673E] transition-all"
+                                    className="inline-flex items-center gap-2 bg-transparent border border-[#A2673E]/40 rounded-3xl px-6 py-2.5 cursor-pointer text-[#A2673E] text-[15px] font-medium transition-all hover:bg-[#A2673E]/5 hover:border-[#A2673E]"
                                 >
                                     <Play size={14} fill="#A2673E" />
                                     האזן לראיון בגלי צה״ל (קולה של אמא)
@@ -224,9 +211,9 @@ export default function ReservistsWorkshops() {
                                 >
                                     צרו קשר לבירור
                                 </a>
-                                <a href="/therapy" className="border border-white/30 hover:bg-white/10 px-8 py-3 rounded-lg transition-all">
+                                <Link href="/therapy" className="border border-white/30 hover:bg-white/10 px-8 py-3 rounded-lg transition-all">
                                     לטיפול רגשי אישי
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </motion.div>
