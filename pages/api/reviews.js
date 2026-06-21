@@ -1,5 +1,28 @@
 // [Category B: Functional / Logic]
+const rateLimit = new Map();
+const WINDOW_MS = 60_000; // 1 minute
+const MAX_REQUESTS = 20;  // per IP per window
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const entry = rateLimit.get(ip) || { count: 0, start: now };
+  if (now - entry.start > WINDOW_MS) {
+    rateLimit.set(ip, { count: 1, start: now });
+    return false;
+  }
+  if (entry.count >= MAX_REQUESTS) return true;
+  entry.count++;
+  rateLimit.set(ip, entry);
+  return false;
+}
+
 export default async function handler(req, res) {
+  const forwarded = req?.headers?.['x-forwarded-for'];
+  const ip = (typeof forwarded === 'string' ? forwarded.split(',')[0].trim() : req?.socket?.remoteAddress) ?? 'unknown';
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ error: 'Too many requests' });
+  }
+
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }

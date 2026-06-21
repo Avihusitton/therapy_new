@@ -67,26 +67,30 @@ export default function Home() {
                         viewport={{ margin: "-50px" }}
                         className="space-y-4"
                     >
-                        {[
-                            "תקועים — יודעים שמשהו צריך להשתנות אבל לא יודעים איך",
-                            "עייפים מאותם ריבים שחוזרים על עצמם בזוגיות",
-                            "חוזרים ממילואים ומתקשים לחזור לשגרה ולמשפחה",
-                            "מחפשים משמעות — מרגישים שחיים על טייס אוטומטי",
-                            "רוצים לגדול — לא מחכים למשבר כדי להתחיל תהליך"
-                        ].map((item, i) => {
-                            const prefersReducedMotion = typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
-                            const motionProps = prefersReducedMotion
-                                ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } }
-                                : { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { margin: "-50px" }, transition: { duration: 0.5, delay: i * 0.1 } };
-                            return (
-                                <motion.div key={i} className="flex items-center gap-4 bg-white p-5 md:p-6 rounded-xl shadow-sm border border-[#D3C1B1]/10 border-r-4 border-brand-primary" {...motionProps}>
-                                    <div className="w-8 h-8 rounded-full bg-[#A2673E]/10 flex items-center justify-center flex-shrink-0">
-                                        <span className="text-[#A2673E]">✓</span>
-                                    </div>
-                                    <p className="text-base md:text-lg text-[#4A4847] font-light leading-relaxed">{item}</p>
-                                </motion.div>
-                            );
-                        })}
+                        {(() => {
+                            const prefersReducedMotion = typeof window !== 'undefined'
+                                ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                                : false;
+                            return [
+                                "תקועים — יודעים שמשהו צריך להשתנות אבל לא יודעים איך",
+                                "עייפים מאותם ריבים שחוזרים על עצמם בזוגיות",
+                                "חוזרים ממילואים ומתקשים לחזור לשגרה ולמשפחה",
+                                "מחפשים משמעות — מרגישים שחיים על טייס אוטומטי",
+                                "רוצים לגדול — לא מחכים למשבר כדי להתחיל תהליך"
+                            ].map((item, i) => {
+                                const motionProps = prefersReducedMotion
+                                    ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } }
+                                    : { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { margin: "-50px" }, transition: { duration: 0.5, delay: i * 0.1 } };
+                                return (
+                                    <motion.div key={i} className="flex items-center gap-4 bg-white p-5 md:p-6 rounded-xl shadow-sm border border-[#D3C1B1]/10 border-r-4 border-brand-primary" {...motionProps}>
+                                        <div className="w-8 h-8 rounded-full bg-[#A2673E]/10 flex items-center justify-center flex-shrink-0">
+                                            <span className="text-[#A2673E]">✓</span>
+                                        </div>
+                                        <p className="text-base md:text-lg text-[#4A4847] font-light leading-relaxed">{item}</p>
+                                    </motion.div>
+                                );
+                            });
+                        })()}
                     </motion.div>
                 </div>
             </section>

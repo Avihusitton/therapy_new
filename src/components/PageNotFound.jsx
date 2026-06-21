@@ -1,9 +1,9 @@
 // [Category A: UI / Design / Layout]
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 export default function PageNotFound({}) {
-    const location = useLocation();
-    const pageName = location.pathname.substring(1);
+    const router = useRouter();
+    const pageName = router.asPath ? router.asPath.split('?')[0].substring(1) : '';
 
     return (
         <div className="min-h-screen flex items-center justify-center p-6 bg-[#FDF8F0]">
@@ -28,7 +28,7 @@ export default function PageNotFound({}) {
                     {/* Action Button */}
                     <div className="pt-6">
                         <button 
-                            onClick={() => window.location.href = '/'} 
+                            onClick={() => router.push('/')} 
                             className="inline-flex items-center px-6 py-3 text-lg font-light text-white bg-[#A2673E] rounded-lg hover:bg-[#8d5a36] transition-colors duration-200"
                         >
                             חזרה לדף הבית
