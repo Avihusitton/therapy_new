@@ -45,7 +45,7 @@ export default function ServicesSection() {
             {/* רקע עדין */}
             <div className="absolute inset-0 opacity-5">
                 <img
-                    src="/images/services-bg.png"
+                    src="/images/services-bg.webp"
                     alt=""
                     width="1920"
                     height="1080"
@@ -136,7 +136,7 @@ export default function ServicesSection() {
                     <div className="w-full max-w-4xl mx-auto">
                         <div className="rounded-2xl overflow-hidden shadow-2xl">
                             <img
-                                src="/images/services-bg.png"
+                                src="/images/services-bg.webp"
                                 alt="קליניקה ברתמים"
                                 width="800"
                                 height="450"
