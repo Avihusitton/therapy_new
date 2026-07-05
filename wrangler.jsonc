@@ -19,7 +19,7 @@
         {
           "binding": "BLOG_DB",
           "database_name": "blog-db",
-          "database_id": "REPLACE_WITH_D1_DATABASE_ID"
+          "database_id": "ebc3dedd-53cd-463d-a696-1496773466be"
         }
       ]
     },
