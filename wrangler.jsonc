@@ -14,7 +14,14 @@
       "assets": {
         "directory": ".open-next/assets",
         "binding": "ASSETS"
-      }
+      },
+      "d1_databases": [
+        {
+          "binding": "BLOG_DB",
+          "database_name": "blog-db",
+          "database_id": "REPLACE_WITH_D1_DATABASE_ID"
+        }
+      ]
     },
     "prod": {
       "name": "therapy-new",
