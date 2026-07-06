@@ -72,6 +72,8 @@ module.exports = {
   				text: 'hsl(var(--brand-text))',
   				border: 'hsl(var(--brand-border))',
   				accent: 'hsl(var(--brand-accent))',
+  				sage: 'hsl(var(--brand-sage))',
+  				sand: 'hsl(var(--brand-sand))',
   			}
   		},
   		keyframes: {

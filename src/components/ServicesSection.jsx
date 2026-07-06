@@ -41,7 +41,7 @@ export default function ServicesSection() {
     ];
 
     return (
-        <section id="workshops" className="py-16 sm:py-24 bg-[#FDF8F0] relative overflow-x-hidden w-full">
+        <section id="workshops" className="py-16 sm:py-24 bg-brand-sage relative overflow-x-hidden w-full">
             {/* רקע עדין */}
             <div className="absolute inset-0 opacity-5">
                 <img
@@ -62,9 +62,9 @@ export default function ServicesSection() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-4xl sm:text-6xl text-[#4C4A49] mb-4 sm:mb-6">איך אוכל ללוות אותך</h2>
+                        <h2 className="text-4xl sm:text-6xl text-brand-secondary mb-4 sm:mb-6">איך אוכל ללוות אותך</h2>
                         <div className="w-24 h-px bg-[#D3C1B1] mx-auto mb-4"></div>
-                        <p className="text-base sm:text-lg text-[#4A4847] font-light max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-base sm:text-lg text-brand-secondary/80 font-light max-w-2xl mx-auto leading-relaxed">
                             ארבע דרכים להיכנס לתהליך — בחר את הדרך שמתאימה לרגע שאתה נמצא בו.
                         </p>
                     </motion.div>
@@ -78,7 +78,7 @@ export default function ServicesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className={`relative bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-lg flex flex-col ${
+                            className={`relative bg-brand-sand/95 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-lg flex flex-col ${
                                 s.highlight ? 'ring-2 ring-[#A2673E]/30' : ''
                             }`}
                         >
