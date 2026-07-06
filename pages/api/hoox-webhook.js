@@ -116,53 +116,62 @@ function sanitizeArticleData(data) {
 }
 
 export default async function handler(req, res) {
-  // Only accept POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  try {
-    // 1. Read raw body BEFORE any parsing
-    const rawBody = await getRawBody(req);
+  const db = await getD1();
 
-    // 2. Verify HMAC-SHA256 signature
+  async function logDebug(title, details) {
+    if (!db) return;
+    try {
+      await db.prepare(`
+        INSERT INTO articles (id, title, slug, content_html, updated_at)
+        VALUES (?1, ?2, ?3, ?4, datetime('now'))
+        ON CONFLICT(id) DO UPDATE SET content_html=excluded.content_html
+      `)
+        .bind('debug-' + Date.now(), 'Debug: ' + title, 'debug-' + Date.now(), '<pre>' + escapeText(details) + '</pre>')
+        .run();
+    } catch (e) {
+      console.error('Failed to log debug:', e);
+    }
+  }
+
+  try {
+    const rawBody = await getRawBody(req);
     const secret = process.env.HOOX_WEBHOOK_SECRET;
+    
     if (!secret) {
-      console.error('[hoox-webhook] HOOX_WEBHOOK_SECRET not configured');
+      await logDebug('Missing Secret', 'HOOX_WEBHOOK_SECRET is not configured');
       return res.status(500).json({ error: 'Webhook not configured' });
     }
 
     const signature = req.headers['x-hoox-signature'];
     if (!verifySignature(rawBody, signature, secret)) {
-      console.warn('[hoox-webhook] Invalid signature — request rejected');
+      await logDebug('Invalid Signature', `Signature: ${signature}\nSecret Prefix: ${secret.slice(0,5)}\nBody length: ${rawBody.length}\nBody: ${rawBody.toString('utf-8')}`);
       return res.status(401).json({ error: 'Invalid signature' });
     }
 
-    // 3. Parse JSON only after verification passes
     let payload;
     try {
       payload = JSON.parse(rawBody.toString('utf-8'));
     } catch {
+      await logDebug('Invalid JSON', rawBody.toString('utf-8'));
       return res.status(400).json({ error: 'Invalid JSON' });
     }
 
-    // 4. Validate event type
     if (payload.event !== 'article.published') {
-      // Acknowledge unknown events gracefully
+      await logDebug('Skipped Event', payload.event);
       return res.status(200).json({ received: true, skipped: true });
     }
 
-    // 5. Sanitize article data
     const article = sanitizeArticleData(payload.data);
     if (!article) {
-      console.error('[hoox-webhook] Invalid article data — missing required fields');
+      await logDebug('Invalid Article Data', JSON.stringify(payload.data, null, 2));
       return res.status(400).json({ error: 'Invalid article data' });
     }
 
-    // 6. Upsert to D1 (dedup by id — Hoox retries on failure)
-    const db = await getD1();
     if (!db) {
-      console.error('[hoox-webhook] D1 database not available');
       return res.status(503).json({ error: 'Database not available' });
     }
 
@@ -201,10 +210,9 @@ export default async function handler(req, res) {
       )
       .run();
 
-    // 7. Return immediately — heavy work (cache busting, etc.) would go async
     return res.status(200).json({ received: true });
   } catch (err) {
-    console.error('[hoox-webhook] Unhandled error:', err.message);
+    await logDebug('Catch Error', err.message + '\n' + err.stack);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
