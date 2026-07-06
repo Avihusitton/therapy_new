@@ -6,7 +6,7 @@ import FloralDivider from './FloralDivider';
 
 export default function AboutSection() {
     return (
-        <section className="py-16 sm:py-24 bg-brand-sand relative overflow-x-hidden w-full">
+        <section className="py-16 sm:py-24 bg-white relative overflow-x-hidden w-full">
             <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
                 <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                     {/* תמונה אישית */}
