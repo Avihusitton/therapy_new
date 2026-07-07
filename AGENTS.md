@@ -63,3 +63,6 @@ At the end of every file change, report in this exact format:
 - Status: [Done / Needs verification]
 ```
 If a terminal command fails, provide the exact error message.
+
+## 8. Chat Formatting
+- When communicating in Hebrew in the chat, always wrap the text in `<div dir="rtl">` to ensure proper right-to-left layout.

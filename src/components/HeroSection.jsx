@@ -6,10 +6,12 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
     const scrollToContact = () => {
+        if (typeof window === 'undefined') return;
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     };
 
     const scrollToWorkshops = () => {
+        if (typeof window === 'undefined') return;
         document.getElementById('workshops').scrollIntoView({ behavior: 'smooth' });
     };
 
@@ -67,11 +69,11 @@ export default function HeroSection() {
                             </p>
 
                             <h2 className="text-xl sm:text-3xl text-brand-text font-light mb-3 leading-relaxed px-2 max-w-2xl mx-auto">
-                                כשמשהו בפנים מבקש לזוז
+                                כשמשהו בפנים אומר שצריך לעשות איפוס
                             </h2>
 
                             <p className="text-sm sm:text-base text-brand-text/80 font-light leading-relaxed max-w-xl mx-auto">
-                                יש אנשים שמגיעים אחרי משבר. יש שמגיעים כשהכל בסדר — אבל משהו בפנים אומר: לא ממש. אם הגעת לכאן, כנראה שיש בך משהו שמחפש מרחב.
+                                יש גברים שמגיעים אחרי שהפיוז קפץ פעם אחת יותר מדי. יש שמגיעים כשהכל &#x22;בסדר&#x22; טכנית — אבל מבפנים כבוי. אם הגעת לכאן, כנראה שיש משהו שמבקש לזוז.
                             </p>
 
                             <meta itemProp="url" content="https://avihusitton.com" />
@@ -126,6 +128,17 @@ export default function HeroSection() {
                                 העיקר שהוא חי ונושם — והגיבור סקרן לדעת מה ההמשך"
                             </p>
                         </div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.45 }}
+                        className="mb-6"
+                    >
+                        <p className="text-sm sm:text-base text-brand-text/60 font-light italic">
+                            &quot;לא לעבור את זה לבד. לחזור לעצמך, ביחד.&quot;
+                        </p>
                     </motion.div>
 
                     <motion.div

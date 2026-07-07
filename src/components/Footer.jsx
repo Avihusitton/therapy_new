@@ -7,14 +7,15 @@ export default function Footer() {
             <div className="max-w-6xl mx-auto px-6 text-center">
                 <div className="mb-10 sm:mb-12">
                     <h2 className="text-2xl sm:text-3xl font-light mb-2">אביהו סיטון</h2>
-                    <p className="text-sm text-[#B5A89D] dark:text-brand-text/60 font-light mb-6">פסיכותרפיסט | קליניקה ברתמים ובזום</p>
+                    <p className="text-sm text-[#B5A89D] dark:text-brand-text/60 font-light mb-1">פסיכותרפיסט | קליניקה ברתמים ובזום</p>
+                    <p className="text-sm italic text-brand-secondary/70 dark:text-brand-text/50 font-light mb-6">"לא לעבור את זה לבד. לחזור לעצמך, ביחד."</p>
                     <div className="w-24 h-px bg-brand-border/30 mx-auto mb-8"></div>
 
                     <nav aria-label="ניווט תחתון" className="flex flex-wrap justify-center gap-6 mb-10 text-sm font-light text-brand-secondary/80 dark:text-brand-text/80">
                         <Link href="/" className="hover:text-white transition-colors">בית</Link>
-                        <Link href="/therapy" className="hover:text-white transition-colors">טיפול אישי</Link>
-                        <Link href="/couples" className="hover:text-white transition-colors">מסע זוגי</Link>
-                        <Link href="/reservists-workshops" className="hover:text-white transition-colors">סדנאות מילואימניקים</Link>
+                        <Link href="/therapy" className="hover:text-white transition-colors">המרחב האישי</Link>
+                        <Link href="/couples" className="hover:text-white transition-colors">שולחן עגול לשניים</Link>
+                        <Link href="/reservists-workshops" className="hover:text-white transition-colors">קבוצת תכלס | סדנאות</Link>
                         <Link href="/about" className="hover:text-white transition-colors">אודות</Link>
                         <Link href="/contact" className="hover:text-white transition-colors">צור קשר</Link>
                     </nav>

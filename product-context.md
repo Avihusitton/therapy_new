@@ -3,17 +3,29 @@
 ## The Brand & Creator
 - **Name:** Avihu Sitton
 - **Profession:** Emotional therapist, workshop facilitator, creator of the "Derech" method.
-- **Value Proposition:** Helping people achieve emotional independence, process combat/reserve duty experiences, and perform a mid-life "reset".
+- **Value Proposition:** Helping men break free from emotional "tangles" (פלונטר), process reserve duty/combat experiences, manage anger and quiet burnout, and perform a mid-life "reset" (איפוס מסלול).
+- **Slogan:** "לא לעבור את זה לבד. לחזור לעצמך, ביחד."
 
 ## Target Audience
-- **Primary:** Men, ages 25-45, mostly married.
-- **Specific Segments:** IDF Reservists and security forces veterans returning from the war. Men feeling stuck mid-life. Couples seeking practical therapy.
-- **Anti-Persona (Who to exclude):** Do NOT target youth (under 25) and less focus on individual women.
+- **Primary:** Men, ages 30-50, married or divorced, fathers.
+- **Specific Segments:** 
+  - IDF Reservists and security forces veterans dealing with the transition back to civilian life.
+  - Men experiencing "quiet burnout" (שחיקה שקטה), feeling stuck, or dealing with unexpressed anger/short fuse.
+  - Couples seeking practical, straightforward therapy to "untangle" their relationship.
+- **Anti-Persona (Who to exclude):** Do NOT target youth (under 25). Less focus on individual women. Avoid anyone looking for "new age" or deeply spiritual/fluffy psychological approaches.
 
-## Tone of Voice
-- **Style:** Eye-level, approachable ("בגובה העיניים").
-- **Delivery:** Practical, direct, and to-the-point ("ענייני").
-- **Vibe:** Original and insightful. The copy shouldn't sound like typical "fluffy" psychological jargon. It needs to project quiet authority, showing visitors they are getting real-world value from a grounded professional.
+## Tone of Voice (The "Dugri" Style)
+- **Style:** Eye-level, approachable, direct ("בגובה העיניים", "דוגרי").
+- **Delivery:** Practical, grounded, and to-the-point ("ענייני", "תכלס"). Active present tense.
+- **Vibe:** Earthy, authentic, and safe. Projects quiet authority. 
+- **Language Rules:** 
+  - **BANNED WORDS:** "הכלה", "העצמה", "מרחב מכיל", "ריפוי קסום", "אנרגיות", "מסע מופלא".
+  - **PREFERRED CONCEPTS:** "שריון" (Armor), "פלונטר" (Tangle), "קפיצת הפיוז" (Short fuse), "לרדת מהראש לגוף" (Drop from head to body), "לעשות איפוס" (Do a reset).
+
+## Services (Branded Naming)
+- **Individual Therapy:** "איפוס מסלול / שיחת גברים" (Track Reset / Men's Talk)
+- **Couples Therapy:** "לפתוח את הפלונטר" (Untangle)
+- **Workshops:** "הסדנאות שלנו" (Our Workshops)
 
 ## Primary Call to Action (CTA)
 - 1. Click the dedicated WhatsApp button to start a direct conversation.
