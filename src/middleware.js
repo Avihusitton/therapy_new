@@ -2,6 +2,15 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {
+  const host = request.headers.get('host') || '';
+  
+  // Redirect www.avihusitton.com -> avihusitton.com (301 Permanent Redirect)
+  if (host.startsWith('www.')) {
+    const url = request.nextUrl.clone();
+    url.hostname = host.replace(/^www\./, '');
+    return NextResponse.redirect(url, 301);
+  }
+
   const isDev = process.env.NODE_ENV !== 'production';
   
   // Define CSP
@@ -10,11 +19,11 @@ export function middleware(request) {
   // We use 'self' and 'unsafe-inline' which is standard for Next.js SSG.
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://cdn.userway.org https://www.googletagmanager.com;
+    script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://cdn.userway.org https://www.googletagmanager.com https://connect.facebook.net;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' blob: data: https://cdn.userway.org https://www.google-analytics.com https://www.googletagmanager.com;
+    img-src 'self' blob: data: https://cdn.userway.org https://www.google-analytics.com https://www.googletagmanager.com https://www.facebook.com;
     font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https://api.userway.org https://www.google-analytics.com https://analytics.google.com;
+    connect-src 'self' https://api.userway.org https://www.google-analytics.com https://analytics.google.com https://www.facebook.com;
     frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com;
     object-src 'none';
     base-uri 'self';

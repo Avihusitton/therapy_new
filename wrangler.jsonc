@@ -25,6 +25,10 @@
     },
     "prod": {
       "name": "therapy-new",
+      "routes": [
+        { "pattern": "avihusitton.com", "custom_domain": true },
+        { "pattern": "www.avihusitton.com", "custom_domain": true }
+      ],
       "assets": {
         "directory": ".open-next/assets",
         "binding": "ASSETS"
